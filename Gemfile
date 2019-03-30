@@ -38,6 +38,8 @@ gem 'devise', '~> 4.6'
 
 # Omniauth providers
 gem 'omniauth-facebook', '~> 5.0'
+gem 'webpacker'
+gem 'react-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
