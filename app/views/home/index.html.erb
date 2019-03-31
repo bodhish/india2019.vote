@@ -4,7 +4,8 @@
   <% end %>
   <% presenter = Home::IndexPresenter.new(self) %>
   <div id="app-root" class="flex flex-1 h-screen"
-       data-props="<%= presenter.react_props.to_json %>"></div>
+       data-props="<%= presenter.react_props.to_json %>">
+  </div>
 <% end %>
 
 

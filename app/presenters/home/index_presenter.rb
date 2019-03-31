@@ -13,7 +13,7 @@ module Home
 
     def react_props
       {
-        userName: current_user.name
+        userName: current_user.name,
         userImage: current_user.image
       }
     end
