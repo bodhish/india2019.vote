@@ -8,6 +8,7 @@ module Home
     #   {
     #     userName: "Bodhish Thomas",
     #     userImage: "https://graph.facebook.com/v2.10/2771775329531107/picture",
+    #     questions: questions
     #   }
     # end
 
@@ -15,7 +16,27 @@ module Home
       {
         userName: current_user.name,
         userImage: current_user.image,
+        questions: questions
       }
+    end
+
+    def questions
+      Question.all.map do |question|
+        {
+          id: question.id,
+          value: question.value,
+          answers: answer(question)
+        }
+      end
+    end
+
+    def answer(question)
+      question.answer_options.map do |answer|
+        {
+          id: answer.id,
+          value: answer.value
+        }
+      end
     end
   end
 end
