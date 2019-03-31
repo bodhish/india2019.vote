@@ -41,6 +41,8 @@ gem 'devise', '~> 4.6'
 # Omniauth providers
 gem 'omniauth-facebook', '~> 5.0'
 
+gem 'jquery-rails'
+
 gem 'react-rails'
 
 gem 'webpacker'

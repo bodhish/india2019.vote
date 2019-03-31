@@ -1,6 +1,10 @@
 <% if current_user.present? %>
-  <%= javascript_pack_tag 'hello_react' %>
-  <div class="alert alert-primary" role="alert">
-    A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-  </div>
+  <% content_for(:head) do %>
+    <%= javascript_pack_tag 'app', 'data-turbolinks-track': 'reload', nonce: true %>
+  <% end %>
+  <% presenter = Home::IndexPresenter.new(self) %>
+  <div id="app-root" class="flex flex-1 h-screen"
+       data-props="<%= presenter.react_props.to_json %>"></div>
 <% end %>
+
+
