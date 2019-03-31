@@ -3,7 +3,7 @@
     <%= javascript_pack_tag 'app', 'data-turbolinks-track': 'reload', nonce: true %>
   <% end %>
   <% presenter = Home::IndexPresenter.new(self) %>
-  <div id="app-root" class="flex flex-1 h-screen"
+  <div id="app-root" class="d-flex"
        data-props="<%= presenter.react_props.to_json %>">
   </div>
 <% end %>
