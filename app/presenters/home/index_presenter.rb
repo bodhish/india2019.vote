@@ -6,19 +6,11 @@ module Home
 
     def react_props
       {
-        userName: "Bodhish Thomas",
-        userImage: "https://graph.facebook.com/v2.10/2771775329531107/picture",
+        userName: current_user.name,
+        userImage: current_user.image,
         questions: questions
       }
     end
-
-    # def react_props
-    #   {
-    #     userName: current_user.name,
-    #     userImage: current_user.image,
-    #     questions: questions
-    #   }
-    # end
 
     def questions
       Question.all.map do |question|

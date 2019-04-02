@@ -1,4 +1,4 @@
-<% if current_user.blank? %>
+<% if current_user.present? %>
   <% content_for(:head) do %>
     <%= javascript_pack_tag 'app', 'data-turbolinks-track': 'reload', nonce: true %>
   <% end %>
