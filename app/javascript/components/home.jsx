@@ -44,7 +44,7 @@ export default class Home extends React.Component {
           </div>
         </div>
 
-        <div className="mt-3 flex flex-col w-2/5 justify-center items-center text-center">
+        <div className="mt-3 flex flex-col w-full md:w-2/5 justify-center items-center text-center">
           <div className="w-full bg-grey shadow rounded">
             <div className="flex items-center justify-between p-2">
               <div className="flex justify-center items-center text-center">
@@ -67,7 +67,7 @@ export default class Home extends React.Component {
           </div>
         </div>
 
-        <div className="mt-3 flex flex-col w-2/5 justify-center items-center text-center">
+        <div className="mt-3 flex flex-col w-full md:w-2/5 justify-center items-center text-center">
           <div className="w-full bg-grey shadow rounded">
             <div className="flex items-center justify-between p-2">
               <div className="flex justify-center items-center text-center">
@@ -90,7 +90,7 @@ export default class Home extends React.Component {
           </div>
         </div>
 
-        <div className="mt-3 flex flex-col w-2/5 justify-center items-center text-center">
+        <div className="mt-3 flex flex-col w-full md:w-2/5 justify-center items-center text-center">
           <div className="w-full bg-grey shadow rounded">
             <div className="flex items-center justify-between p-2">
               <div className="flex justify-center items-center text-center">
