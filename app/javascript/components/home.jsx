@@ -17,7 +17,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="p-4 flex flex-col bg-white flex justify-center items-center text-center">
-        <div className="flex flex-col w-2/5 justify-center items-center text-center question-card shadow rounded">
+        <div className="m-2 flex flex-col w-full md:w-2/5 justify-center items-center text-center question-card shadow rounded">
           <div className="w-full p-2">
             <div className="flex items-center border-b-2 justify-between p-2">
               <div className="flex justify-center items-center text-center">
