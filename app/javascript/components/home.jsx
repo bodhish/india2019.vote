@@ -17,7 +17,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="bg-white flex flex-col h-screen justify-center items-center text-center">
-        <div>
+        <div className="w-full md:w-1/3 ">
           <QuestionCard />
         </div>
       </div>
