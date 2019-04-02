@@ -16,7 +16,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className="p-4 bg-white flex justify-center items-center text-center">
+      <div className="p-4 flex flex-col bg-white flex justify-center items-center text-center">
         <div className="flex flex-col w-2/5 justify-center items-center text-center question-card shadow rounded">
           <div className="w-full p-2">
             <div className="flex items-center border-b-2 justify-between p-2">
@@ -41,6 +41,75 @@ export default class Home extends React.Component {
 
           <div className="w-full ">
             <QuestionCard />
+          </div>
+        </div>
+
+        <div className="mt-3 flex flex-col w-2/5 justify-center items-center text-center">
+          <div className="w-full bg-grey shadow rounded">
+            <div className="flex items-center justify-between p-2">
+              <div className="flex justify-center items-center text-center">
+                <div className="pl-2 text-left text-sm">
+                  <h4>Prediction 1 </h4>
+                  <p className="pt-2 pb-2 text-white leading-none">
+                    Winning party: Congress <br />
+                    Prime minister: Rahul Gandhi
+                    <br />
+                    Seat share: BJP - 180, Congress - 100, Others - 120
+                    <br />
+                  </p>
+                </div>
+              </div>
+              <div className="flex mr-2 align-right">
+                <p className="text-white leading-none">Coins:&nbsp;</p>
+                <p className="text-white leading-none">300</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-3 flex flex-col w-2/5 justify-center items-center text-center">
+          <div className="w-full bg-grey shadow rounded">
+            <div className="flex items-center justify-between p-2">
+              <div className="flex justify-center items-center text-center">
+                <div className="pl-2 text-left text-sm">
+                  <h4>Prediction 3 </h4>
+                  <p className="pt-2 pb-2 text-white leading-none">
+                    Winning party: Congress <br />
+                    Prime minister: Rahul Gandhi
+                    <br />
+                    Seat share: BJP - 180, Congress - 100, Others - 120
+                    <br />
+                  </p>
+                </div>
+              </div>
+              <div className="flex mr-2 align-right">
+                <p className="text-white leading-none">Coins:&nbsp;</p>
+                <p className="text-white leading-none">300</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-3 flex flex-col w-2/5 justify-center items-center text-center">
+          <div className="w-full bg-grey shadow rounded">
+            <div className="flex items-center justify-between p-2">
+              <div className="flex justify-center items-center text-center">
+                <div className="pl-2 text-left text-sm">
+                  <h4>Prediction 3 </h4>
+                  <p className="pt-2 pb-2 text-white leading-none">
+                    Winning party: Congress <br />
+                    Prime minister: Rahul Gandhi
+                    <br />
+                    Seat share: BJP - 180, Congress - 100, Others - 120
+                    <br />
+                  </p>
+                </div>
+              </div>
+              <div className="flex mr-2 align-right">
+                <p className="text-white leading-none">Coins:&nbsp;</p>
+                <p className="text-white leading-none">300</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
