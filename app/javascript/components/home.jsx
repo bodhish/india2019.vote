@@ -16,9 +16,32 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className="bg-white flex flex-col h-screen justify-center items-center text-center">
-        <div className="w-full md:w-1/3 ">
-          <QuestionCard />
+      <div className="p-4 bg-white flex justify-center items-center text-center">
+        <div className="flex flex-col w-2/5 justify-center items-center text-center question-card shadow rounded">
+          <div className="w-full p-2">
+            <div className="flex items-center border-b-2 justify-between p-2">
+              <div className="flex justify-center items-center text-center">
+                <img
+                  className="w-10 border-2 border-white h-10 rounded-full mr-2"
+                  src={this.props.userImage}
+                  alt="photo"
+                />
+                <div className="text-sm">
+                  <p className="text-white leading-none">
+                    {this.props.userName}
+                  </p>
+                </div>
+              </div>
+              <div className="flex mr-2 align-right">
+                <p className="text-white leading-none">Coins left:&nbsp;</p>
+                <p className="text-white leading-none">1000</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full ">
+            <QuestionCard />
+          </div>
         </div>
       </div>
     );
