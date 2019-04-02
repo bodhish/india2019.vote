@@ -10,6 +10,7 @@
     "react_ujs": "^2.4.4"
   },
   "devDependencies": {
+    "tailwindcss": "^0.7.4",
     "webpack-dev-server": "2.11.2"
   }
 }

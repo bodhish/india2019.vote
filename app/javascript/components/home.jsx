@@ -14,7 +14,7 @@ export default class Home extends React.Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container bg-black">
         <div className="row justify-content-md-center">
           <div className="col-12 col-md-8">
             <div className="card bg-light mb-3">

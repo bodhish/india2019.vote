@@ -1,9 +1,9 @@
-<% if current_user.present? %>
+<% if current_user.blank? %>
   <% content_for(:head) do %>
     <%= javascript_pack_tag 'app', 'data-turbolinks-track': 'reload', nonce: true %>
   <% end %>
   <% presenter = Home::IndexPresenter.new(self) %>
-  <div id="app-root" class="d-flex"
+  <div id="app-root" class="h-screen"
        data-props="<%= presenter.react_props.to_json %>">
   </div>
 <% end %>
