@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  answer_1: MyString
+  answer_2: MyString
+  answer_3: 1
+  answer_4: 1
+  answer_4: 1
+  coins_user: 1
+
+two:
+  user: two
+  answer_1: MyString
+  answer_2: MyString
+  answer_3: 1
+  answer_4: 1
+  answer_4: 1
+  coins_user: 1
