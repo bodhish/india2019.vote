@@ -6,11 +6,16 @@ import QuestionCard from "./questionCard";
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      userName: props.userName,
-      userImage: props.userImage,
-    };
+    this.coinsLeft = this.coinsLeft.bind(this)
   }
+
+
+  coinsLeft() {
+    const arrSum = arr => arr.reduce((a,b) => a + b, 0)
+    let coinsUsed = arrSum(this.props.predictions.map(prediction =>(prediction.coinsUsed)))
+    return 1000 - coinsUsed
+  };
+
 
   render() {
     return (
@@ -32,7 +37,7 @@ export default class Home extends React.Component {
               </div>
               <div className="flex mr-2 align-right">
                 <p className="text-white leading-none">Coins left:&nbsp;</p>
-                <p className="text-white leading-none">1000</p>
+                <p className="text-white leading-none">{this.coinsLeft()}</p>
               </div>
             </div>
           </div>
