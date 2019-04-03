@@ -42,74 +42,30 @@ export default class Home extends React.Component {
           </div>
         </div>
 
-        <div className="mt-3 flex flex-col w-full md:w-2/5 justify-center items-center text-center">
-          <div className="w-full bg-grey shadow rounded">
-            <div className="flex items-center justify-between p-2">
-              <div className="flex justify-center items-center text-center">
-                <div className="pl-2 text-left text-sm">
-                  <h4>Prediction 1 </h4>
-                  <p className="pt-2 pb-2 text-white leading-none">
-                    Winning party: Congress <br />
-                    Prime minister: Rahul Gandhi
-                    <br />
-                    Seat share: BJP - 180, Congress - 100, Others - 120
-                    <br />
-                  </p>
+        {this.props.predictions.map((prediction,index) => (
+            <div key={prediction.id} className="mt-3 flex flex-col w-full md:w-2/5 justify-center items-center text-center">
+              <div className="w-full bg-grey shadow rounded">
+                <div className="flex items-center justify-between p-2">
+                  <div className="flex justify-center items-center text-center">
+                    <div className="pl-2 text-left text-sm">
+                      <h4>Prediction {index + 1} </h4>
+                      <p className="pt-2 pb-2 text-white leading-none">
+                        Winning party: {prediction.answer1} <br />
+                        Prime minister: {prediction.answer2}
+                        <br />
+                        Seat share: BJP - {prediction.answer3}, Congress - {prediction.answer4}, Others - {prediction.answer5}
+                        <br />
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex mr-2 align-right">
+                    <p className="text-white leading-none">Coins:&nbsp;</p>
+                    <p className="text-white leading-none">{prediction.coinsUsed}</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex mr-2 align-right">
-                <p className="text-white leading-none">Coins:&nbsp;</p>
-                <p className="text-white leading-none">300</p>
-              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-3 flex flex-col w-full md:w-2/5 justify-center items-center text-center">
-          <div className="w-full bg-grey shadow rounded">
-            <div className="flex items-center justify-between p-2">
-              <div className="flex justify-center items-center text-center">
-                <div className="pl-2 text-left text-sm">
-                  <h4>Prediction 3 </h4>
-                  <p className="pt-2 pb-2 text-white leading-none">
-                    Winning party: Congress <br />
-                    Prime minister: Rahul Gandhi
-                    <br />
-                    Seat share: BJP - 180, Congress - 100, Others - 120
-                    <br />
-                  </p>
-                </div>
-              </div>
-              <div className="flex mr-2 align-right">
-                <p className="text-white leading-none">Coins:&nbsp;</p>
-                <p className="text-white leading-none">300</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-3 flex flex-col w-full md:w-2/5 justify-center items-center text-center">
-          <div className="w-full bg-grey shadow rounded">
-            <div className="flex items-center justify-between p-2">
-              <div className="flex justify-center items-center text-center">
-                <div className="pl-2 text-left text-sm">
-                  <h4>Prediction 3 </h4>
-                  <p className="pt-2 pb-2 text-white leading-none">
-                    Winning party: Congress <br />
-                    Prime minister: Rahul Gandhi
-                    <br />
-                    Seat share: BJP - 180, Congress - 100, Others - 120
-                    <br />
-                  </p>
-                </div>
-              </div>
-              <div className="flex mr-2 align-right">
-                <p className="text-white leading-none">Coins:&nbsp;</p>
-                <p className="text-white leading-none">300</p>
-              </div>
-            </div>
-          </div>
-        </div>
+             ))}
       </div>
     );
   }
@@ -118,5 +74,6 @@ export default class Home extends React.Component {
 Home.propTypes = {
   userName: PropTypes.string,
   userImage: PropTypes.string,
-  authenticityToken: PropTypes.string
+  authenticityToken: PropTypes.string,
+  predictions: PropTypes.array
 };
