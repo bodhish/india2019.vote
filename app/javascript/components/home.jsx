@@ -41,10 +41,14 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
-
-          <div className="w-full ">
-            <QuestionCard authenticityToken={this.props.authenticityToken} coinsLeft={this.coinsLeft()}/>
-          </div>
+          {
+            this.props.isCurrentUser &&
+            (
+                <div className="w-full ">
+                  <QuestionCard authenticityToken={this.props.authenticityToken} coinsLeft={this.coinsLeft()}/>
+                </div>
+            )
+          }
         </div>
 
         {this.props.predictions.map((prediction,index) => (
@@ -67,11 +71,16 @@ export default class Home extends React.Component {
                     <p className="text-white leading-none">Coins:&nbsp;</p>
                     <p className="text-white leading-none">{prediction.coinsUsed}</p>
                   </div>
-                  <form className="button_to" method='post' action={"predictions/" + prediction.id}>
-                    <input name='_method' value='delete' type='hidden'></input>
-                    <input value='Delete' type='submit'></input>
-                    <input name="authenticity_token" type="hidden" value={this.props.authenticityToken}></input>
-                  </form>
+                  {
+                    this.props.isCurrentUser &&
+                    (
+                      <form className="button_to" method='post' action={"predictions/" + prediction.id}>
+                        <input name='_method' value='delete' type='hidden'></input>
+                        <input value='Delete' type='submit'></input>
+                        <input name="authenticity_token" type="hidden" value={this.props.authenticityToken}></input>
+                      </form>
+                    )
+                  }
                 </div>
               </div>
             </div>
@@ -85,5 +94,6 @@ Home.propTypes = {
   userName: PropTypes.string,
   userImage: PropTypes.string,
   authenticityToken: PropTypes.string,
-  predictions: PropTypes.array
+  predictions: PropTypes.array,
+  isCurrentUser: PropTypes.bool
 };

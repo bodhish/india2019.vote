@@ -4,17 +4,18 @@ module Home
       super(view_context)
     end
 
-    def react_props
+    def react_props(user)
       {
-        userName: current_user.name,
-        userImage: current_user.image,
+        userName: user.name,
+        userImage: user.image,
         authenticityToken: view.form_authenticity_token,
-        predictions: predictions
+        predictions: predictions(user),
+        isCurrentUser: user == current_user
       }
     end
 
-    def predictions
-      current_user.predictions.map do |prediction|
+    def predictions(user)
+      user.predictions.map do |prediction|
         {
           id: prediction.id,
           answer1: prediction.answer_1,
