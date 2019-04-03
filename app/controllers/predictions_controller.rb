@@ -8,6 +8,11 @@ class PredictionsController < ApplicationController
     end
   end
 
+  def destroy
+    Prediction.find(params[:id]).destroy
+    redirect_to profile_path(current_user.slug)
+  end
+
   private
 
   def permit_params

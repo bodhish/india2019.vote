@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/:slug', as: 'profile', to: 'home#profile'
 
-  resources :predictions, only: [:create]
+  resources :predictions, only: [:create, :destroy]
 end

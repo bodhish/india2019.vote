@@ -67,6 +67,11 @@ export default class Home extends React.Component {
                     <p className="text-white leading-none">Coins:&nbsp;</p>
                     <p className="text-white leading-none">{prediction.coinsUsed}</p>
                   </div>
+                  <form className="button_to" method='post' action={"predictions/" + prediction.id}>
+                    <input name='_method' value='delete' type='hidden'></input>
+                    <input value='Delete' type='submit'></input>
+                    <input name="authenticity_token" type="hidden" value={this.props.authenticityToken}></input>
+                  </form>
                 </div>
               </div>
             </div>
