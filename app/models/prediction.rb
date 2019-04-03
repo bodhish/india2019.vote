@@ -9,6 +9,6 @@ class Prediction < ApplicationRecord
   def seats_add_up
     return if [answer_3, answer_4, answer_5].any?(&:blank?)
 
-    errors.add('Seats don\t add upto 543') unless (answer_3 + answer_4 + answer_5 == 543)
+    errors.add(:base, 'Seats don\t add upto 543') unless (answer_3 + answer_4 + answer_5 == 543)
   end
 end
