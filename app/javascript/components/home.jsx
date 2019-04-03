@@ -41,6 +41,26 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
+          <div>Current Standings</div>
+          <div className="w-full py-2 px-8 flex justify-between">
+            <div className="flex flex-col">
+              <div className="my-1">BJP: {this.props.stats.party['BJP']}</div>
+              <div className="my-1">CON: {this.props.stats.party['Congress']}</div>
+              <div className="my-1">NDA: {this.props.stats.party['NDA']}</div>
+              <div className="my-1">UPA: {this.props.stats.party['UPA']}</div>
+            </div>
+            <div className="flex flex-col">
+              <div className="my-1">Modi: {this.props.stats.primeMinister['Narendra Modi']}</div>
+              <div className="my-1">Rahul: {this.props.stats.primeMinister['Rahul Gandhi']}</div>
+              <div className="my-1">Mamata: {this.props.stats.primeMinister['Mamata Banerjee']}</div>
+              <div className="my-1">Kejriwal: {this.props.stats.primeMinister['Arvind Kejriwal']}</div>
+            </div>
+            <div className="flex flex-col">
+              <div className="mb-2">Seats predicted:</div>
+              <div className="my-1">BJP: {this.props.stats.bjpAvgSeats}</div>
+              <div className="my-1">Congress: {this.props.stats.congAvgSeats}</div>
+            </div>
+          </div>
           {
             this.props.isCurrentUser &&
             (
@@ -95,5 +115,6 @@ Home.propTypes = {
   userImage: PropTypes.string,
   authenticityToken: PropTypes.string,
   predictions: PropTypes.array,
-  isCurrentUser: PropTypes.bool
+  isCurrentUser: PropTypes.bool,
+  stats: PropTypes.object
 };

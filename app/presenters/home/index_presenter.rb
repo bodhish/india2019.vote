@@ -10,7 +10,8 @@ module Home
         userImage: user.image,
         authenticityToken: view.form_authenticity_token,
         predictions: predictions(user),
-        isCurrentUser: user == current_user
+        isCurrentUser: user == current_user,
+        stats: stats
       }
     end
 
@@ -25,6 +26,15 @@ module Home
           coinsUsed: prediction.coins_used
         }
       end
+    end
+
+    def stats
+      {
+        party: Prediction.group(:answer_1).count,
+        primeMinister:  Prediction.group(:answer_2).count,
+        bjpAvgSeats: Prediction.average(:answer_3).floor,
+        congAvgSeats: Prediction.average(:answer_4).floor
+      }
     end
   end
 end
