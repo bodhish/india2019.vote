@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
+
   def index
-    @current_user = User.first if params[:mock]
+  end
+
+  def profile
+    @user = User.friendly.find(params[:slug])
   end
 end

@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :predictions
 
   def self.new_with_session(params, session)
