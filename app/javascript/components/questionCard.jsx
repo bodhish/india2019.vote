@@ -9,7 +9,8 @@ export default class QuestionCard extends React.Component {
   render() {
     return (
       <div className="w-full">
-        <form className="px-8 pt-6 pb-8 mb-4">
+        <form className="px-8 pt-6 pb-8 mb-4" action="/predictions" method="post">
+          <input type="hidden" name="authenticity_token" value={this.props.authenticityToken}></input>
           <div className="w-full mb-6">
             <label
               className="block tracking-wide text-lg mb-2"
@@ -20,7 +21,7 @@ export default class QuestionCard extends React.Component {
             <div className="relative w-full md:w-1/3 mx-auto">
               <select
                 className="block w-full appearance-none bg-grey-lighter border border-grey-lighter py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                id="grid-state"
+                id="grid-state" name="prediction[answer_1]"
               >
                 <option value="" disabled selected>
                   Select...
@@ -51,7 +52,7 @@ export default class QuestionCard extends React.Component {
             <div className="relative w-full md:w-1/3 mx-auto">
               <select
                 className="block appearance-none w-full bg-grey-lighter border border-grey-lighter  py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                id="grid-state"
+                id="grid-state" name="prediction[answer_2]"
               >
                 <option value="" disabled selected>
                   Select...
@@ -90,6 +91,7 @@ export default class QuestionCard extends React.Component {
                   id="bjp"
                   type="number"
                   placeholder="182"
+                  name="prediction[answer_3]"
                 />
               </div>
 
@@ -105,6 +107,7 @@ export default class QuestionCard extends React.Component {
                   id="congress"
                   type="number"
                   placeholder="182"
+                  name="prediction[answer_4]"
                 />
               </div>
 
@@ -120,6 +123,7 @@ export default class QuestionCard extends React.Component {
                   id="others"
                   type="number"
                   placeholder="181"
+                  name="prediction[answer_5]"
                 />
               </div>
             </div>
@@ -137,6 +141,7 @@ export default class QuestionCard extends React.Component {
                 id="others"
                 type="number"
                 placeholder="200"
+                name="prediction[coins_used]"
               />
             </div>
           </div>
@@ -144,8 +149,7 @@ export default class QuestionCard extends React.Component {
           <div className="flex items-center justify-center mt-4">
             <button
               className="bg-white hover:bg-grey text-blue  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-            >
+              type="submit" value="Submit">
               Submit Your Prediction
             </button>
           </div>
@@ -155,10 +159,8 @@ export default class QuestionCard extends React.Component {
   }
 }
 
-{
-  /* QuestionCard.propTypes = {
-  id: PropTypes.id,
-  question: PropTypes.string,
-  answers: PropTypes.array
-}; */
-}
+
+QuestionCard.propTypes = {
+  authenticityToken: PropTypes.string
+};
+

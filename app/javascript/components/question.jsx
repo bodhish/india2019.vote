@@ -33,5 +33,6 @@ export default class Question extends React.Component {
 Question.propTypes = {
   id: PropTypes.id,
   question: PropTypes.string,
-  answers: PropTypes.array
+  answers: PropTypes.array,
+  authenticityToken: PropTypes.string
 };

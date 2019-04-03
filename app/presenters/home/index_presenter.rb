@@ -8,6 +8,7 @@ module Home
       {
         userName: current_user.name,
         userImage: current_user.image,
+        authenticityToken: view.form_authenticity_token
       }
     end
   end

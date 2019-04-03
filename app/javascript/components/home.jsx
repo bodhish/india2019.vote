@@ -38,7 +38,7 @@ export default class Home extends React.Component {
           </div>
 
           <div className="w-full ">
-            <QuestionCard />
+            <QuestionCard authenticityToken={this.props.authenticityToken}/>
           </div>
         </div>
 
@@ -118,4 +118,5 @@ export default class Home extends React.Component {
 Home.propTypes = {
   userName: PropTypes.string,
   userImage: PropTypes.string,
+  authenticityToken: PropTypes.string
 };
