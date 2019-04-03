@@ -21,7 +21,6 @@ module Home
           answer2: prediction.answer_2,
           answer3: prediction.answer_3,
           answer4: prediction.answer_4,
-          answer5: prediction.answer_5,
           coinsUsed: prediction.coins_used
         }
       end

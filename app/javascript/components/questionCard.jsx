@@ -5,10 +5,38 @@ import PropTypes from "prop-types";
 export default class QuestionCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      answer3: 0,
+      answer4: 0,
+      othersCount: 543,
+    };
+    this.updateAnswer3 = this.updateAnswer3.bind(this);
+    this.updateAnswer4 = this.updateAnswer4.bind(this);
   }
+
+  updateAnswer3(e) {
+    let answer3 = e.target.value;
+    console.log(answer3)
+    let othersCount = 543 - answer3 - this.state.answer4;
+    this.setState({
+      answer3: answer3,
+      othersCount: othersCount
+    });
+  }
+
+  updateAnswer4(e) {
+    let answer4 = e.target.value
+    let othersCount = 543 - this.state.answer3 - answer4;
+    this.setState({
+      answer4: answer4,
+      othersCount: othersCount
+    });
+  }
+
   render() {
     return (
       <div className="w-full">
+        { (this.props.coinsLeft > 199) &&
         <form className="px-8 pt-6 pb-8 mb-4" action="/predictions" method="post">
           <input type="hidden" name="authenticity_token" value={this.props.authenticityToken}></input>
           <div className="w-full mb-6">
@@ -92,6 +120,8 @@ export default class QuestionCard extends React.Component {
                   type="number"
                   placeholder="182"
                   name="prediction[answer_3]"
+                  value={this.state.answer3}
+                  onChange={this.updateAnswer3}
                 />
               </div>
 
@@ -108,6 +138,8 @@ export default class QuestionCard extends React.Component {
                   type="number"
                   placeholder="182"
                   name="prediction[answer_4]"
+                  value={this.state.answer4}
+                  onChange={this.updateAnswer4}
                 />
               </div>
 
@@ -118,13 +150,12 @@ export default class QuestionCard extends React.Component {
                 >
                   Others
                 </label>
-                <input
-                  className="appearance-none text-center block w-full bg-grey-lighter  border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                <p
+                  className="appearance-none text-center text-black block w-full bg-grey-lighter  border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                   id="others"
-                  type="number"
-                  placeholder="181"
-                  name="prediction[answer_5]"
-                />
+                >
+                  {this.state.othersCount}
+                </p>
               </div>
             </div>
           </div>
@@ -141,6 +172,7 @@ export default class QuestionCard extends React.Component {
                 id="others"
                 type="number"
                 placeholder="200"
+                min="200" max={this.props.coinsLeft}
                 name="prediction[coins_used]"
               />
             </div>
@@ -153,7 +185,7 @@ export default class QuestionCard extends React.Component {
               Submit Your Prediction
             </button>
           </div>
-        </form>
+        </form>}
       </div>
     );
   }
@@ -161,6 +193,7 @@ export default class QuestionCard extends React.Component {
 
 
 QuestionCard.propTypes = {
-  authenticityToken: PropTypes.string
+  authenticityToken: PropTypes.string,
+  coinsLeft: PropTypes.number
 };
 

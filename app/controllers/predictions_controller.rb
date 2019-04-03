@@ -16,6 +16,6 @@ class PredictionsController < ApplicationController
   private
 
   def permit_params
-    params.require(:prediction).permit(:answer_1, :answer_2, :answer_3, :answer_4, :answer_5, :coins_used)
+    params.require(:prediction).permit(:answer_1, :answer_2, :answer_3, :answer_4, :coins_used)
   end
 end

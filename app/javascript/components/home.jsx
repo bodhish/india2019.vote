@@ -43,7 +43,7 @@ export default class Home extends React.Component {
           </div>
 
           <div className="w-full ">
-            <QuestionCard authenticityToken={this.props.authenticityToken}/>
+            <QuestionCard authenticityToken={this.props.authenticityToken} coinsLeft={this.coinsLeft()}/>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ export default class Home extends React.Component {
                         Winning party: {prediction.answer1} <br />
                         Prime minister: {prediction.answer2}
                         <br />
-                        Seat share: BJP - {prediction.answer3}, Congress - {prediction.answer4}, Others - {prediction.answer5}
+                        Seat share: BJP - {prediction.answer3}, Congress - {prediction.answer4}, Others - {543 - prediction.answer3 -prediction.answer4}
                         <br />
                       </p>
                     </div>
