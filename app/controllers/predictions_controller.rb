@@ -2,7 +2,7 @@ class PredictionsController < ApplicationController
   def create
     prediction = Prediction.new(permit_params.merge(user_id: User.last.id))
     if prediction.save
-      redirect_to root_path(mock: true)
+      redirect_to profile_path(current_user.slug)
     else
       raise
     end
