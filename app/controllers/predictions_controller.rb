@@ -1,6 +1,6 @@
 class PredictionsController < ApplicationController
   def create
-    prediction = Prediction.new(permit_params.merge(user_id: User.last.id))
+    prediction = Prediction.new(permit_params.merge(user_id: current_user.id))
     if prediction.save
       redirect_to profile_path(current_user.slug)
     else
