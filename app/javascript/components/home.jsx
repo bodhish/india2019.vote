@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import QuestionCard from "./questionCard";
 import * as HtmlToImage from "html-to-image";
 import * as Download from "downloadjs";
+import { Whatsapp } from "react-social-sharing";
+import { Twitter } from "react-social-sharing";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -47,6 +49,9 @@ export default class Home extends React.Component {
   }
 
   render() {
+    let facebookShareUrl =
+      "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findia2019.vote&hashtag=%23Inida2019";
+    let shareUrl = "https://india2019.vote";
     return (
       <div className="p-4 flex flex-col bg-white flex justify-center items-center text-center">
         <div
@@ -113,7 +118,9 @@ export default class Home extends React.Component {
             {this.props.isCurrentUser && (
               <div>
                 {!this.state.showForm && (
-                  <button onClick={this.toggleShowForm}>Predict Now</button>
+                  <button className="text-white" onClick={this.toggleShowForm}>
+                    Predict Now
+                  </button>
                 )}
                 {this.state.showForm && (
                   <div className="w-full ">
@@ -127,14 +134,12 @@ export default class Home extends React.Component {
             )}
           </div>
         )}
-
         {this.coinsLeft() < 200 && (
           <div className="mt-2">
             {" "}
             You dont have enough coins to make a prediction
           </div>
         )}
-
         {this.props.predictions.map((prediction, index) => (
           <div
             key={prediction.id}
@@ -182,6 +187,27 @@ export default class Home extends React.Component {
           </div>
         ))}
 
+        <div className="flex flex-row justify-between">
+          <a
+            className="m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white font-bold rounded"
+            href={facebookShareUrl}
+            target="_blank"
+          >
+            <span className="font-regular py-2 px-2">Share on Facebook</span>
+          </a>
+          <Whatsapp
+            solidcircle
+            big
+            message="Share on Whatsapp"
+            link={shareUrl}
+          />
+          <Twitter
+            solidcircle
+            big
+            message="Checkout India Vote 2019"
+            link={shareUrl}
+          />
+        </div>
         <button onClick={this.takeAScreenshot}>Download Screenshot </button>
       </div>
     );
