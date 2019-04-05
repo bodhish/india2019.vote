@@ -4,6 +4,8 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
+    "downloadjs": "^1.4.7",
+    "html-to-image": "^0.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
