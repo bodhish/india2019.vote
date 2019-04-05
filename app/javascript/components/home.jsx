@@ -60,14 +60,18 @@ export default class Home extends React.Component {
 
   fetchPredictions = () => {
     let nextId = this.state.latestPredictions.slice(-1)[0].id;
-    fetch('predictions/' + nextId)
-        .then(response => response.json())
-        .then(result => {
-          if(result !== null) {
-            this.setState({latestPredictions: this.state.latestPredictions.slice(1).concat(result)});
-          }
-        })
-        .catch(e => console.log(e));
+    fetch("predictions/" + nextId)
+      .then(response => response.json())
+      .then(result => {
+        if (result !== null) {
+          this.setState({
+            latestPredictions: this.state.latestPredictions
+              .slice(1)
+              .concat(result)
+          });
+        }
+      })
+      .catch(e => console.log(e));
   };
 
   render() {
@@ -85,7 +89,10 @@ export default class Home extends React.Component {
               <div className="flex justify-center items-center text-center">
                 <img
                   className="w-10 border-2 border-white h-10 rounded-full mr-2"
-                  src={this.props.userImage}
+                  src={this.props.userImage.replace(
+                    "http://graph.facebook.com/",
+                    "https://graph.facebook.com/"
+                  )}
                   alt="photo"
                 />
                 <div className="text-sm">
@@ -102,14 +109,20 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div className="border p-2 m-4">
-          {
-            this.state.latestPredictions.map((prediction) => {
-              return(<div key={prediction.id} className="p-2">
-                <div>{prediction.answer_1}, {prediction.answer_2} ({prediction.answer_3}/{prediction.answer_4})</div>
-                <div className="text-xs">{prediction.coins_used} coins bet {prediction.minutes_since} mins ago</div>
-              </div>);
-            })
-          }
+          {this.state.latestPredictions.map(prediction => {
+            return (
+              <div key={prediction.id} className="p-2">
+                <div>
+                  {prediction.answer_1}, {prediction.answer_2} (
+                  {prediction.answer_3}/{prediction.answer_4})
+                </div>
+                <div className="text-xs">
+                  {prediction.coins_used} coins bet {prediction.minutes_since}{" "}
+                  mins ago
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div className="p-2 flex flex-col w-full md:w-2/5 justify-center items-center text-center question-card shadow rounded">
           <div className="p-2">Current Standings</div>
