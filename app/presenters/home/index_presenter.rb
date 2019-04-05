@@ -6,13 +6,23 @@ module Home
 
     def react_props(user)
       {
-        userName: user.name,
-        userImage: user.image,
-        authenticityToken: view.form_authenticity_token,
-        predictions: predictions(user),
+        user: user_details(user),
         isCurrentUser: user == current_user,
+        predictions: predictions(user),
         stats: stats,
-        feedStart: feedStart
+        feedStart: feedStart,
+        authenticityToken: view.form_authenticity_token
+      }
+    end
+
+    private
+
+    def user_details(user)
+      {
+        name: user.name,
+        image: user.image,
+        party: user.party,
+        state: user.state
       }
     end
 

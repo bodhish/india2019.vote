@@ -89,16 +89,20 @@ export default class Home extends React.Component {
               <div className="flex justify-center items-center text-center">
                 <img
                   className="w-10 border-2 border-white h-10 rounded-full mr-2"
-                  src={this.props.userImage.replace(
+                  src={this.props.user.image.replace(
                     "http://graph.facebook.com/",
                     "https://graph.facebook.com/"
                   )}
                   alt="photo"
                 />
-                <div className="text-sm">
-                  <p className="text-white leading-none">
-                    {this.props.userName}
-                  </p>
+                <div className="flex flex-col text-left">
+                  <div className="text-sm mb-2">
+                    <p className="text-white leading-none">
+                      {this.props.user.name}
+                    </p>
+                  </div>
+                  {this.props.user.party !== null && (<div className="text-xs">Party: {this.props.user.party}</div>)}
+                  {this.props.user.state !== null && (<div className="text-xs">State: {this.props.user.state}</div>)}
                 </div>
               </div>
               {this.props.isCurrentUser && (
@@ -301,8 +305,7 @@ export default class Home extends React.Component {
 }
 
 Home.propTypes = {
-  userName: PropTypes.string,
-  userImage: PropTypes.string,
+  user: PropTypes.object,
   authenticityToken: PropTypes.string,
   predictions: PropTypes.array,
   isCurrentUser: PropTypes.bool,
