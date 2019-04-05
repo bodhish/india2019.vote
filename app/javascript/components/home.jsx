@@ -128,29 +128,67 @@ export default class Home extends React.Component {
           <div className="p-2">Current Standings</div>
           <div className="w-full py-2 px-8 flex justify-between">
             <div className="flex flex-col">
-              <div className="my-1">BJP: {this.props.stats.party["BJP"]}</div>
               <div className="my-1">
-                CON: {this.props.stats.party["Congress"]}
+                BJP
+                <div className="text-xs">
+                  {this.props.stats.party.predictions_count["BJP"]} predictions,&nbsp;
+                  {this.props.stats.party.coins_used["BJP"]} coins
+                </div>
               </div>
-              <div className="my-1">NDA: {this.props.stats.party["NDA"]}</div>
-              <div className="my-1">UPA: {this.props.stats.party["UPA"]}</div>
+              <div className="my-1">
+                CON
+                <div className="text-xs">
+                  {this.props.stats.party.predictions_count["Congress"]} predictions,&nbsp;
+                  {this.props.stats.party.coins_used["Congress"]} coins
+                </div>
+              </div>
+              <div className="my-1">
+                NDA
+                <div className="text-xs">
+                  {this.props.stats.party.predictions_count["NDA"]} predictions,&nbsp;
+                  {this.props.stats.party.coins_used["NDA"]} coins
+                </div>
+              </div>
+              <div className="my-1">
+                UPA
+                <div className="text-xs">
+                  {this.props.stats.party.predictions_count["UPA"]} predictions,&nbsp;
+                  {this.props.stats.party.coins_used["UPA"]} coins
+                </div>
+              </div>
             </div>
             <div className="flex flex-col">
               <div className="my-1">
-                Modi: {this.props.stats.primeMinister["Narendra Modi"]}
+                Modi
+                <div className="text-xs">
+                  {this.props.stats.primeMinister.predictions_count["Narendra Modi"]} predictions,&nbsp;
+                  {this.props.stats.primeMinister.coins_used["Narendra Modi"]} coins
+                </div>
               </div>
               <div className="my-1">
-                Rahul: {this.props.stats.primeMinister["Rahul Gandhi"]}
+                Rahul
+                <div className="text-xs">
+                  {this.props.stats.primeMinister.predictions_count["Rahul Gandhi"]} predictions,&nbsp;
+                  {this.props.stats.primeMinister.coins_used["Rahul Gandhi"]} coins
+                </div>
               </div>
               <div className="my-1">
-                Mamata: {this.props.stats.primeMinister["Mamata Banerjee"]}
+                Mamata
+                <div className="text-xs">
+                  {this.props.stats.primeMinister.predictions_count["Mamata Banerjee"]} predictions,&nbsp;
+                  {this.props.stats.primeMinister.coins_used["Mamata Banerjee"]} coins
+                </div>
               </div>
               <div className="my-1">
-                Kejriwal: {this.props.stats.primeMinister["Arvind Kejriwal"]}
+                Kejriwal
+                <div className="text-xs">
+                  {this.props.stats.primeMinister.predictions_count["Arvind Kejriwal"]} predictions,&nbsp;
+                  {this.props.stats.primeMinister.coins_used["Arvind Kejriwal"]} coins
+                </div>
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="mb-2">Seats predicted:</div>
+              <div className="mb-2">Average seats predicted:</div>
               <div className="my-1">BJP: {this.props.stats.bjpAvgSeats}</div>
               <div className="my-1">
                 Congress: {this.props.stats.congAvgSeats}

@@ -31,8 +31,8 @@ module Home
 
     def stats
       {
-        party: Prediction.group(:answer_1).count,
-        primeMinister:  Prediction.group(:answer_2).count,
+        party: { predictions_count: Prediction.group(:answer_1).count, coins_used: Prediction.group(:answer_1).sum(:coins_used) },
+        primeMinister:  { predictions_count: Prediction.group(:answer_2).count, coins_used: Prediction.group(:answer_2).sum(:coins_used) },
         bjpAvgSeats: Prediction.average(:answer_3).floor,
         congAvgSeats: Prediction.average(:answer_4).floor
       }
