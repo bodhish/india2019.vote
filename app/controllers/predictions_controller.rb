@@ -13,6 +13,14 @@ class PredictionsController < ApplicationController
     redirect_to profile_path(current_user.slug)
   end
 
+  def show
+    prediction = Prediction.where('id > ?', params[:id]).first
+    render json: prediction.as_json(
+      only: %i(id answer_1 answer_2 answer_3 answer_4 coins_used),
+      methods: :minutes_since
+    )
+  end
+
   private
 
   def permit_params

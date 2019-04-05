@@ -22,7 +22,8 @@ User.all.each do |user|
       answer_2: answer_2,
       answer_3: answer_3,
       answer_4: answer_4,
-      coins_used: coins_used
+      coins_used: coins_used,
+      created_at: 30.minutes.ago + rand(30).minutes
     )
   end
 end

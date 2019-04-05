@@ -11,7 +11,8 @@ module Home
         authenticityToken: view.form_authenticity_token,
         predictions: predictions(user),
         isCurrentUser: user == current_user,
-        stats: stats
+        stats: stats,
+        feedStart: feedStart
       }
     end
 
@@ -35,6 +36,20 @@ module Home
         bjpAvgSeats: Prediction.average(:answer_3).floor,
         congAvgSeats: Prediction.average(:answer_4).floor
       }
+    end
+
+    def feedStart
+      Prediction.where('id > ?', 0).limit(5).map do |p|
+        {
+          id: p.id,
+          answer_1: p.answer_1,
+          answer_2: p.answer_2,
+          answer_3: p.answer_3,
+          answer_4: p.answer_4,
+          coins_used: p.coins_used,
+          minutes_since: p.minutes_since
+        }
+      end
     end
   end
 end

@@ -11,4 +11,8 @@ class Prediction < ApplicationRecord
 
     errors.add(:base, 'Invalid seats share') unless (answer_3 + answer_4) <= 543
   end
+
+  def minutes_since
+    ((Time.now - created_at)/1.minute).round
+  end
 end

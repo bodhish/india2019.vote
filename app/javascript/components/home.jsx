@@ -11,11 +11,13 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showForm: false
+      showForm: false,
+      latestPredictions: props.feedStart
     };
     this.coinsLeft = this.coinsLeft.bind(this);
     this.toggleShowForm = this.toggleShowForm.bind(this);
     this.takeAScreenshot = this.takeAScreenshot.bind(this);
+    this.fetchPredictions = this.fetchPredictions.bind(this);
   }
 
   coinsLeft() {
@@ -47,6 +49,24 @@ export default class Home extends React.Component {
         console.error("oops, something went wrong!", error);
       });
   }
+  componentDidMount() {
+    this.fetchPredictions();
+    this.timer = setInterval(() => this.fetchPredictions(), 5000);
+  }
+
+  componentWillUnmount() {
+    this.timer = null;
+  }
+
+  fetchPredictions = () => {
+    let nextId = this.state.latestPredictions.slice(-1)[0].id;
+    fetch('predictions/' + nextId)
+        .then(response => response.json())
+        .then(result => {
+          this.setState({latestPredictions: this.state.latestPredictions.slice(1).concat(result)});
+        })
+        .catch(e => console.log(e));
+  };
 
   render() {
     let facebookShareUrl =
@@ -78,6 +98,16 @@ export default class Home extends React.Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className="border p-2 m-4">
+          {
+            this.state.latestPredictions.map((prediction) => {
+              return(<div key={prediction.id} className="p-2">
+                <div>{prediction.answer_1}, {prediction.answer_2} ({prediction.answer_3}/{prediction.answer_4})</div>
+                <div className="text-xs">{prediction.coins_used} coins bet {prediction.minutes_since} mins ago</div>
+              </div>);
+            })
+          }
         </div>
         <div className="p-2 flex flex-col w-full md:w-2/5 justify-center items-center text-center question-card shadow rounded">
           <div className="p-2">Current Standings</div>
@@ -220,5 +250,6 @@ Home.propTypes = {
   authenticityToken: PropTypes.string,
   predictions: PropTypes.array,
   isCurrentUser: PropTypes.bool,
-  stats: PropTypes.object
+  stats: PropTypes.object,
+  feedStart: PropTypes.array
 };

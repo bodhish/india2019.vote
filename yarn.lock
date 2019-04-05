@@ -5625,6 +5625,11 @@ react-is@^16.6.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
+react-polling@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-polling/-/react-polling-1.0.4.tgz#b29d624dbc53894f369ca7cfc2ed8d007b21a31b"
+  integrity sha512-V07jbN/t9FoB3ML18ScY0Y04+KeLaRs+Mt9L4IFJAhTj4Gy2w2jOWHBM5gv+ldK4V4+hGhjeYDKKspixyGYArw==
+
 react-social-sharing@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/react-social-sharing/-/react-social-sharing-3.0.1.tgz#4c49ce17a4cba1e375defae5df1c31f4c3350094"
