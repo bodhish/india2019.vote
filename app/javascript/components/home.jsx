@@ -101,11 +101,14 @@ export default class Home extends React.Component {
                   </p>
                 </div>
               </div>
-              <div className="flex mr-2 align-right">
-                <p className="text-white leading-none">Coins left:&nbsp;</p>
-                <p className="text-white leading-none">{this.coinsLeft()}</p>
-              </div>
+              {this.props.isCurrentUser && (
+                <div className="flex mr-2 align-right">
+                  <p className="text-white leading-none">Coins left:&nbsp;</p>
+                  <p className="text-white leading-none">{this.coinsLeft()}</p>
+                </div>
+              )}
             </div>
+            <div className="m-4">#IndiaVote2019</div>
           </div>
         </div>
         <div className="border p-2 m-4">
