@@ -63,7 +63,9 @@ export default class Home extends React.Component {
     fetch('predictions/' + nextId)
         .then(response => response.json())
         .then(result => {
-          this.setState({latestPredictions: this.state.latestPredictions.slice(1).concat(result)});
+          if(result !== null) {
+            this.setState({latestPredictions: this.state.latestPredictions.slice(1).concat(result)});
+          }
         })
         .catch(e => console.log(e));
   };
