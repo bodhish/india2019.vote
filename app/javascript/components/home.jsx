@@ -78,6 +78,8 @@ export default class Home extends React.Component {
     let facebookShareUrl =
       "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findia2019.vote&hashtag=%23Inida2019";
     let shareUrl = "https://india2019.vote";
+    let shareMessage =
+      "Do you know India's pulse? Make your predictions for the Indian elections 2019 & follow what others are predicting.";
     return (
       <div className="p-4 flex flex-col bg-white flex justify-center items-center text-center">
         <div
@@ -101,8 +103,16 @@ export default class Home extends React.Component {
                       {this.props.user.name}
                     </p>
                   </div>
-                  {this.props.user.party !== null && (<div className="text-xs">Party: {this.props.user.party}</div>)}
-                  {this.props.user.state !== null && (<div className="text-xs">State: {this.props.user.state}</div>)}
+                  {this.props.user.party !== null && (
+                    <div className="text-xs">
+                      Party: {this.props.user.party}
+                    </div>
+                  )}
+                  {this.props.user.state !== null && (
+                    <div className="text-xs">
+                      State: {this.props.user.state}
+                    </div>
+                  )}
                 </div>
               </div>
               {this.props.isCurrentUser && (
@@ -138,28 +148,32 @@ export default class Home extends React.Component {
               <div className="my-1">
                 BJP
                 <div className="text-xs">
-                  {this.props.stats.party.predictions_count["BJP"]} predictions,&nbsp;
+                  {this.props.stats.party.predictions_count["BJP"]}{" "}
+                  predictions,&nbsp;
                   {this.props.stats.party.coins_used["BJP"]} coins
                 </div>
               </div>
               <div className="my-1">
                 CON
                 <div className="text-xs">
-                  {this.props.stats.party.predictions_count["Congress"]} predictions,&nbsp;
+                  {this.props.stats.party.predictions_count["Congress"]}{" "}
+                  predictions,&nbsp;
                   {this.props.stats.party.coins_used["Congress"]} coins
                 </div>
               </div>
               <div className="my-1">
                 NDA
                 <div className="text-xs">
-                  {this.props.stats.party.predictions_count["NDA"]} predictions,&nbsp;
+                  {this.props.stats.party.predictions_count["NDA"]}{" "}
+                  predictions,&nbsp;
                   {this.props.stats.party.coins_used["NDA"]} coins
                 </div>
               </div>
               <div className="my-1">
                 UPA
                 <div className="text-xs">
-                  {this.props.stats.party.predictions_count["UPA"]} predictions,&nbsp;
+                  {this.props.stats.party.predictions_count["UPA"]}{" "}
+                  predictions,&nbsp;
                   {this.props.stats.party.coins_used["UPA"]} coins
                 </div>
               </div>
@@ -168,29 +182,61 @@ export default class Home extends React.Component {
               <div className="my-1">
                 Modi
                 <div className="text-xs">
-                  {this.props.stats.primeMinister.predictions_count["Narendra Modi"]} predictions,&nbsp;
-                  {this.props.stats.primeMinister.coins_used["Narendra Modi"]} coins
+                  {
+                    this.props.stats.primeMinister.predictions_count[
+                      "Narendra Modi"
+                    ]
+                  }{" "}
+                  predictions,&nbsp;
+                  {
+                    this.props.stats.primeMinister.coins_used["Narendra Modi"]
+                  }{" "}
+                  coins
                 </div>
               </div>
               <div className="my-1">
                 Rahul
                 <div className="text-xs">
-                  {this.props.stats.primeMinister.predictions_count["Rahul Gandhi"]} predictions,&nbsp;
-                  {this.props.stats.primeMinister.coins_used["Rahul Gandhi"]} coins
+                  {
+                    this.props.stats.primeMinister.predictions_count[
+                      "Rahul Gandhi"
+                    ]
+                  }{" "}
+                  predictions,&nbsp;
+                  {
+                    this.props.stats.primeMinister.coins_used["Rahul Gandhi"]
+                  }{" "}
+                  coins
                 </div>
               </div>
               <div className="my-1">
                 Mamata
                 <div className="text-xs">
-                  {this.props.stats.primeMinister.predictions_count["Mamata Banerjee"]} predictions,&nbsp;
-                  {this.props.stats.primeMinister.coins_used["Mamata Banerjee"]} coins
+                  {
+                    this.props.stats.primeMinister.predictions_count[
+                      "Mamata Banerjee"
+                    ]
+                  }{" "}
+                  predictions,&nbsp;
+                  {
+                    this.props.stats.primeMinister.coins_used["Mamata Banerjee"]
+                  }{" "}
+                  coins
                 </div>
               </div>
               <div className="my-1">
                 Kejriwal
                 <div className="text-xs">
-                  {this.props.stats.primeMinister.predictions_count["Arvind Kejriwal"]} predictions,&nbsp;
-                  {this.props.stats.primeMinister.coins_used["Arvind Kejriwal"]} coins
+                  {
+                    this.props.stats.primeMinister.predictions_count[
+                      "Arvind Kejriwal"
+                    ]
+                  }{" "}
+                  predictions,&nbsp;
+                  {
+                    this.props.stats.primeMinister.coins_used["Arvind Kejriwal"]
+                  }{" "}
+                  coins
                 </div>
               </div>
             </div>
@@ -285,18 +331,8 @@ export default class Home extends React.Component {
           >
             <span className="font-regular py-2 px-2">Share on Facebook</span>
           </a>
-          <Whatsapp
-            solidcircle
-            big
-            message="Share on Whatsapp"
-            link={shareUrl}
-          />
-          <Twitter
-            solidcircle
-            big
-            message="Checkout India Vote 2019"
-            link={shareUrl}
-          />
+          <Whatsapp solidcircle big message={shareMessage} link={shareUrl} />
+          <Twitter solidcircle big message={shareMessage} link={shareUrl} />
         </div>
         <button onClick={this.takeAScreenshot}>Download Screenshot </button>
       </div>
