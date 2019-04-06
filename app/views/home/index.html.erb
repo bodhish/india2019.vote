@@ -1,3 +1,8 @@
+<% presenter = Home::IndexPresenter.new(self) %>
+<div id="app-feed"
+     data-props="<%= {latestPredictions: presenter.feedStart}.to_json %>">
+</div>
+
 <% unless current_user %>
   <div
     class="bg-white flex flex-col h-screen justify-center items-center text-center">

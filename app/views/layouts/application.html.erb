@@ -32,6 +32,10 @@
   <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+  <% content_for(:head) do %>
+    <%= javascript_pack_tag 'app', 'data-turbolinks-track': 'reload', nonce: true %>
+  <% end %>
+
   <%= yield :head %>
 </head>
 

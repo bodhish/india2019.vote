@@ -15,6 +15,20 @@ module Home
       }
     end
 
+    def feedStart
+      Prediction.where(private: false).where('id > ?', 90).limit(5).map do |p|
+        {
+          id: p.id,
+          answer_1: p.answer_1,
+          answer_2: p.answer_2,
+          answer_3: p.answer_3,
+          answer_4: p.answer_4,
+          coins_used: p.coins_used,
+          minutes_or_hours_ago: p.minutes_or_hours_ago
+        }
+      end
+    end
+
     private
 
     def user_details(user)
@@ -47,20 +61,6 @@ module Home
         bjpAvgSeats: Prediction.average(:answer_3).floor,
         congAvgSeats: Prediction.average(:answer_4).floor
       }
-    end
-
-    def feedStart
-      Prediction.where(private: false).where('id > ?', 90).limit(5).map do |p|
-        {
-          id: p.id,
-          answer_1: p.answer_1,
-          answer_2: p.answer_2,
-          answer_3: p.answer_3,
-          answer_4: p.answer_4,
-          coins_used: p.coins_used,
-          minutes_or_hours_ago: p.minutes_or_hours_ago
-        }
-      end
     end
   end
 end
