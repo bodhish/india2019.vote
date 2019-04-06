@@ -1,20 +1,40 @@
 <% presenter = Home::IndexPresenter.new(self) %>
-<div id="app-feed"
-     data-props="<%= {latestPredictions: presenter.feedStart}.to_json %>">
-</div>
 
-<% unless current_user %>
-  <div
-    class="bg-white flex flex-col h-screen justify-center items-center text-center">
-    <div class="shadow-md question-card rounded px-8 pt-6 pb-8 mb-4">
-      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"text-white" %>
+<div class="flex flex-row-reverse flex-wrap w-full p-4">
+  <div id="app-feed" class="w-full md:w-1/4"
+       data-props="<%= {latestPredictions: presenter.feedStart}.to_json %>">
+  </div>
+  <div class="w-full md:w-3/4">
+    <div class="p-4">
+      <h3 class="mb-2">Make your predictions for the Indian elections 2019</h3>
+      <ul>
+        <li class="my-2">Step 1: Sign in and collect your 1000 prediction coins.</li>
+        <li class="my-2">
+          <div>Step 2: Make upto 5 predictions (party, prime minister, seats) using your coins.</div>
+          <div class="text-sm text-grey">Bet more coins on the predictions you are most confident about</div>
+        </li>
+        <li class="my-2">Step 3: View summary of all predictions till date. Invite others to make their predictions</li>
+        <li class="my-2">Step 4: Follow us on twitter at @indiavote_2019 for daily updates</li>
+        <li class="my-2">
+          <div>Step 5: Wait for election results on May 23rd to find out the winner!</div>
+          <div class="text-xs text-grey">The person who bet the most coins on the correct result will be the winner. Ties will be resolved by a lucky draw</div>
+        </li>
+      </ul>
     </div>
+    <% unless current_user %>
+      <div
+        class="bg-white flex flex-col justify-center items-center text-center">
+        <div class="shadow-md question-card rounded px-8 pt-6 pb-8 mb-4">
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"text-white" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="mt-2 text-center w-full">
+        <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+      </div>
+    <% end %>
   </div>
-<% else %>
-  <div class="mt-2 text-center w-full">
-    <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-  </div>
-<% end %>
+</div>
 
 
 
