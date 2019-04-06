@@ -31,24 +31,28 @@ export default class PredictionsFeed extends React.Component {
 
     render() {
         return (
-            <div className="border p-2 m-4">
+            <div className="p-2 m-4">
                 {this.state.latestPredictions.map(prediction => {
                     return (
-                        <div key={prediction.id} className="p-2 flex flex-col">
+                        <div key={prediction.id} className="p-2 my-3 flex flex-col border border-blue rounded">
                             <div className="flex justify-between">
-                                <div>
+                                <div className="w-1/4 overflow-hidden truncate">
                                     <img className="w-12 h-12 rounded-full" src={prediction.user_image}/>
-                                    {prediction.user_party && (<div>{prediction.user_party}, {prediction.user_state}</div>)}
+                                    <div className="text-sm">{prediction.user_name}</div>
+                                    {prediction.user_party && (<div className="text-xs text-grey">Supports {prediction.user_party} <br/> from {prediction.user_state}</div>)}
                                 </div>
-                                <div>
-                                    {prediction.answer_1}, {prediction.answer_2}<br/>
-                                    {prediction.answer_3}/{prediction.answer_4}
+                                <div className="text-sm text-left">
+                                    Party: {prediction.answer_1}<br/>
+                                    P.M: {prediction.answer_2}<br/>
+                                    BJP: {prediction.answer_3}<br/>
+                                    CNG: {prediction.answer_4}<br/>
+                                    OTH: {543 - prediction.answer_3 - prediction.answer_4}
                                 </div>
-                                <div className="text-xs">
+                                <div className="text-sm">
                                     {prediction.coins_used} coins
                                 </div>
                             </div>
-                            <div className="text-xs text-grey">{prediction.minutes_or_hours_ago}</div>
+                            <div className="text-xs text-grey text-right">{prediction.minutes_or_hours_ago}</div>
                         </div>
                     );
                 })}
