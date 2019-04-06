@@ -36,18 +36,7 @@ export default class EditProfile extends React.Component {
     return InValidState || InValidParty;
   }
   render() {
-    let listOfParties = [
-      "INC",
-      "BJP",
-      "CPM",
-      "CPI",
-      "BSP",
-      "JD",
-      "BLD",
-      "SWA",
-      "PSP",
-      "BJS"
-    ];
+    let listOfParties = ["BJP", "INC", "CPI", "CPI(M)", "BSP", "AITC", "NCP"];
     let listOfStates = [
       "Andaman and Nicobar Islands",
       "Andhra Pradesh",
@@ -134,7 +123,7 @@ export default class EditProfile extends React.Component {
               className="block tracking-wide text-lg mb-2"
               htmlFor="political-view"
             >
-              Your political view?
+              I support
             </label>
             <div className="inline-block relative w-64">
               <select

@@ -69,6 +69,22 @@ export default class Home extends React.Component {
     let shareUrl = "https://india2019.vote";
     let shareMessage =
       "Do you know India's pulse? Make your predictions for the Indian elections 2019 & follow what others are predicting.";
+    let partyImage = {
+      BJP:
+        "https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bharatiya_Janata_Party_logo.svg/360px-Bharatiya_Janata_Party_logo.svg.png",
+      INC:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Flag_of_the_Indian_National_Congress.svg/500px-Flag_of_the_Indian_National_Congress.svg.png",
+      CPI:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/CPI-banner.svg/400px-CPI-banner.svg.png",
+      "CPI(M)":
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/CPI-M-flag.svg/400px-CPI-M-flag.svg.png",
+      BSP:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Elephant_Bahujan_Samaj_Party.svg/400px-Elephant_Bahujan_Samaj_Party.svg.png",
+      AITC:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/All_India_Trinamool_Congress_flag.svg/500px-All_India_Trinamool_Congress_flag.svg.png",
+      NCP:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Flag_of_Nationalist_Congress_Party.svg/400px-Flag_of_Nationalist_Congress_Party.svg.png"
+    };
     return (
       <div className="p-4 flex flex-col bg-white flex justify-center items-center text-center">
         <div
@@ -118,6 +134,7 @@ export default class Home extends React.Component {
                 </div>
               )}
             </div>
+            <img src={partyImage[this.props.user.party]} />
             <div className="m-4">#IndiaVote2019</div>
           </div>
         </div>
