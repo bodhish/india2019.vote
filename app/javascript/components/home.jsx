@@ -10,7 +10,7 @@ import Screenshot from './screenshot'
 import Logout from './logout'
 
 export default class Home extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       showForm: false,
@@ -23,30 +23,30 @@ export default class Home extends React.Component {
     this.updateProfile = this.updateProfile.bind(this)
   }
 
-  coinsLeft () {
+  coinsLeft() {
     const arrSum = arr => arr.reduce((a, b) => a + b, 0)
     let coinsUsed = arrSum(
       this.props.predictions.map(prediction => prediction.coinsUsed)
     )
     return 1000 - coinsUsed
   }
-  toggleShowProfile (e) {
+  toggleShowProfile(e) {
     e.preventDefault()
     this.updateProfile()
   }
 
-  updateProfile () {
+  updateProfile() {
     this.setState({
       showProfile: !this.state.showProfile
     })
   }
-  toggleShowForm (e) {
+  toggleShowForm(e) {
     e.preventDefault()
     this.setState({
       showForm: !this.state.showForm
     })
   }
-  render () {
+  render() {
     let facebookShareUrl =
       'https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findia2019.vote&hashtag=%23Inida2019'
     let shareUrl = 'https://india2019.vote'
@@ -74,7 +74,7 @@ export default class Home extends React.Component {
           <div className='flex flex-col flex sm:flex-row flex-col bg-white flex justify-between'>
             <div className='w-full md:w-2/3 p-4 flex flex-col bg-white flex md:overflow-y-scroll items-center text-center'>
               <div
-                className='m-2 flex flex-col w-full md:w-4/5 justify-center items-center text-center question-card shadow rounded'
+                className='m-2 flex flex-col w-full md:w-4/5 justify-center items-center text-center shadow rounded'
                 id='profile'
               >
                 <div className='w-full p-2'>
@@ -92,7 +92,7 @@ export default class Home extends React.Component {
                       )}
                       <div className='flex flex-col text-left'>
                         <div className='text-sm mb-2'>
-                          <p className='text-white leading-none'>
+                          <p className='leading-none'>
                             {this.props.user.name}
                           </p>
                         </div>
@@ -109,7 +109,7 @@ export default class Home extends React.Component {
                         {this.props.isCurrentUser && (
                           <button
                             onClick={this.toggleShowProfile}
-                            className='p-1'
+                            className='text-primary text-xs text-left'
                           >
                             Edit profile
                           </button>
@@ -118,10 +118,10 @@ export default class Home extends React.Component {
                     </div>
                     {this.props.isCurrentUser && (
                       <div className='flex mr-2 align-right'>
-                        <p className='text-white leading-none'>
+                        <p className='leading-none'>
                           Coins left:&nbsp;
                         </p>
-                        <p className='text-white leading-none'>
+                        <p className='leading-none'>
                           {this.coinsLeft()}
                         </p>
                       </div>
@@ -142,8 +142,8 @@ export default class Home extends React.Component {
               )}
 
               <div className='p-2 flex flex-col w-full md:w-4/5 justify-center items-center text-center question-card shadow rounded'>
-                <div className='p-2'>Current Standings</div>
-                <div className='w-full py-2 px-8 flex justify-between'>
+                <div className='p-2 text-white'>Current Standings</div>
+                <div className='w-full py-2 px-8 flex justify-between text-white'>
                   <div className='flex flex-col'>
                     <div className='my-1'>
                       BJP
@@ -184,13 +184,13 @@ export default class Home extends React.Component {
                       <div className='text-xs'>
                         {
                           this.props.stats.primeMinister.predictions_count[
-                            'Narendra Modi'
+                          'Narendra Modi'
                           ]
                         }{' '}
                         predictions,&nbsp;
                         {
                           this.props.stats.primeMinister.coins_used[
-                            'Narendra Modi'
+                          'Narendra Modi'
                           ]
                         }{' '}
                         coins
@@ -201,13 +201,13 @@ export default class Home extends React.Component {
                       <div className='text-xs'>
                         {
                           this.props.stats.primeMinister.predictions_count[
-                            'Rahul Gandhi'
+                          'Rahul Gandhi'
                           ]
                         }{' '}
                         predictions,&nbsp;
                         {
                           this.props.stats.primeMinister.coins_used[
-                            'Rahul Gandhi'
+                          'Rahul Gandhi'
                           ]
                         }{' '}
                         coins
@@ -218,13 +218,13 @@ export default class Home extends React.Component {
                       <div className='text-xs'>
                         {
                           this.props.stats.primeMinister.predictions_count[
-                            'Mamata Banerjee'
+                          'Mamata Banerjee'
                           ]
                         }{' '}
                         predictions,&nbsp;
                         {
                           this.props.stats.primeMinister.coins_used[
-                            'Mamata Banerjee'
+                          'Mamata Banerjee'
                           ]
                         }{' '}
                         coins
@@ -235,13 +235,13 @@ export default class Home extends React.Component {
                       <div className='text-xs'>
                         {
                           this.props.stats.primeMinister.predictions_count[
-                            'Arvind Kejriwal'
+                          'Arvind Kejriwal'
                           ]
                         }{' '}
                         predictions,&nbsp;
                         {
                           this.props.stats.primeMinister.coins_used[
-                            'Arvind Kejriwal'
+                          'Arvind Kejriwal'
                           ]
                         }{' '}
                         coins
@@ -269,7 +269,7 @@ export default class Home extends React.Component {
                       <div className='flex justify-center items-center text-center'>
                         <div className='pl-2 text-left text-sm'>
                           <h4>Prediction {index + 1} </h4>
-                          <p className='pt-2 pb-2 text-white leading-none'>
+                          <p className='pt-2 pb-2 leading-none'>
                             Winning party: {prediction.answer1} <br />
                             Prime minister: {prediction.answer2}
                             <br />
@@ -281,8 +281,8 @@ export default class Home extends React.Component {
                         </div>
                       </div>
                       <div className='flex mr-2 align-right'>
-                        <p className='text-white leading-none'>Coins:&nbsp;</p>
-                        <p className='text-white leading-none'>
+                        <p className='leading-none'>Coins:&nbsp;</p>
+                        <p className='leading-none'>
                           {prediction.coinsUsed}
                         </p>
                       </div>
@@ -342,11 +342,11 @@ export default class Home extends React.Component {
 
         <div className='flex white'>
           {this.coinsLeft() > 199 && this.props.isCurrentUser && (
-            <div className='mt-2 p-2 w-full flex flex-col justify-center items-center text-center'>
+            <div className='mt-2 p-2 w-full flex flex-col justify-center items-center'>
               <div className=''>
                 {!this.state.showForm && (
                   <button
-                    className='p-2 rounded question-card text-black'
+                    className='p-2 rounded btn text-black'
                     onClick={this.toggleShowForm}
                   >
                     Add New Prediction
