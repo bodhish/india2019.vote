@@ -134,8 +134,7 @@ export default class Home extends React.Component {
                   {prediction.answer_3}/{prediction.answer_4})
                 </div>
                 <div className="text-xs">
-                  {prediction.coins_used} coins bet {prediction.minutes_since}{" "}
-                  mins ago
+                  {prediction.coins_used} coins bet {prediction.minutes_or_hours_ago}
                 </div>
               </div>
             );

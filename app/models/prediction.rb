@@ -12,7 +12,14 @@ class Prediction < ApplicationRecord
     errors.add(:base, 'Invalid seats share') unless (answer_3 + answer_4) <= 543
   end
 
-  def minutes_since
-    ((Time.now - created_at)/1.minute).round
+  def minutes_or_hours_ago
+    time_diff = Time.now - created_at
+    if created_at < 1.hour.ago
+      hours = (time_diff/1.hour).round
+      "#{hours} #{'hour'.pluralize(hours)} ago"
+    else
+      minutes = (time_diff/1.minute).round
+      "#{minutes} #{'minute'.pluralize(minutes)} ago"
+    end
   end
 end

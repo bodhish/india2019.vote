@@ -58,7 +58,7 @@ module Home
           answer_3: p.answer_3,
           answer_4: p.answer_4,
           coins_used: p.coins_used,
-          minutes_since: p.minutes_since
+          minutes_or_hours_ago: p.minutes_or_hours_ago
         }
       end
     end
