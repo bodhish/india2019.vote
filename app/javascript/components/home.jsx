@@ -112,7 +112,7 @@ export default class Home extends React.Component {
                   </div>
                   {this.props.user.party !== null && (
                     <div className="text-xs">
-                      Party: {this.props.user.party}
+                      I support: {this.props.user.party}
                     </div>
                   )}
                   {this.props.user.state !== null && (
@@ -256,25 +256,23 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
-        {this.coinsLeft() > 199 && (
+        {this.coinsLeft() > 199 && this.props.isCurrentUser && (
           <div className="mt-2 p-2 flex flex-col w-full md:w-2/5 justify-center items-center text-center question-card shadow rounded">
-            {this.props.isCurrentUser && (
-              <div>
-                {!this.state.showForm && (
-                  <button className="text-white" onClick={this.toggleShowForm}>
-                    Add New Prediction
-                  </button>
-                )}
-                {this.state.showForm && (
-                  <div className="w-full ">
-                    <QuestionCard
-                      authenticityToken={this.props.authenticityToken}
-                      coinsLeft={this.coinsLeft()}
-                    />
-                  </div>
-                )}
-              </div>
-            )}
+            <div>
+              {!this.state.showForm && (
+                <button className="text-white" onClick={this.toggleShowForm}>
+                  Add New Prediction
+                </button>
+              )}
+              {this.state.showForm && (
+                <div className="w-full ">
+                  <QuestionCard
+                    authenticityToken={this.props.authenticityToken}
+                    coinsLeft={this.coinsLeft()}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         )}
         {this.coinsLeft() < 200 && (
@@ -338,7 +336,9 @@ export default class Home extends React.Component {
           >
             <span className="font-regular py-2 px-2">Share on Facebook</span>
           </a>
-          <Whatsapp solidcircle big message={shareMessage} link={shareUrl} />
+          <div className="visible sm:invisible">
+            <Whatsapp solidcircle big message={shareMessage} link={shareUrl} />
+          </div>
           <Twitter solidcircle big message={shareMessage} link={shareUrl} />
         </div>
         <button onClick={this.takeAScreenshot}>Download Screenshot </button>
