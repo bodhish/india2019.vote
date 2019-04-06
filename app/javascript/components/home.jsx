@@ -69,7 +69,7 @@ export default class Home extends React.Component {
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Flag_of_Nationalist_Congress_Party.svg/400px-Flag_of_Nationalist_Congress_Party.svg.png"
     };
     return (
-      <div className="h-screen block flex flex-col">
+      <div className="h-screen flex flex-col">
         <div className="overflow-y-scroll shadow">
           <div className="flex flex-col flex sm:flex-row flex-col bg-white flex justify-between">
             <div className="w-full md:w-2/3 p-4 flex flex-col bg-white flex md:overflow-y-scroll items-center text-center">
@@ -340,7 +340,7 @@ export default class Home extends React.Component {
           <Logout authenticityToken={this.props.authenticityToken} />
         </div>
 
-        <div className="flex white">
+        <div className="flex pin-b">
           {this.coinsLeft() > 199 && this.props.isCurrentUser && (
             <div className="mt-2 p-2 w-full flex flex-col justify-center items-center text-center">
               <div className="">
