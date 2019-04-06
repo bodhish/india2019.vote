@@ -22,4 +22,20 @@ class Prediction < ApplicationRecord
       "#{minutes} #{'minute'.pluralize(minutes)} ago"
     end
   end
+
+  def user_name
+    private ? 'Anonymous' : user.name
+  end
+
+  def user_image
+    private ? ActionController::Base.helpers.asset_path('avatar.png') : user.image
+  end
+
+  def user_party
+    user.party || ''
+  end
+
+  def user_state
+    user.state || ''
+  end
 end

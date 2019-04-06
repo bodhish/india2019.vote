@@ -1,11 +1,15 @@
 require 'faker'
 
 50.times do
+  has_details = rand(10).even?
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: 'password',
-    password_confirmation: 'password'
+    password_confirmation: 'password',
+    image: ActionController::Base.helpers.asset_path('avatar.png'),
+    party: (has_details ? ["BJP", "INC", "CPI", "CPI(M)", "BSP", "AITC", "NCP"].sample : nil),
+    state: (has_details ? ["Kerala", "Karnataka", "Gujarat", "Punjab"].sample : nil)
   )
 end
 

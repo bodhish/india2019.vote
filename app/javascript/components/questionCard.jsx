@@ -124,7 +124,10 @@ export default class QuestionCard extends React.Component {
   }
   render () {
     return (
-      <div className='w-full'>
+      <div className='w-full question-card'>
+        <button onClick={this.props.toggleShowFormCB} className='p-1'>
+          Close
+        </button>
         {this.props.coinsLeft > 199 && (
           <form
             className='px-8 pt-6 pb-8 mb-4'
@@ -167,12 +170,11 @@ export default class QuestionCard extends React.Component {
                 </div>
                 <select
                   onChange={this.updateAnswer1}
-                  className='hidden w-full appearance-none bg-grey-lighter border border-grey-lighter py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey'
+                  className='block w-full appearance-none bg-grey-lighter border border-grey-lighter py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey'
                   id='grid-state'
                   name='prediction[answer_1]'
-                  defaultValue=''
                 >
-                  <option value='' disabled>
+                  <option value='' disabled selected>
                     Select...
                   </option>
                   <option>BJP</option>
@@ -195,9 +197,8 @@ export default class QuestionCard extends React.Component {
                   className='block appearance-none w-full bg-grey-lighter border border-grey-lighter  py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey'
                   id='grid-state'
                   name='prediction[answer_2]'
-                  defaultValue=''
                 >
-                  <option value='' disabled>
+                  <option value='' disabled selected>
                     Select...
                   </option>
                   <option>Narendra Modi</option>
@@ -294,8 +295,7 @@ export default class QuestionCard extends React.Component {
                 />
               </div>
             </div>
-            <input type='checkbox' name='prediction[private]' />
-            &nbsp;Private prediction
+
             <div className='flex items-center justify-center mt-4'>
               <button
                 className='bg-white hover:bg-grey text-blue  py-2 px-4 rounded focus:outline-none focus:shadow-outline'
@@ -315,5 +315,6 @@ export default class QuestionCard extends React.Component {
 
 QuestionCard.propTypes = {
   authenticityToken: PropTypes.string,
-  coinsLeft: PropTypes.number
+  coinsLeft: PropTypes.number,
+  toggleShowFormCB: PropTypes.func
 }
