@@ -7,7 +7,7 @@
   </div>
 <% else %>
   <div class="mt-2 text-center w-full">
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <%= button_to "Logout", destroy_user_session_path, method: :delete %>
   </div>
 <% end %>
 
