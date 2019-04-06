@@ -125,6 +125,9 @@ export default class QuestionCard extends React.Component {
   render() {
     return (
       <div className="w-full">
+        <button onClick={this.props.toggleShowFormCB} className="p-1">
+          Close
+        </button>
         {this.props.coinsLeft > 199 && (
           <form
             className="px-8 pt-6 pb-8 mb-4"
@@ -301,5 +304,6 @@ export default class QuestionCard extends React.Component {
 
 QuestionCard.propTypes = {
   authenticityToken: PropTypes.string,
-  coinsLeft: PropTypes.number
+  coinsLeft: PropTypes.number,
+  toggleShowFormCB: PropTypes.func
 };

@@ -15,7 +15,7 @@ export default class Screenshot extends React.Component {
       .then(function(dataUrl) {
         var img = new Image();
         img.src = dataUrl;
-        Download(dataUrl, this.props.elementID);
+        Download(dataUrl, "screenshot");
       })
       .catch(function(error) {
         console.error("oops, something went wrong!", error);
