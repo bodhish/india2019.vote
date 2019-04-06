@@ -8,7 +8,6 @@ export default class PredictionsFeed extends React.Component {
         this.fetchPredictions = this.fetchPredictions.bind(this);
     }
     componentDidMount() {
-        this.fetchPredictions();
         this.timer = setInterval(() => this.fetchPredictions(), 5000);
     }
 
@@ -17,15 +16,13 @@ export default class PredictionsFeed extends React.Component {
     }
 
     fetchPredictions = () => {
-        let nextId = this.state.latestPredictions.slice(-1)[0].id;
+        let nextId = this.state.latestPredictions[0].id;
         fetch("predictions/" + nextId)
             .then(response => response.json())
             .then(result => {
                 if (result !== null) {
                     this.setState({
-                        latestPredictions: this.state.latestPredictions
-                            .slice(1)
-                            .concat(result)
+                        latestPredictions: [result].concat(this.state.latestPredictions.slice(0, -1))
                     });
                 }
             })
@@ -38,6 +35,7 @@ export default class PredictionsFeed extends React.Component {
                 {this.state.latestPredictions.map(prediction => {
                     return (
                         <div key={prediction.id} className="p-2">
+                            <h4>{prediction.id}</h4>
                             <div>
                                 {prediction.answer_1}, {prediction.answer_2} (
                                 {prediction.answer_3}/{prediction.answer_4})

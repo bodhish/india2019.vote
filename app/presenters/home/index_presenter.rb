@@ -16,7 +16,7 @@ module Home
     end
 
     def feedStart
-      Prediction.where(private: false).where("id > ?", 90).limit(5).map do |p|
+      Prediction.where(private: false).where('id > ?', 80).limit(5).reverse.map do |p|
         {
           id: p.id,
           answer_1: p.answer_1,
