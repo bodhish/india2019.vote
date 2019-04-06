@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import QuestionCard from "./questionCard";
+import EditProfile from "./editProfile";
 import * as HtmlToImage from "html-to-image";
 import * as Download from "downloadjs";
 import { Whatsapp } from "react-social-sharing";
@@ -11,10 +12,16 @@ import PredictionsFeed from "./predictionsFeed";
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showForm: false };
+    this.state = {
+      showForm: false,
+      showProfile: false,
+      latestPredictions: props.feedStart
+    };
     this.coinsLeft = this.coinsLeft.bind(this);
     this.toggleShowForm = this.toggleShowForm.bind(this);
+    this.toggleShowProfile = this.toggleShowProfile.bind(this);
     this.takeAScreenshot = this.takeAScreenshot.bind(this);
+    this.updateProfile = this.updateProfile.bind(this);
   }
 
   coinsLeft() {
@@ -24,7 +31,16 @@ export default class Home extends React.Component {
     );
     return 1000 - coinsUsed;
   }
+  toggleShowProfile(e) {
+    e.preventDefault();
+    this.updateProfile();
+  }
 
+  updateProfile() {
+    this.setState({
+      showProfile: !this.state.showProfile
+    });
+  }
   toggleShowForm(e) {
     e.preventDefault();
     this.setState({
@@ -62,14 +78,16 @@ export default class Home extends React.Component {
           <div className="w-full p-2">
             <div className="flex items-center border-b-2 justify-between p-2">
               <div className="flex justify-center items-center text-center">
-                { this.props.user.image && (<img
-                  className="w-10 border-2 border-white h-10 rounded-full mr-2"
-                  src={this.props.user.image.replace(
-                    "http://graph.facebook.com/",
-                    "https://graph.facebook.com/"
-                  )}
-                  alt="photo"
-                />)}
+                {this.props.user.image && (
+                  <img
+                    className="w-10 border-2 border-white h-10 rounded-full mr-2"
+                    src={this.props.user.image.replace(
+                      "http://graph.facebook.com/",
+                      "https://graph.facebook.com/"
+                    )}
+                    alt="photo"
+                  />
+                )}
                 <div className="flex flex-col text-left">
                   <div className="text-sm mb-2">
                     <p className="text-white leading-none">
@@ -86,6 +104,11 @@ export default class Home extends React.Component {
                       State: {this.props.user.state}
                     </div>
                   )}
+                  {this.props.isCurrentUser && (
+                    <button onClick={this.toggleShowProfile} className="p-1">
+                      Edit profile
+                    </button>
+                  )}
                 </div>
               </div>
               {this.props.isCurrentUser && (
@@ -98,7 +121,32 @@ export default class Home extends React.Component {
             <div className="m-4">#IndiaVote2019</div>
           </div>
         </div>
-        <PredictionsFeed latestPredictions={this.props.feedStart}/>
+        {this.state.showProfile && this.props.isCurrentUser && (
+          <div>
+            <EditProfile
+              authenticityToken={this.props.authenticityToken}
+              closeButton={this.updateProfile}
+              user={this.props.user}
+            />
+          </div>
+        )}
+        <PredictionsFeed latestPredictions={this.props.feedStart} />
+        <div className="border p-2 m-4">
+          {this.state.latestPredictions.map(prediction => {
+            return (
+              <div key={prediction.id} className="p-2">
+                <div>
+                  {prediction.answer_1}, {prediction.answer_2} (
+                  {prediction.answer_3}/{prediction.answer_4})
+                </div>
+                <div className="text-xs">
+                  {prediction.coins_used} coins bet {prediction.minutes_since}{" "}
+                  mins ago
+                </div>
+              </div>
+            );
+          })}
+        </div>
         <div className="p-2 flex flex-col w-full md:w-2/5 justify-center items-center text-center question-card shadow rounded">
           <div className="p-2">Current Standings</div>
           <div className="w-full py-2 px-8 flex justify-between">
