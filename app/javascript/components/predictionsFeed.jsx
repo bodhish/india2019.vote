@@ -35,7 +35,6 @@ export default class PredictionsFeed extends React.Component {
                 {this.state.latestPredictions.map(prediction => {
                     return (
                         <div key={prediction.id} className="p-2">
-                            <h4>{prediction.id}</h4>
                             <div>
                                 {prediction.answer_1}, {prediction.answer_2} (
                                 {prediction.answer_3}/{prediction.answer_4})
