@@ -124,7 +124,7 @@ export default class QuestionCard extends React.Component {
   }
   render() {
     return (
-      <div className="w-full">
+      <div className="w-full question-card">
         <button onClick={this.props.toggleShowFormCB} className="p-1">
           Close
         </button>
