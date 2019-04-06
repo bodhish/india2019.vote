@@ -14,7 +14,7 @@ class PredictionsController < ApplicationController
   end
 
   def show
-    prediction = Prediction.where('id > ?', params[:id]).first
+    prediction = Prediction.where(private: false).where('id > ?', params[:id]).first
     render json: prediction.as_json(
       only: %i(id answer_1 answer_2 answer_3 answer_4 coins_used),
       methods: :minutes_since
@@ -24,6 +24,6 @@ class PredictionsController < ApplicationController
   private
 
   def permit_params
-    params.require(:prediction).permit(:answer_1, :answer_2, :answer_3, :answer_4, :coins_used)
+    params.require(:prediction).permit(:answer_1, :answer_2, :answer_3, :answer_4, :coins_used, :private)
   end
 end

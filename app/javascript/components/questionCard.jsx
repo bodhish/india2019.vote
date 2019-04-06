@@ -149,8 +149,9 @@ export default class QuestionCard extends React.Component {
                   className="block w-full appearance-none bg-grey-lighter border border-grey-lighter py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                   id="grid-state"
                   name="prediction[answer_1]"
+                  defaultValue=""
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Select...
                   </option>
                   <option>BJP</option>
@@ -182,8 +183,9 @@ export default class QuestionCard extends React.Component {
                   className="block appearance-none w-full bg-grey-lighter border border-grey-lighter  py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                   id="grid-state"
                   name="prediction[answer_2]"
+                  defaultValue=""
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Select...
                   </option>
                   <option>Narendra Modi</option>
@@ -281,7 +283,7 @@ export default class QuestionCard extends React.Component {
                 />
               </div>
             </div>
-
+            <input type="checkbox" name="prediction[private]"/>&nbsp;Private prediction
             <div className="flex items-center justify-center mt-4">
               <button
                 className="bg-white hover:bg-grey text-blue  py-2 px-4 rounded focus:outline-none focus:shadow-outline"

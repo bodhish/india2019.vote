@@ -89,14 +89,14 @@ export default class Home extends React.Component {
           <div className="w-full p-2">
             <div className="flex items-center border-b-2 justify-between p-2">
               <div className="flex justify-center items-center text-center">
-                <img
+                { this.props.user.image && (<img
                   className="w-10 border-2 border-white h-10 rounded-full mr-2"
                   src={this.props.user.image.replace(
                     "http://graph.facebook.com/",
                     "https://graph.facebook.com/"
                   )}
                   alt="photo"
-                />
+                />)}
                 <div className="flex flex-col text-left">
                   <div className="text-sm mb-2">
                     <p className="text-white leading-none">
@@ -255,7 +255,7 @@ export default class Home extends React.Component {
               <div>
                 {!this.state.showForm && (
                   <button className="text-white" onClick={this.toggleShowForm}>
-                    Predict Now
+                    Add New Prediction
                   </button>
                 )}
                 {this.state.showForm && (

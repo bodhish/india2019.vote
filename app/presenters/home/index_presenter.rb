@@ -27,7 +27,8 @@ module Home
     end
 
     def predictions(user)
-      user.predictions.map do |prediction|
+      predictions = (user == current_user) ? user.predictions : user.predictions.where(private: false)
+      predictions.map do |prediction|
         {
           id: prediction.id,
           answer1: prediction.answer_1,
@@ -49,7 +50,7 @@ module Home
     end
 
     def feedStart
-      Prediction.where('id > ?', 0).limit(5).map do |p|
+      Prediction.where(private: false).where('id > ?', 90).limit(5).map do |p|
         {
           id: p.id,
           answer_1: p.answer_1,
