@@ -340,7 +340,7 @@ export default class Home extends React.Component {
           <Logout authenticityToken={this.props.authenticityToken} />
         </div>
 
-        <div className="flex pin-b">
+        <div className="w-full bg-white absolute pin-b">
           {this.coinsLeft() > 199 && this.props.isCurrentUser && (
             <div className="mt-2 p-2 w-full flex flex-col justify-center items-center text-center">
               <div className="">
