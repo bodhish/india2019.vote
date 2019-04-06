@@ -16,9 +16,13 @@ module Home
     end
 
     def feedStart
-      Prediction.where(private: false).where("id > ?", 0).limit(5).reverse.map do |p|
+      Prediction.where(private: false).where('id > ?', 0).limit(5).includes(:user).reverse.map do |p|
         {
           id: p.id,
+          user_name: p.user_name,
+          user_image: p.user_image,
+          user_state: p.user_state,
+          user_party: p.user_party,
           answer_1: p.answer_1,
           answer_2: p.answer_2,
           answer_3: p.answer_3,
