@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 body {
-    font-family: 'Montserrat', sans-serif;
-    color: #5F3D66;
+    font-family: "Montserrat", sans-serif;
+    color: #5f3d66;
     @apply .antialiased;
 }
 
 .question-card {
     background-color: rgba(70, 1, 116, 1);
-    background-image: linear-gradient(45deg, rgba(70, 1, 116, 1) 0%, rgba(247, 1, 157, 1) 100%);
+    background-image: linear-gradient( 45deg, rgba(70, 1, 116, 1) 0%, rgba(247, 1, 157, 1) 100%);
     @apply max-w-md;
     min-height: 24rem;
     @apply items-center;
@@ -32,23 +32,23 @@ body {
 }
 
 .answer-option__card:hover {
-    border: 3px solid #FFF4A9;
+    border: 3px solid #fff4a9;
 }
 
 .answer-option__card--active {
-    background-image: linear-gradient(to bottom, rgba(239, 230, 135, 1) 0%, rgba(219, 200, 79, 1) 100%);
-    border: 3px solid #FFF4A9;
+    background-image: linear-gradient( to bottom, rgba(239, 230, 135, 1) 0%, rgba(219, 200, 79, 1) 100%);
+    border: 3px solid #fff4a9;
 }
 
 .btn {
     @apply font-medium py-4 px-5 rounded text-white shadow;
     background-color: rgba(65, 147, 33, 1);
-    background-image: linear-gradient(135deg, rgba(119, 178, 51, 1) 0%, rgba(65, 147, 33, 1) 100%);
+    background-image: linear-gradient( 135deg, rgba(119, 178, 51, 1) 0%, rgba(65, 147, 33, 1) 100%);
     transition: 0.25s;
 }
 
 .btn:hover, .btn:focus {
-    background-image: linear-gradient(160deg, rgba(119, 178, 51, 1) 0%, rgba(65, 147, 33, 1) 100%);
+    background-image: linear-gradient( 160deg, rgba(119, 178, 51, 1) 0%, rgba(65, 147, 33, 1) 100%);
     box-shadow: 0 0.5em 0.5em -0.4em config(colors.green-dark);
 }
 
