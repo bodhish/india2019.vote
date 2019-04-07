@@ -7,6 +7,15 @@ body {
     @apply .antialiased;
 }
 
+.isupport-card {
+    background-image: linear-gradient(to bottom, config('colors.primary') 0%, config('colors.primary-dark') 75%);
+}
+
+.predicted-list-card {
+    background-color: rgba(70, 1, 116, 1);
+    background-image: linear-gradient( 45deg, rgba(70, 1, 116, 1) 0%, rgba(247, 1, 157, 1) 100%);
+}
+
 .question-card {
     background-color: rgba(70, 1, 116, 1);
     background-image: linear-gradient( 45deg, rgba(70, 1, 116, 1) 0%, rgba(247, 1, 157, 1) 100%);
@@ -52,6 +61,10 @@ body {
     box-shadow: 0 0.5em 0.5em -0.4em config(colors.green-dark);
 }
 
+.current-standings-card {
+    @apply shadow border rounded-xl px-5 py-4 h-32 flex flex-1 flex-col justify-between;
+}
+
 .left-container {
     /* width: calc(100vw - 400px) */
 }
@@ -60,13 +73,16 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 30px;
     pointer-events: none;
 }
 
-.animation-target {
+.notification--loaded-animate {
     -webkit-animation: animation 1400ms linear infinite both;
     animation: animation 1400ms linear infinite both;
+}
+
+.notification-card {
+    @apply relative overflow-hidden;
 }
 
 /* Generated with Bounce.js. Edit at http://bouncejs.com#%7Bl%3A1%2Cs%3A%5B%7BT%3A%22t%22%2Ce%3A%22b%22%2Cd%3A1400%2CD%3A0%2Cf%3A%7Bx%3A500%2Cy%3A0%7D%2Ct%3A%7Bx%3A0%2Cy%3A0%7D%2Cs%3A2%2Cb%3A1%7D%5D%7D */
