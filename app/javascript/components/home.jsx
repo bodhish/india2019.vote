@@ -70,38 +70,6 @@ export default class Home extends React.Component {
     };
     return (
       <div className="h-screen flex flex-col">
-<<<<<<< HEAD
-    <div className="overflow-y-scroll shadow">
-      <div className="flex flex-col flex sm:flex-row flex-col bg-white relative justify-between">
-        <div className="left-container w-2/3 p-4 flex flex-col bg-white items-center">
-          <div
-            className='m-2 flex flex-col w-full md:w-4/5 justify-center items-center text-center shadow rounded'
-            id='profile'
-          >
-            <div className='w-full p-2'>
-              <div className='flex items-center border-b-2 justify-between p-2'>
-                <div className='flex justify-center items-center text-center'>
-                  {this.props.user.image && (
-                    <img
-                      className='w-10 border-2 border-white h-10 rounded-full mr-2'
-                      src={this.props.user.image.replace(
-                        'http://graph.facebook.com/',
-                        'https://graph.facebook.com/'
-                      )}
-                      alt='photo'
-                    />
-                  )}
-                  <div className='flex flex-col text-left'>
-                    <div className='text-sm mb-2'>
-                      <p className='leading-none'>
-                        {this.props.user.name}
-                      </p>
-                    </div>
-                    {this.props.user.party !== null && (
-                      <div className='text-xs'>
-                        I support: {this.props.user.party}
-                      </div>
-=======
         {this.state.showForm ? (
           <div className="h-screen">
             <QuestionCard
@@ -130,7 +98,6 @@ export default class Home extends React.Component {
                             )}
                             alt="photo"
                           />
->>>>>>> 84d271ec8e33dd1ad3031dfb0e7c8e3f4fc9a8b5
                     )}
                     <div className="flex flex-col text-left">
                       <div className="text-sm mb-2">
