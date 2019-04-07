@@ -151,17 +151,17 @@ export default class QuestionCard extends React.Component {
               </label>
                 <div className='relative w-full flex flex-wrap mt-4'>
                   <div className='pr-2'>
-                    <div className='rounded-lg bg-white answer-option__card shadow w-28 h-28 p-4 flex items-center justify-center'>
+                    <div className='rounded-lg bg-white answer-option__card w-28 h-28 p-4 flex items-center justify-center'>
                       UPA
                   </div>
                   </div>
                   <div className='px-2'>
-                    <div className='rounded-lg bg-white answer-option__card answer-option__card--active shadow w-28 h-28 p-4 flex items-center justify-center'>
+                    <div className='rounded-lg bg-white answer-option__card answer-option__card--active w-28 h-28 p-4 flex items-center justify-center'>
                       NDA
                   </div>
                   </div>
                   <div className='px-2'>
-                    <div className='rounded-lg bg-white answer-option__card shadow w-28 h-28 p-4 flex items-center justify-center'>
+                    <div className='rounded-lg bg-white answer-option__card w-28 h-28 p-4 flex items-center justify-center'>
                       OTHER
                   </div>
                   </div>
@@ -317,22 +317,22 @@ export default class QuestionCard extends React.Component {
               </label>
             <div className='relative w-full flex flex-wrap mt-6'>
               <div className='pr-2'>
-                <div className='rounded-lg bg-white answer-option__card shadow w-28 h-28 p-4 flex items-center justify-center'>
+                <div className='rounded-lg bg-white answer-option__card w-28 h-28 p-4 flex items-center justify-center'>
                   Narendra Modi
                   </div>
               </div>
               <div className='px-2'>
-                <div className='rounded-lg bg-white answer-option__card shadow w-28 h-28 p-4 flex items-center justify-center'>
+                <div className='rounded-lg bg-white answer-option__card w-28 h-28 p-4 flex items-center justify-center'>
                   Rahul Gandhi
                 </div>
               </div>
               <div className='px-2'>
-                <div className='rounded-lg bg-white answer-option__card shadow w-28 h-28 p-4 flex items-center justify-center'>
+                <div className='rounded-lg bg-white answer-option__card w-28 h-28 p-4 flex items-center justify-center'>
                   Mamata Banerjee
                 </div>
               </div>
               <div className='px-2'>
-                <div className='rounded-lg bg-white answer-option__card answer-option__card--active shadow w-28 h-28 p-4 flex items-center justify-center'>
+                <div className='rounded-lg bg-white answer-option__card answer-option__card--active w-28 h-28 p-4 flex items-center justify-center'>
                   Arvind Kejriwal
                 </div>
               </div>
@@ -343,8 +343,8 @@ export default class QuestionCard extends React.Component {
           <div></div>
           <button
             className='btn bg-white hover:bg-grey text-blue focus:outline-none focus:shadow-outline'>
-            Next
-              </button>
+            <span>Next</span>
+          </button>
         </div>
       </div >
     )

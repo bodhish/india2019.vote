@@ -71,8 +71,8 @@ export default class Home extends React.Component {
     return (
       <div className="h-screen flex flex-col">
         <div className="overflow-y-scroll shadow">
-          <div className="flex flex-col flex sm:flex-row flex-col bg-white flex justify-between">
-            <div className="w-full md:w-2/3 p-4 flex flex-col bg-white flex md:overflow-y-scroll items-center text-center">
+          <div className="flex flex-col flex sm:flex-row flex-col bg-white relative justify-between">
+            <div className="left-container w-full p-4 flex flex-col bg-white items-center">
               <div
                 className='m-2 flex flex-col w-full md:w-4/5 justify-center items-center text-center shadow rounded'
                 id='profile'
@@ -333,7 +333,7 @@ export default class Home extends React.Component {
               </div>
               <Screenshot elementID='profile' />
             </div>
-            <div className='w-full md:w-1/3 p-4 flex flex-col bg-white flex justify-center items-center text-center'>
+            <div className='notification p-4 flex flex-col bg-white flex justify-center items-center text-center'>
               <PredictionsFeed latestPredictions={this.props.feedStart} />
             </div>
           </div>
