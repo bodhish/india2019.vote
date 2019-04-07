@@ -21,7 +21,14 @@ body {
 
 .answer-option__card {
     border: 3px solid #ffffff;
-    @apply text-sm;
+    @apply text-sm cursor-pointer;
+    transition: 0.25s;
+    box-shadow: 0 0.5em 0.5em -0.4em config(colors.primary-dark);
+}
+
+.answer-option__card:hover, .answer-option__card:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em config(colors.primary-dark);
+    transform: translateY(-0.25em);
 }
 
 .answer-option__card:hover {
@@ -37,4 +44,23 @@ body {
     @apply font-medium py-4 px-5 rounded text-white shadow;
     background-color: rgba(65, 147, 33, 1);
     background-image: linear-gradient(135deg, rgba(119, 178, 51, 1) 0%, rgba(65, 147, 33, 1) 100%);
+    transition: 0.25s;
+}
+
+.btn:hover, .btn:focus {
+    background-image: linear-gradient(160deg, rgba(119, 178, 51, 1) 0%, rgba(65, 147, 33, 1) 100%);
+    box-shadow: 0 0.5em 0.5em -0.4em config(colors.green-dark);
+}
+
+.left-container {
+    width: calc(100vw - 400px);
+}
+
+.notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 30px;
+    pointer-events: none;
 }

@@ -145,7 +145,7 @@ export default class QuestionCard extends React.Component {
 
   selectedAnswerClasses(bool) {
     let classes =
-      "rounded-lg bg-white answer-option__card shadow w-28 h-28 p-4 flex items-center justify-center";
+      "rounded-lg bg-white answer-option__card w-28 h-28 p-4 flex items-center justify-center";
     return bool ? classes + " answer-option__card--active" : classes;
   }
   render() {
