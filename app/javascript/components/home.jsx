@@ -340,9 +340,6 @@ export default class Home extends React.Component {
             </div>
             <Screenshot elementID="profile" />
           </div>
-          <div className="notification p-4 flex flex-col bg-white justify-center items-center text-center">
-            <PredictionsFeed latestPredictions={this.props.feedStart} />
-          </div>
           <Screenshot elementID='profile' />
         </div>
         <div className='notification w-1/3 p-4 flex flex-col bg-white flex justify-center items-center text-center z-10'>
@@ -350,8 +347,6 @@ export default class Home extends React.Component {
         </div>
         <Logout authenticityToken={this.props.authenticityToken} />
       </div>
-      <Logout authenticityToken={this.props.authenticityToken} />
-    </div>
 
       <div className="w-full bg-white absolute pin-b z-20">
         {this.coinsLeft() > 199 && this.props.isCurrentUser && (
@@ -387,7 +382,6 @@ export default class Home extends React.Component {
         );
         }
       }
-      
 Home.propTypes = {
           user: PropTypes.object,
         authenticityToken: PropTypes.string,
