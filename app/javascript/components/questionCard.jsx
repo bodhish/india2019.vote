@@ -200,7 +200,7 @@ export default class QuestionCard extends React.Component {
                       Who will form the government in 2019?
                     </label>
                     <div className="relative w-full flex flex-wrap mt-4">
-                      <div className="pr-2">
+                      <div className="p-2">
                         <div
                           value="UPA"
                           onClick={() => this.updateAnswer1("UPA")}
@@ -211,7 +211,7 @@ export default class QuestionCard extends React.Component {
                           UPA
                         </div>
                       </div>
-                      <div className="px-2">
+                      <div className="p-2">
                         <div
                           onClick={() => this.updateAnswer1("NDA")}
                           value="NDA"
@@ -222,7 +222,7 @@ export default class QuestionCard extends React.Component {
                           NDA
                         </div>
                       </div>
-                      <div className="px-2">
+                      <div className="p-2">
                         <div
                           onClick={() => this.updateAnswer1("OTHER")}
                           value="OTHER"
@@ -248,7 +248,7 @@ export default class QuestionCard extends React.Component {
                       Who will be the prime minister?
                     </label>
                     <div className="relative w-full flex flex-wrap mt-6">
-                      <div className="pr-2">
+                      <div className="p-2">
                         <div
                           onClick={() => this.updateAnswer2("Narendra Modi")}
                           value="Narendra Modi"
@@ -259,7 +259,7 @@ export default class QuestionCard extends React.Component {
                           Narendra Modi
                         </div>
                       </div>
-                      <div className="px-2">
+                      <div className="p-2">
                         <div
                           onClick={() => this.updateAnswer2("Rahul Gandhi")}
                           value="Rahul Gandhi"
@@ -270,7 +270,7 @@ export default class QuestionCard extends React.Component {
                           Rahul Gandhi
                         </div>
                       </div>
-                      <div className="px-2">
+                      <div className="p-2">
                         <div
                           onClick={() => this.updateAnswer2("Mamata Banerjee")}
                           value="Mamata Banerjee"
@@ -281,7 +281,7 @@ export default class QuestionCard extends React.Component {
                           Mamata Banerjee
                         </div>
                       </div>
-                      <div className="px-2">
+                      <div className="p-2">
                         <div
                           onClick={() => this.updateAnswer2("Arvind Kejriwal")}
                           value="Arvind Kejriwal"
@@ -304,16 +304,16 @@ export default class QuestionCard extends React.Component {
                       <div className="block question-card__question text-white mt-3">
                         How will the seats be shared?
                       </div>
-                      <div className="flex justify-center">
-                        <div className="w-full pr-3 mb-6 md:mb-0">
+                      <div className="flex flex-col sm:flex-row mt-3 justify-center px-2">
+                        <div className="w-full px-3 mb-6 md:mb-0">
                           <label
-                            className="block uppercase text-white mb-2"
+                            className="block uppercase text-center text-white mb-2"
                             htmlFor="bjp"
                           >
                             BJP
                           </label>
                           <input
-                            className="text-center flex justify-center items-center bg-grey-lighter w-full h-20 w-30 text-xl border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                            className="text-center flex justify-center items-center bg-grey-lighter w-full h-20 text-xl border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                             id="bjp"
                             type="number"
                             placeholder="182"
@@ -324,13 +324,13 @@ export default class QuestionCard extends React.Component {
 
                         <div className="w-full px-3 mb-6 md:mb-0">
                           <label
-                            className="block uppercase text-white mb-2"
+                            className="block uppercase text-center text-white mb-2"
                             htmlFor="congress"
                           >
                             Congress
                           </label>
                           <input
-                            className="appearance-none flex justify-center items-center text-center w-full bg-grey-lighter h-20 w-30 text-xl  border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                            className="appearance-none flex justify-center items-center text-center w-full bg-grey-lighter h-20 text-xl  border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                             id="congress"
                             type="number"
                             placeholder="182"
@@ -347,7 +347,7 @@ export default class QuestionCard extends React.Component {
                             Others
                           </label>
                           <p
-                            className="opacity-50 appearance-none text-center flex justify-center items-center w-full bg-grey-lighter h-20 w-30 text-xl border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                            className="opacity-50 appearance-none text-center flex justify-center items-center w-full bg-grey-lighter h-20 text-xl border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                             id="others"
                           >
                             {this.state.othersCount}

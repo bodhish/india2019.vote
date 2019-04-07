@@ -75,10 +75,10 @@ body {
 }
 
 .notification {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 500;
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*right: 0;*/
+  /*z-index: 500;*/
   padding: 30px;
   pointer-events: none;
 }
