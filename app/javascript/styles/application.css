@@ -76,6 +76,9 @@ body {
     }
 }
 
+.home-support-text{
+    font-size: 4rem;
+}
 .notification--loaded-animate {
     -webkit-animation: animation 1400ms linear both;
     animation: animation 1400ms linear both;
