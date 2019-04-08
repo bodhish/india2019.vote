@@ -12,20 +12,20 @@ export default class Screenshot extends React.Component {
     e.preventDefault();
     const profile = document.getElementById(this.props.elementID);
     HtmlToImage.toPng(profile)
-      .then(function(dataUrl) {
+      .then(function (dataUrl) {
         var img = new Image();
         img.src = dataUrl;
         Download(dataUrl, "screenshot");
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error("oops, something went wrong!", error);
       });
   }
 
   render() {
     return (
-      <div className="p-4 text-center">
-        <button onClick={this.takeAScreenshot}>Download Screenshot </button>
+      <div className="text-center">
+        <button className='text-primary' onClick={this.takeAScreenshot}>Download Screenshot </button>
       </div>
     );
   }

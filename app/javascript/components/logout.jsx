@@ -14,7 +14,7 @@ export default class Logout extends React.Component {
             type="hidden"
             value={this.props.authenticityToken}
           />
-          <div className="flex items-center justify-center mt-4">
+          <div className="flex items-center justify-center">
             <button
               className="bg-white hover:bg-grey text-blue  py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"

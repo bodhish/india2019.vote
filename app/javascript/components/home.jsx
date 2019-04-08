@@ -80,14 +80,14 @@ export default class Home extends React.Component {
           </div>
         ) : (
             <div className="relative">
-              <div className="flex w-2/3 bg-white relative justify-between">
+              <div className="flex w-full md:w-2/3 bg-white relative justify-between">
                 <div className="w-full p-4 flex flex-col bg-white items-center">
                   <div
                     className="flex flex-col max-w-md w-full justify-center items-center text-center"
                     id="profile"
                   >
                     <div className="w-full px-3">
-                      <div className="flex items-center justify-between p-6 mx-3 shadow rounded-t-xl border border-b-0">
+                      <div className="flex items-center bg-white justify-between p-6 mx-3 shadow rounded-t-xl border border-b-0">
                         <div className="flex justify-center items-center text-center">
                           {this.props.user.image && (
                             <img
@@ -100,25 +100,27 @@ export default class Home extends React.Component {
                             />
                           )}
                           <div className="flex flex-col text-left">
-                            <div className="text-sm mb-2">
+                            <div className="text-sm">
                               <p className="leading-none">
                                 {this.props.user.name}
                               </p>
                             </div>
-                            {this.props.user.party !== null && (
-                              <div className="text-xs">
-                                I support: {this.props.user.party}
-                              </div>
-                            )}
-                            {this.props.user.state !== null && (
-                              <div className="text-xs">
-                                State: {this.props.user.state}
-                              </div>
-                            )}
+                            <div className='flex mt-1'>
+                              {this.props.user.party !== null && (
+                                <div className="text-xs text-grey-dark">
+                                  I support: {this.props.user.party}
+                                </div>
+                              )}
+                              {this.props.user.state !== null && (
+                                <div className="ml-3 text-xs text-grey-dark">
+                                  State: {this.props.user.state}
+                                </div>
+                              )}
+                            </div>
                             {this.props.isCurrentUser && (
                               <button
                                 onClick={this.toggleShowProfile}
-                                className="text-primary text-xs text-left"
+                                className="text-primary text-xs text-left mt-1"
                               >
                                 Edit profile
                             </button>
@@ -133,7 +135,7 @@ export default class Home extends React.Component {
                         )}
                       </div>
                       <div className="isupport-card flex flex-col bg-primary shadow-lg p-8 text-white -mx-3 rounded-xl">
-                        <img src={partyImage[this.props.user.party]} />
+                        <img className="border-8 border-white rounded-lg" src={partyImage[this.props.user.party]} />
                         <div className="text-xl p-4">#IndiaVote2019</div>
                       </div>
                     </div>
@@ -250,7 +252,7 @@ export default class Home extends React.Component {
                           </div>
                         </div>
                       </div>
-                      <div className="flex mt-8">
+                      <div className="flex flex-wrap mt-8">
                         <div className="current-standings-card mr-4">
                           Modi
                         <div className="text-xs font-light">
@@ -383,13 +385,15 @@ export default class Home extends React.Component {
                       link={shareUrl}
                     />
                   </div>
-                  <Screenshot elementID="profile" />
+                  <div className='flex items-center mb-24'>
+                    <Screenshot elementID="profile" />
+                    <Logout authenticityToken={this.props.authenticityToken} />
+                  </div>
                 </div>
               </div>
-              <div className="notification w-1/3 pr-3 flex flex-col bg-white flex justify-center items-center z-10">
+              <div className="notification w-full md:w-1/3 pr-3 flex flex-col bg-white flex justify-center items-center z-10">
                 <PredictionsFeed latestPredictions={this.props.feedStart} />
               </div>
-              <Logout authenticityToken={this.props.authenticityToken} />
             </div>
           )}
         {!this.state.showForm && (

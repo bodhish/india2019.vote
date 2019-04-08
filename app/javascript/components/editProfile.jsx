@@ -151,7 +151,7 @@ export default class EditProfile extends React.Component {
 
           <div className="flex items-center justify-center mt-4">
             <button
-              className="p-2 flex flex-col question-card shadow rounded"
+              className="btn"
               type="submit"
               value="Submit"
               disabled={this.saveDisabled()}

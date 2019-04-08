@@ -38,10 +38,10 @@ export default class PredictionsFeed extends React.Component {
           return (
             <div
               key={prediction.id}
-              className="notification-card p-3 border border-primary-lightest my-3 flex flex-col rounded-xl shadow"
+              className="notification-card border border-primary-lightest my-3 flex flex-col rounded-xl shadow"
             >
               <div className="flex justify-between">
-                <div className="flex overflow-hidden truncate">
+                <div className="flex w-4/5 overflow-hidden p-3">
                   <img
                     className="w-10 h-10 rounded-full"
                     src={prediction.user_image}
@@ -73,7 +73,9 @@ export default class PredictionsFeed extends React.Component {
                   </div>
 
                 </div>
-                <div className="text-sm">{prediction.coins_used} coins</div>
+                <div className="flex w-1/5 flex-col text-center p-3 bg-grey-lighter justify-center items center">
+                  <span>{prediction.coins_used}</span>
+                  <span className='text-xs'>coins</span></div>
               </div>
 
             </div>
