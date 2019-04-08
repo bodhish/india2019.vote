@@ -96,11 +96,11 @@ export default class Home extends React.Component {
                     id='profile'
                   >
                     <div className='w-full px-3'>
-                      <div className='flex items-center bg-white justify-between p-6 mx-3 shadow rounded-t-xl border border-b-0'>
+                      <div className='flex items-center bg-white justify-between p-3 mx-0 md:px-6 md:py-5 md:mx-3 shadow rounded-t-xl border border-b-0'>
                         <div className='flex justify-center items-center text-center'>
                           {this.props.user.image && (
                             <img
-                              className='w-10 h-10 rounded-full mr-2'
+                              className='w-10 md:w-13 h-10 md:h-13 bg-primary-lightest border-2 border-primary-light shadow-md rounded-full mr-3'
                               src={this.props.user.image.replace(
                                 'http://graph.facebook.com/',
                                 'https://graph.facebook.com/'
@@ -108,35 +108,30 @@ export default class Home extends React.Component {
                               alt='photo'
                             />
                           )}
-                          <div className='flex flex-col text-left'>
+                          <div className='flex flex-col text-left font-medium'>
                             <div>
-                              <p className='leading-none'>
-                                {this.props.user.name}
-                              </p>
+                              <p className='text-sm'>{this.props.user.name}</p>
                             </div>
                             <div className='flex mt-1'>
                               {this.props.user.state !== null && (
-                                <div className='text-sm text-black'>
+                                <div className='text-xs text-grey-dark'>
                                   {this.props.user.state}
                                 </div>
                               )}
                             </div>
-                            {this.props.isCurrentUser && (
-                              <button
-                                onClick={this.toggleShowProfile}
-                                className='text-primary text-xs text-left mt-1'
-                              >
-                                Edit profile
-                              </button>
-                            )}
                           </div>
                         </div>
+                        <div className='hidden md:block'>
+                          <h5 className='font-medium text-primary-dark'>
+                            india2019.vote
+                          </h5>
+                        </div>
                       </div>
-                      <div className='isupport-card flex flex-col bg-primary shadow-lg p-8 text-white -mx-3 rounded-xl'>
+                      <div className='isupport-card flex flex-col bg-primary shadow-lg p-3 md:p-8 text-white -mx-3 rounded-xl'>
                         <div className='flex flex-row justify-between items-center text-left px-4'>
                           <div>
                             <div className='text-lg text-white'>I support</div>
-                            <div className='text-4xl md:text-5xl text-white'>
+                            <div className='text-4xl md:text-5xl font-semibold text-white'>
                               {this.props.user.party == null
                                 ? '_ _ _ '
                                 : this.props.user.party}
@@ -147,11 +142,29 @@ export default class Home extends React.Component {
                           </div>
                           <div>
                             <img
-                              className='m-2 border-8 border-white rounded-lg party-flag'
+                              className='m-2 bg-white p-3 rounded-lg party-flag'
                               src={partyImage[this.props.user.party]}
                             />
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='max-w-md w-full px-3 md:px-6'>
+                    <div className='w-full flex border border-t-0 rounded-b-lg shadow bg-white'>
+                      <div className='w-1/2'>
+                        <Screenshot elementID='profile' />
+                      </div>
+
+                      <div className='w-1/2 border-l'>
+                        {this.props.isCurrentUser && (
+                          <button
+                            onClick={this.toggleShowProfile}
+                            className='text-primary text-xs text-center h-9 w-full cursor-pointer hover:bg-primary-lightest hover:text-primary-dark focus:outline-none'
+                          >
+                            Edit profile
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -164,8 +177,8 @@ export default class Home extends React.Component {
                         key={prediction.id}
                         className='mt-2 flex flex-col max-w-md w-full'
                       >
-                        <div className='predicted-list-card w-full text-white p-5 shadow rounded-xl'>
-                          <div className='flex items-center justify-between p-2'>
+                        <div className='predicted-list-card w-full text-white px-3 py-5 md:p-5 shadow rounded-xl'>
+                          <div className='flex items-center justify-between'>
                             <div className='flex justify-center items-center text-center'>
                               <div className='pl-2 text-left text-sm'>
                                 <h4 className='font-medium text-sm'>
@@ -335,40 +348,39 @@ export default class Home extends React.Component {
                         </div>
                       </div>
                     </div>
+                    <div className='flex flex-row justify-between'>
+                      <a
+                        className='m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white font-bold rounded'
+                        href={facebookShareUrl}
+                        target='_blank'
+                      >
+                        <span className='font-regular py-2 px-2'>
+                          Share on Facebook
+                        </span>
+                      </a>
+                      <div className='visible sm:invisible'>
+                        <Whatsapp
+                          solidcircle
+                          big
+                          message={shareMessage}
+                          link={shareUrl}
+                        />
+                      </div>
+                      <Twitter
+                        solidcircle
+                        big
+                        message={shareMessage}
+                        link={shareUrl}
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className='flex flex-row justify-between'>
-                  <a
-                    className='m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white font-bold rounded'
-                    href={facebookShareUrl}
-                    target='_blank'
-                  >
-                    <span className='font-regular py-2 px-2'>
-                      Share on Facebook
-                    </span>
-                  </a>
-                  <div className='visible sm:invisible'>
-                    <Whatsapp
-                      solidcircle
-                      big
-                      message={shareMessage}
-                      link={shareUrl}
-                    />
-                  </div>
-                  <Twitter
-                    solidcircle
-                    big
-                    message={shareMessage}
-                    link={shareUrl}
-                  />
-                </div>
-                <div className='flex items-center mb-24'>
-                  <Screenshot elementID='profile' />
+                <div className='flex flex-col max-w-md w-full mt-5 pb-6 md:pb-24'>
                   <Logout authenticityToken={this.props.authenticityToken} />
                 </div>
               </div>
             )}
-            <div className='notification w-full md:w-1/3 sm:flex sm:flex-col bg-grey-lightest shadow-inner border-l justify-center items-center sm:fixed pin-b pin-t pin-r relative pb-24 sm:pb-0 z-10 px-5'>
+            <div className='notification w-full md:w-1/3 sm:flex sm:flex-col bg-grey-lightest shadow-inner md:border-l justify-center items-center sm:fixed pin-b pin-t pin-r relative pb-24 sm:pb-0 z-10 px-5 pt-5'>
               <PredictionsFeed latestPredictions={this.props.feedStart} />
             </div>
           </div>
@@ -377,20 +389,25 @@ export default class Home extends React.Component {
           <div className='w-full md:w-2/3 bg-white fixed pin-b z-20'>
             {this.props.isCurrentUser && (
               <div className='p-2 w-full flex flex-row justify-center items-center border-t'>
-                <div className='flex m-4'>
-                  <p className='leading-none'>Coins left:&nbsp;</p>
-                  <p className='leading-none'>{this.coinsLeft()}</p>
+                <div className='flex'>
+                  <Logout authenticityToken={this.props.authenticityToken} />
                 </div>
+                <div className='flex flex-1 justify-center items-center'>
+                  <div className='flex m-4 items-center border rounded-full bg-primary-lightest px-2 py-1 mr-3'>
+                    <p className='text-xs'>Coins left:&nbsp;</p>
+                    <p className=''>{this.coinsLeft()}</p>
+                  </div>
 
-                <div className=''>
-                  {this.coinsLeft() > 299 && !this.state.showForm && (
-                    <button
-                      className='p-2 rounded btn text-black'
-                      onClick={this.toggleShowForm}
-                    >
-                      Add New Prediction
-                    </button>
-                  )}
+                  <div className=''>
+                    {this.coinsLeft() > 299 && !this.state.showForm && (
+                      <button
+                        className='p-2 rounded btn text-black'
+                        onClick={this.toggleShowForm}
+                      >
+                        Add New Prediction
+                      </button>
+                    )}
+                  </div>
                 </div>
                 {this.coinsLeft() < 300 && (
                   <div className='mt-2'>
