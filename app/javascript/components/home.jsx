@@ -122,12 +122,6 @@ export default class Home extends React.Component {
                           )}
                         </div>
                       </div>
-                      {this.props.isCurrentUser && (
-                        <div className="flex mr-2 align-right">
-                          <p className="leading-none">Coins left:&nbsp;</p>
-                          <p className="leading-none">{this.coinsLeft()}</p>
-                        </div>
-                      )}
                     </div>
                     <div className="isupport-card flex flex-col bg-primary shadow-lg p-8 text-white -mx-3 rounded-xl">
                       <div className="flex flex-row items-center text-left ml-4">
@@ -439,10 +433,15 @@ export default class Home extends React.Component {
         )}
         {!this.state.showForm && (
           <div className="w-full bg-white fixed border-t shadow pin-b z-20">
-            {this.coinsLeft() > 299 && this.props.isCurrentUser && (
-              <div className="mt-2 p-2 w-full flex flex-col justify-center items-center">
+            {this.props.isCurrentUser && (
+              <div className="mt-2 p-2 w-full flex flex-row justify-center items-center">
+                <div className="flex m-4">
+                  <p className="leading-none">Coins left:&nbsp;</p>
+                  <p className="leading-none">{this.coinsLeft()}</p>
+                </div>
+
                 <div className="">
-                  {!this.state.showForm && (
+                  {this.coinsLeft() > 299 && !this.state.showForm && (
                     <button
                       className="p-2 rounded btn text-black"
                       onClick={this.toggleShowForm}
@@ -450,17 +449,7 @@ export default class Home extends React.Component {
                       Add New Prediction
                     </button>
                   )}
-                  {this.state.showForm && (
-                    <div className="h-screen">
-                      <QuestionCard
-                        authenticityToken={this.props.authenticityToken}
-                        coinsLeft={this.coinsLeft()}
-                        toggleShowFormCB={this.toggleShowForm}
-                      />
-                    </div>
-                  )}
                 </div>
-
                 {this.coinsLeft() < 300 && (
                   <div className="mt-2">
                     {" "}
