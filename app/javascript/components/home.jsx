@@ -109,15 +109,15 @@ export default class Home extends React.Component {
                             />
                           )}
                           <div className="flex flex-col text-left">
-                            <div className="text-sm">
+                            <div>
                               <p className="leading-none">
                                 {this.props.user.name}
                               </p>
                             </div>
                             <div className="flex mt-1">
                               {this.props.user.state !== null && (
-                                <div className="ml-3 text-xs text-grey-dark">
-                                  State: {this.props.user.state}
+                                <div className="text-sm text-black">
+                                  {this.props.user.state}
                                 </div>
                               )}
                             </div>
@@ -133,9 +133,9 @@ export default class Home extends React.Component {
                         </div>
                       </div>
                       <div className="isupport-card flex flex-col bg-primary shadow-lg p-8 text-white -mx-3 rounded-xl">
-                        <div className="flex flex-row items-center text-left ml-4">
-                          <div className="w-1/2">
-                            <div className="text-lg pl-1 text-white">
+                        <div className="flex flex-row justify-between items-center text-left px-4">
+                          <div>
+                            <div className="text-lg text-white">
                               I support
                             </div>
                             <div className="text-4xl md:text-5xl text-white">
@@ -147,9 +147,9 @@ export default class Home extends React.Component {
                               #IndiaVote2019
                             </div>
                           </div>
-                          <div className="w-1/2">
+                          <div>
                             <img
-                              className="m-2 border-8 border-white rounded-lg"
+                              className="m-2 border-8 border-white rounded-lg party-flag"
                               src={partyImage[this.props.user.party]}
                             />
                           </div>
