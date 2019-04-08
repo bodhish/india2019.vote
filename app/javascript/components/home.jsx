@@ -228,7 +228,7 @@ export default class Home extends React.Component {
                                 type="hidden"
                                 value={this.props.authenticityToken}
                               />
-                            </form>
+                            </button>
                           )}
                         </div>
                       </div>
