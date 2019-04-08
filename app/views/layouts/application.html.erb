@@ -40,9 +40,6 @@
 </head>
 
 <body>
-<% flash.each do |name, message| %>
-  <%= content_tag :div, message %>
-<% end %>
-<%= yield %>
+  <%= yield %>
 </body>
 </html>

@@ -4,22 +4,23 @@
   <div id="app-feed" class="w-full md:w-1/3"
        data-props="<%= {latestPredictions: presenter.feedStart}.to_json %>">
   </div>
-  <div class="w-full md:w-2/3">
-    <div class="p-4">
-      <h3 class="mb-2">Make your predictions for the Indian elections 2019</h3>
-      <ul>
-        <li class="my-2">Step 1: Sign in and collect your 1000 prediction coins.</li>
-        <li class="my-2">
-          <div>Step 2: Make upto 5 predictions (party, prime minister, seats) using your coins.</div>
-          <div class="text-sm text-grey">Bet more coins on the predictions you are most confident about</div>
-        </li>
-        <li class="my-2">Step 3: View summary of all predictions till date. Invite others to make their predictions</li>
-        <li class="my-2">Step 4: Follow us on twitter at @indiavote_2019 for daily updates</li>
-        <li class="my-2">
-          <div>Step 5: Wait for election results on May 23rd to find out the winner!</div>
-          <div class="text-xs text-grey">The person who bet the most coins on the correct result will be the winner. Ties will be resolved by a lucky draw</div>
-        </li>
-      </ul>
+  <div class="w-full md:w-2/3 text-center">
+    <div class="w-full md:w-2/3 mx-auto pt-4">
+      <h2 class="mb-4">Make your predictions for the Indian elections 2019!</h2>
+      <h3>Will India continue with the Chowkidhar, vote the young Gandhi to the helm or bring in a completely new face to be the next PM?</h3>
+      <div class="my-8 mx-auto w-full md:w-4/5 border rounded-lg shadow-lg p-2">
+        <div class="my-4"><strong>Step 1:</strong> Sign in and collect your 1000 prediction coins.</div>
+        <div class="my-4">
+          <div><strong>Step 2:</strong> Make upto 5 predictions (party, prime minister, seats) using your coins.</div>
+          <div class="text-sm text-grey-dark">Bet more coins on the predictions you are most confident about.</div>
+        </div>
+        <div class="my-4"><strong>Step 3:</strong> View summary of all predictions till date. Invite others to make their predictions.</div>
+        <div class="my-4"><strong>Step 4:</strong> Follow us on twitter at @indiavote_2019 for daily updates.</div>
+        <div class="my-4">
+          <div><strong>Step 5:</strong> Wait for election results on May 23rd to find out the winner!</div>
+          <div class="text-xs text-grey-dark">The person who bet the most coins on the correct result will be the winner. Ties will be resolved by a lucky draw</div>
+        </div>
+      </div>
     </div>
     <% unless current_user %>
       <div
