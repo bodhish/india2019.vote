@@ -67,6 +67,7 @@ module Home
         primeMinister: {predictions_count: Prediction.group(:answer_2).count, coins_used: Prediction.group(:answer_2).sum(:coins_used)},
         bjpAvgSeats: Prediction.average(:answer_3).floor,
         congAvgSeats: Prediction.average(:answer_4).floor,
+        total: Prediction.count,
       }
     end
   end
