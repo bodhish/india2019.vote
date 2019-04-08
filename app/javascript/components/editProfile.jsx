@@ -76,7 +76,7 @@ export default class EditProfile extends React.Component {
       "West Bengal"
     ];
     return (
-      <div className="w-full">
+      <div className="w-full md:w-2/3 ">
         <button onClick={this.close} className="p-1">
           Close
         </button>

@@ -389,7 +389,10 @@ export default class QuestionCard extends React.Component {
                       </div>
                     </div>
                     <div>
-                      <input type="checkbox" name="prediction[private]"/><span className="text-white">&nbsp;Private prediction</span>
+                      <input type="checkbox" name="prediction[private]" />
+                      <span className="text-white">
+                        &nbsp;Private prediction
+                      </span>
                     </div>
                     <div className="flex items-center justify-center mt-4">
                       <button
