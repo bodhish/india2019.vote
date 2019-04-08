@@ -398,7 +398,7 @@ export default class Home extends React.Component {
           )}
         {!this.state.showForm && (
           <div className="w-full bg-white fixed border-t shadow pin-b z-20">
-            {this.coinsLeft() > 199 && this.props.isCurrentUser && (
+            {this.coinsLeft() > 299 && this.props.isCurrentUser && (
               <div className="mt-2 p-2 w-full flex flex-col justify-center items-center">
                 <div className="">
                   {!this.state.showForm && (
@@ -420,7 +420,7 @@ export default class Home extends React.Component {
                   )}
                 </div>
 
-                {this.coinsLeft() < 200 && (
+                {this.coinsLeft() < 300 && (
                   <div className="mt-2">
                     {" "}
                     You dont have enough coins to make a prediction

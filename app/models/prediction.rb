@@ -2,7 +2,7 @@ class Prediction < ApplicationRecord
   belongs_to :user
 
   validates_presence_of :answer_1, :answer_2, :answer_3, :answer_4, :coins_used
-  validates :coins_used, presence: true, numericality: { greater_than: 199, less_than: 1001 }
+  validates :coins_used, presence: true, numericality: { greater_than: 299, less_than: 1001 }
 
   validate :seats_share
 

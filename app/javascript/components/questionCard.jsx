@@ -11,7 +11,7 @@ export default class QuestionCard extends React.Component {
       answer4: 0,
       questionNumber: 1,
       othersCount: 543,
-      coins: 200
+      coins: 300
     };
     this.updateAnswer3 = this.updateAnswer3.bind(this);
     this.updateAnswer4 = this.updateAnswer4.bind(this);
@@ -98,9 +98,9 @@ export default class QuestionCard extends React.Component {
       this.setState({
         coins: inputCoins
       });
-    } else if (inputCoins < 199) {
+    } else if (inputCoins < 299) {
       this.setState({
-        coins: 200
+        coins: 300
       });
     } else if (inputCoins > this.props.coinsLeft) {
       this.setState({
@@ -130,7 +130,7 @@ export default class QuestionCard extends React.Component {
       this.state.answer3 + this.state.answer4 + this.state.othersCount ===
       543
     );
-    let coinsGreaterThanMin = this.state.coins > 199;
+    let coinsGreaterThanMin = this.state.coins > 299;
     let coinsLessThanMax = this.state.coins <= this.props.coinsLeft;
     let InValidAnswer1 = this.state.answer1.length < 2;
     let InValidAnswer2 = this.state.answer2.length < 2;
@@ -160,7 +160,7 @@ export default class QuestionCard extends React.Component {
               Close
             </button>
           </div>
-          {this.props.coinsLeft > 199 && (
+          {this.props.coinsLeft > 299 && (
             <form action="/predictions" method="post">
               <input
                 type="hidden"
@@ -374,8 +374,8 @@ export default class QuestionCard extends React.Component {
                           className="appearance-none text-center block w-full bg-grey-lighter border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                           id="others"
                           type="number"
-                          placeholder="200"
-                          min="200"
+                          placeholder="300"
+                          min="300"
                           max={this.props.coinsLeft}
                           value={this.state.coins}
                           onChange={this.updateCoins}
