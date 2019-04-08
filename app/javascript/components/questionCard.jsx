@@ -388,7 +388,9 @@ export default class QuestionCard extends React.Component {
                         Coins Left {this.props.coinsLeft}
                       </div>
                     </div>
-
+                    <div>
+                      <input type="checkbox" name="prediction[private]"/><span className="text-white">&nbsp;Private prediction</span>
+                    </div>
                     <div className="flex items-center justify-center mt-4">
                       <button
                         className="btn hover:bg-grey text-blue py-2 px-4 rounded focus:outline-none focus:shadow-outline"
