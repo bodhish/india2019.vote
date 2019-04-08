@@ -19,7 +19,7 @@ User.all.each do |user|
     answer_2 = ['Narendra Modi', 'Rahul Gandhi', 'Mamata Banerjee', 'Arvind Kejriwal'].sample
     answer_3 = rand(543)
     answer_4 = 543 - answer_3
-    coins_used = 200 + rand(300)
+    coins_used = 300 + rand(200)
     Prediction.create!(
       user: user,
       answer_1: answer_1,

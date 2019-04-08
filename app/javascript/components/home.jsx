@@ -79,31 +79,122 @@ export default class Home extends React.Component {
             />
           </div>
         ) : (
-          <div className='relative'>
-            <div className='flex w-full md:w-2/3 bg-white relative justify-between'>
-              <div className='w-full p-4 flex flex-col bg-white items-center'>
-                <div
-                  className='flex flex-col max-w-md w-full justify-center items-center text-center'
-                  id='profile'
-                >
-                  <div className='w-full px-3'>
-                    <div className='flex items-center bg-white justify-between p-6 mx-3 shadow rounded-t-xl border border-b-0'>
-                      <div className='flex justify-center items-center text-center'>
-                        {this.props.user.image && (
-                          <img
-                            className='w-10 h-10 rounded-full mr-2'
-                            src={this.props.user.image.replace(
-                              'http://graph.facebook.com/',
-                              'https://graph.facebook.com/'
+          <div className="relative">
+            {this.state.showProfile && this.props.isCurrentUser ? (
+              <div className="h-screen flex items-center text-center">
+                <EditProfile
+                  authenticityToken={this.props.authenticityToken}
+                  closeButton={this.updateProfile}
+                  user={this.props.user}
+                />
+              </div>
+            ) : (
+              <div className="flex w-full md:w-2/3 bg-white relative justify-between">
+                <div className="w-full p-4 flex flex-col bg-white items-center">
+                  <div
+                    className="flex flex-col max-w-md w-full justify-center items-center text-center"
+                    id="profile"
+                  >
+                    <div className="w-full px-3">
+                      <div className="flex items-center bg-white justify-between p-6 mx-3 shadow rounded-t-xl border border-b-0">
+                        <div className="flex justify-center items-center text-center">
+                          {this.props.user.image && (
+                            <img
+                              className="w-10 h-10 rounded-full mr-2"
+                              src={this.props.user.image.replace(
+                                "http://graph.facebook.com/",
+                                "https://graph.facebook.com/"
+                              )}
+                              alt="photo"
+                            />
+                          )}
+                          <div className="flex flex-col text-left">
+                            <div>
+                              <p className="leading-none">
+                                {this.props.user.name}
+                              </p>
+                            </div>
+                            <div className="flex mt-1">
+                              {this.props.user.state !== null && (
+                                <div className="text-sm text-black">
+                                  {this.props.user.state}
+                                </div>
+                              )}
+                            </div>
+                            {this.props.isCurrentUser && (
+                              <button
+                                onClick={this.toggleShowProfile}
+                                className="text-primary text-xs text-left mt-1"
+                              >
+                                Edit profile
+                              </button>
                             )}
-                            alt='photo'
-                          />
-                        )}
-                        <div className='flex flex-col text-left'>
-                          <div className='text-sm'>
-                            <p className='leading-none'>
-                              {this.props.user.name}
-                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="isupport-card flex flex-col bg-primary shadow-lg p-8 text-white -mx-3 rounded-xl">
+                        <div className="flex flex-row justify-between items-center text-left px-4">
+                          <div>
+                            <div className="text-lg text-white">
+                              I support
+                            </div>
+                            <div className="text-4xl md:text-5xl text-white">
+                              {this.props.user.party == null
+                                ? "_ _ _ "
+                                : this.props.user.party}
+                            </div>
+                            <div className="text-sm md:text-lg pt-6">
+                              #IndiaVote2019
+                            </div>
+                          </div>
+                          <div>
+                            <img
+                              className="m-2 border-8 border-white rounded-lg party-flag"
+                              src={partyImage[this.props.user.party]}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {this.props.predictions.map((prediction, index) => (
+                    <div
+                      key={prediction.id}
+                      className="mt-10 flex flex-col max-w-md w-full"
+                    >
+                      <h5 className="uppercase text-xs font-medium pl-2">
+                        Your predictions
+                      </h5>
+                      <div className="predicted-list-card w-full text-white p-5 shadow rounded-xl mt-2">
+                        <div className="flex items-center justify-between p-2">
+                          <div className="flex justify-center items-center text-center">
+                            <div className="pl-2 text-left text-sm">
+                              <h4 className="font-medium text-sm">
+                                Prediction {index + 1}{" "}
+                              </h4>
+                              <p className="pt-4">
+                                Winning party: {prediction.answer1}
+                              </p>
+                              <p className="pt-2">
+                                Prime minister: {prediction.answer2}
+                              </p>
+                              <p className="pt-2">
+                                Seat share: BJP -{" "}
+                                <span className="font-semibold">
+                                  {prediction.answer3}
+                                </span>
+                                , Congress -{" "}
+                                <span className="font-semibold">
+                                  {prediction.answer4}
+                                </span>
+                                , Others -{" "}
+                                <span className="font-semibold">
+                                  {543 -
+                                    prediction.answer3 -
+                                    prediction.answer4}
+                                </span>
+                              </p>
+                            </div>
                           </div>
                           <div className='flex mt-1'>
                             {this.props.user.party !== null && (
@@ -122,8 +213,22 @@ export default class Home extends React.Component {
                               onClick={this.toggleShowProfile}
                               className='text-primary text-xs text-left mt-1'
                             >
-                              Edit profile
-                            </button>
+                              <input
+                                name="_method"
+                                value="delete"
+                                type="hidden"
+                              />
+                              <input
+                                className="bg-white rounded text-xs px-3 py-2 hover:bg-grey-lighter cursor-pointer "
+                                value="Delete"
+                                type="submit"
+                              />
+                              <input
+                                name="authenticity_token"
+                                type="hidden"
+                                value={this.props.authenticityToken}
+                              />
+                            </form>
                           )}
                         </div>
                       </div>
@@ -134,303 +239,221 @@ export default class Home extends React.Component {
                         </div>
                       )}
                     </div>
-                    <div className='isupport-card flex flex-col bg-primary shadow-lg p-8 text-white -mx-3 rounded-xl'>
-                      <img
-                        className='border-8 border-white rounded-lg'
-                        src={partyImage[this.props.user.party]}
-                      />
-                      <div className='text-xl p-4'>#IndiaVote2019</div>
+                  ))}
+
+                  <div className="flex flex-col max-w-md w-full mt-10">
+                    <div className="uppercase text-xs font-medium pl-2">
+                      Current Standings
                     </div>
-                  </div>
-                </div>
-                {this.state.showProfile && this.props.isCurrentUser && (
-                  <div>
-                    <EditProfile
-                      authenticityToken={this.props.authenticityToken}
-                      closeButton={this.updateProfile}
-                      user={this.props.user}
-                    />
-                  </div>
-                )}
-                <h5 className='uppercase text-xs text-left font-medium pl-2 mt-10'>
-                  Your predictions
-                </h5>
-                {this.props.predictions.map((prediction, index) => (
-                  <div
-                    key={prediction.id}
-                    className='mt-2 flex flex-col max-w-md w-full'
-                  >
-                    <div className='predicted-list-card w-full text-white p-5 shadow rounded-xl'>
-                      <div className='flex items-center justify-between p-2'>
-                        <div className='flex justify-center items-center text-center'>
-                          <div className='pl-2 text-left text-sm'>
-                            <h4 className='font-medium text-sm'>
-                              Prediction {index + 1}{' '}
-                            </h4>
-                            <p className='pt-4'>
-                              Winning party: {prediction.answer1}
+                    <div className="w-full flex flex-col justify-between mt-2">
+                      <div className="flex flex-wrap">
+                        <div className="current-standings-card mr-4">
+                          BJP
+                          <div className="text-xs font-light">
+                            <p>
+                              {this.props.stats.party.predictions_count["BJP"]}{" "}
+                              predictions,
                             </p>
-                            <p className='pt-2'>
-                              Prime minister: {prediction.answer2}
-                            </p>
-                            <p className='pt-2'>
-                              Seat share: BJP -{' '}
-                              <span className='font-semibold'>
-                                {prediction.answer3}
-                              </span>
-                              , Congress -{' '}
-                              <span className='font-semibold'>
-                                {prediction.answer4}
-                              </span>
-                              , Others -{' '}
-                              <span className='font-semibold'>
-                                {543 - prediction.answer3 - prediction.answer4}
-                              </span>
+                            <p className="mt-1">
+                              {this.props.stats.party.coins_used["BJP"]} coins
                             </p>
                           </div>
                         </div>
-                        <div className='flex mr-2 align-right'>
-                          <p className=''>Coins:&nbsp;</p>
-                          <p className=''>{prediction.coinsUsed}</p>
+                        <div className="current-standings-card mr-4">
+                          CON
+                          <div className="text-xs font-light">
+                            <p>
+                              {
+                                this.props.stats.party.predictions_count[
+                                  "Congress"
+                                ]
+                              }{" "}
+                              predictions,
+                            </p>
+                            <p className="mt-1">
+                              {this.props.stats.party.coins_used["Congress"]}{" "}
+                              coins
+                            </p>
+                          </div>
                         </div>
-                        {this.props.isCurrentUser && (
-                          <form
-                            className='button_to'
-                            method='post'
-                            action={'predictions/' + prediction.id}
-                          >
-                            <input
-                              name='_method'
-                              value='delete'
-                              type='hidden'
-                            />
-                            <input
-                              className='bg-white rounded text-xs px-3 py-2 hover:bg-grey-lighter cursor-pointer '
-                              value='Delete'
-                              type='submit'
-                            />
-                            <input
-                              name='authenticity_token'
-                              type='hidden'
-                              value={this.props.authenticityToken}
-                            />
-                          </form>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-
-                <div className='flex flex-col max-w-md w-full mt-10'>
-                  <div className='uppercase text-xs font-medium pl-2'>
-                    Current Standings
-                  </div>
-                  <div className='w-full flex flex-col justify-between mt-2'>
-                    <div className='flex flex-wrap'>
-                      <div className='current-standings-card mr-4'>
-                        BJP
-                        <div className='text-xs font-light'>
-                          <p>
-                            {this.props.stats.party.predictions_count['BJP']}{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {this.props.stats.party.coins_used['BJP']} coins
-                          </p>
+                        <div className="current-standings-card mr-4">
+                          NDA
+                          <div className="text-xs font-light">
+                            <p>
+                              {this.props.stats.party.predictions_count["NDA"]}{" "}
+                              predictions,
+                            </p>
+                            <p className="mt-1">
+                              {this.props.stats.party.coins_used["NDA"]} coins
+                            </p>
+                          </div>
+                        </div>
+                        <div className="current-standings-card mr-4">
+                          UPA
+                          <div className="text-xs font-light">
+                            <p>
+                              {this.props.stats.party.predictions_count["UPA"]}{" "}
+                              predictions,
+                            </p>
+                            <p className="mt-1">
+                              {this.props.stats.party.coins_used["UPA"]} coins
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <div className='current-standings-card mr-4'>
-                        CON
-                        <div className='text-xs font-light'>
-                          <p>
-                            {
-                              this.props.stats.party.predictions_count[
-                                'Congress'
-                              ]
-                            }{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {this.props.stats.party.coins_used['Congress']}{' '}
-                            coins
-                          </p>
+                      <div className="flex flex-wrap mt-8">
+                        <div className="current-standings-card mr-4">
+                          Modi
+                          <div className="text-xs font-light">
+                            <p>
+                              {
+                                this.props.stats.primeMinister
+                                  .predictions_count["Narendra Modi"]
+                              }{" "}
+                              predictions,
+                            </p>
+                            <p className="mt-1">
+                              {
+                                this.props.stats.primeMinister.coins_used[
+                                  "Narendra Modi"
+                                ]
+                              }{" "}
+                              coins
+                            </p>
+                          </div>
+                        </div>
+                        <div className="current-standings-card mr-4">
+                          Rahul
+                          <div className="text-xs font-light">
+                            <p>
+                              {
+                                this.props.stats.primeMinister
+                                  .predictions_count["Rahul Gandhi"]
+                              }{" "}
+                              predictions,
+                            </p>
+                            <p className="mt-1">
+                              {
+                                this.props.stats.primeMinister.coins_used[
+                                  "Rahul Gandhi"
+                                ]
+                              }{" "}
+                              coins
+                            </p>
+                          </div>
+                        </div>
+                        <div className="current-standings-card mr-4">
+                          Mamata
+                          <div className="text-xs font-light">
+                            <p>
+                              {
+                                this.props.stats.primeMinister
+                                  .predictions_count["Mamata Banerjee"]
+                              }{" "}
+                              predictions,
+                            </p>
+                            <p className="mt-1">
+                              {
+                                this.props.stats.primeMinister.coins_used[
+                                  "Mamata Banerjee"
+                                ]
+                              }{" "}
+                              coins
+                            </p>
+                          </div>
+                        </div>
+                        <div className="current-standings-card mr-4">
+                          Kejriwal
+                          <div className="text-xs font-light">
+                            <p>
+                              {
+                                this.props.stats.primeMinister
+                                  .predictions_count["Arvind Kejriwal"]
+                              }{" "}
+                              predictions,
+                            </p>
+                            <p className="mt-1">
+                              {
+                                this.props.stats.primeMinister.coins_used[
+                                  "Arvind Kejriwal"
+                                ]
+                              }{" "}
+                              coins
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <div className='current-standings-card mr-4'>
-                        NDA
-                        <div className='text-xs font-light'>
-                          <p>
-                            {this.props.stats.party.predictions_count['NDA']}{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {this.props.stats.party.coins_used['NDA']} coins
-                          </p>
+                      <div className="flex flex-col max-w-md w-full mt-10">
+                        <div className="uppercase text-xs font-medium pl-2">
+                          Average seats predicted:
                         </div>
-                      </div>
-                      <div className='current-standings-card mr-4'>
-                        UPA
-                        <div className='text-xs font-light'>
-                          <p>
-                            {this.props.stats.party.predictions_count['UPA']}{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {this.props.stats.party.coins_used['UPA']} coins
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='flex flex-wrap mt-8'>
-                      <div className='current-standings-card mr-4'>
-                        Modi
-                        <div className='text-xs font-light'>
-                          <p>
-                            {
-                              this.props.stats.primeMinister.predictions_count[
-                                'Narendra Modi'
-                              ]
-                            }{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {
-                              this.props.stats.primeMinister.coins_used[
-                                'Narendra Modi'
-                              ]
-                            }{' '}
-                            coins
-                          </p>
-                        </div>
-                      </div>
-                      <div className='current-standings-card mr-4'>
-                        Rahul
-                        <div className='text-xs font-light'>
-                          <p>
-                            {
-                              this.props.stats.primeMinister.predictions_count[
-                                'Rahul Gandhi'
-                              ]
-                            }{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {
-                              this.props.stats.primeMinister.coins_used[
-                                'Rahul Gandhi'
-                              ]
-                            }{' '}
-                            coins
-                          </p>
-                        </div>
-                      </div>
-                      <div className='current-standings-card mr-4'>
-                        Mamata
-                        <div className='text-xs font-light'>
-                          <p>
-                            {
-                              this.props.stats.primeMinister.predictions_count[
-                                'Mamata Banerjee'
-                              ]
-                            }{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {
-                              this.props.stats.primeMinister.coins_used[
-                                'Mamata Banerjee'
-                              ]
-                            }{' '}
-                            coins
-                          </p>
-                        </div>
-                      </div>
-                      <div className='current-standings-card mr-4'>
-                        Kejriwal
-                        <div className='text-xs font-light'>
-                          <p>
-                            {
-                              this.props.stats.primeMinister.predictions_count[
-                                'Arvind Kejriwal'
-                              ]
-                            }{' '}
-                            predictions,
-                          </p>
-                          <p className='mt-1'>
-                            {
-                              this.props.stats.primeMinister.coins_used[
-                                'Arvind Kejriwal'
-                              ]
-                            }{' '}
-                            coins
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='flex flex-col max-w-md w-full mt-10'>
-                      <div className='uppercase text-xs font-medium pl-2'>
-                        Average seats predicted:
-                      </div>
-                      <div className='flex'>
-                        <div className='my-4 p-3'>
-                          <p className='text-sm'>BJP:</p>
-                          <h3 className='font-medium mt-2'>
-                            {this.props.stats.bjpAvgSeats}
-                          </h3>
-                        </div>
-                        <div className='my-4 p-3'>
-                          <p className='text-sm'>Congress:</p>
-                          <h3 className='font-medium mt-2'>
-                            {this.props.stats.congAvgSeats}
-                          </h3>
+                        <div className="flex">
+                          <div className="my-4 p-3">
+                            <p className="text-sm">BJP:</p>
+                            <h3 className="font-medium mt-2">
+                              {this.props.stats.bjpAvgSeats}
+                            </h3>
+                          </div>
+                          <div className="my-4 p-3">
+                            <p className="text-sm">Congress:</p>
+                            <h3 className="font-medium mt-2">
+                              {this.props.stats.congAvgSeats}
+                            </h3>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className='flex flex-row justify-between'>
-                  <a
-                    className='m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white font-bold rounded'
-                    href={facebookShareUrl}
-                    target='_blank'
-                  >
-                    <span className='font-regular py-2 px-2'>
-                      Share on Facebook
-                    </span>
-                  </a>
-                  <div className='visible sm:invisible'>
-                    <Whatsapp
+                  <div className="flex flex-row justify-between">
+                    <a
+                      className="m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white font-bold rounded"
+                      href={facebookShareUrl}
+                      target="_blank"
+                    >
+                      <span className="font-regular py-2 px-2">
+                        Share on Facebook
+                      </span>
+                    </a>
+                    <div className="visible sm:invisible">
+                      <Whatsapp
+                        solidcircle
+                        big
+                        message={shareMessage}
+                        link={shareUrl}
+                      />
+                    </div>
+                    <Twitter
                       solidcircle
                       big
                       message={shareMessage}
                       link={shareUrl}
                     />
                   </div>
-                  <Twitter
-                    solidcircle
-                    big
-                    message={shareMessage}
-                    link={shareUrl}
-                  />
-                </div>
-                <div className='flex items-center mb-24'>
-                  <Screenshot elementID='profile' />
-                  <Logout authenticityToken={this.props.authenticityToken} />
+                  <div className="flex items-center mb-24">
+                    <Screenshot elementID="profile" />
+                    <Logout authenticityToken={this.props.authenticityToken} />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className='notification w-full md:w-1/3 pr-3 flex flex-col bg-white flex justify-center items-center z-10'>
+            )}
+            <div className="notification w-full md:w-1/3 pr-3 flex flex-col bg-white flex justify-center items-center z-10">
               <PredictionsFeed latestPredictions={this.props.feedStart} />
             </div>
           </div>
         )}
         {!this.state.showForm && (
-          <div className='w-full bg-white fixed border-t shadow pin-b z-20'>
-            {this.coinsLeft() > 199 && this.props.isCurrentUser && (
-              <div className='mt-2 p-2 w-full flex flex-col justify-center items-center'>
-                <div className=''>
-                  {!this.state.showForm && (
+          <div className="w-full bg-white fixed border-t shadow pin-b z-20">
+            {this.props.isCurrentUser && (
+              <div className="mt-2 p-2 w-full flex flex-row justify-center items-center">
+                <div className="flex m-4">
+                  <p className="leading-none">Coins left:&nbsp;</p>
+                  <p className="leading-none">{this.coinsLeft()}</p>
+                </div>
+
+                <div className="">
+                  {this.coinsLeft() > 299 && !this.state.showForm && (
                     <button
                       className='p-2 rounded btn text-black'
                       onClick={this.toggleShowForm}
@@ -438,20 +461,10 @@ export default class Home extends React.Component {
                       Add New Prediction
                     </button>
                   )}
-                  {this.state.showForm && (
-                    <div className='h-screen'>
-                      <QuestionCard
-                        authenticityToken={this.props.authenticityToken}
-                        coinsLeft={this.coinsLeft()}
-                        toggleShowFormCB={this.toggleShowForm}
-                      />
-                    </div>
-                  )}
                 </div>
-
-                {this.coinsLeft() < 200 && (
-                  <div className='mt-2'>
-                    {' '}
+                {this.coinsLeft() < 300 && (
+                  <div className="mt-2">
+                    {" "}
                     You dont have enough coins to make a prediction
                   </div>
                 )}

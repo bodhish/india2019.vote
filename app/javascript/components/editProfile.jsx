@@ -76,7 +76,7 @@ export default class EditProfile extends React.Component {
       "West Bengal"
     ];
     return (
-      <div className="w-full">
+      <div className="w-full md:w-2/3 ">
         <button onClick={this.close} className="p-1">
           Close
         </button>
@@ -93,7 +93,7 @@ export default class EditProfile extends React.Component {
               className="block tracking-wide text-lg mb-2"
               htmlFor="select-state"
             >
-              Where do you live?
+              I am from
             </label>
             <div className="inline-block relative w-64">
               <select
@@ -102,7 +102,7 @@ export default class EditProfile extends React.Component {
                 value={this.state.state}
                 className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               >
-                <option value="">Select...</option>
+                <option value="">Select your state</option>
                 {listOfStates.map(state => {
                   return <option key={state}>{state}</option>;
                 })}
@@ -132,7 +132,7 @@ export default class EditProfile extends React.Component {
                 value={this.state.party}
                 className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
               >
-                <option value="">Select...</option>
+                <option value="">Select your party</option>
                 {listOfParties.map(party => {
                   return <option key={party}>{party}</option>;
                 })}
