@@ -149,13 +149,11 @@ export default class Home extends React.Component {
                       />
                     </div>
                   )}
-
                   {this.props.predictions.map((prediction, index) => (
                     <div
                       key={prediction.id}
                       className="mt-10 flex flex-col max-w-md w-full"
                     >
-                      <h5 className='uppercase text-xs font-medium pl-2'>Your predictions</h5>
                       <div className="predicted-list-card w-full text-white p-5 shadow rounded-xl mt-2">
                         <div className="flex items-center justify-between p-2">
                           <div className="flex justify-center items-center text-center">
