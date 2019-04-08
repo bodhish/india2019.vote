@@ -77,8 +77,8 @@ body {
 }
 
 .notification--loaded-animate {
-    -webkit-animation: animation 1400ms linear infinite both;
-    animation: animation 1400ms linear infinite both;
+    -webkit-animation: animation 1400ms linear both;
+    animation: animation 1400ms linear both;
 }
 
 .notification-card {
