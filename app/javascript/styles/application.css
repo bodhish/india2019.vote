@@ -24,7 +24,7 @@ body {
 
 .home-left-top-container {
     background-color: #F7F6F0;
-    background-image: url("/assets/RaMo-cover.jpg");
+    background-image: url("../../../public/RaMo-cover.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 100% 100px;
