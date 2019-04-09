@@ -17,7 +17,7 @@ module Home
 
     def feedStart
       predictions = Prediction.order(id: :desc)
-      predictions = predictions.offset(10) if Prediction.count > 15
+      predictions = predictions.offset(5) if Prediction.count > 10
       predictions.limit(5).includes(:user).map do |p|
         {
           id: p.id,
