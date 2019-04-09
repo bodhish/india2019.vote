@@ -21,6 +21,7 @@ export default class Home extends React.Component {
     this.toggleShowForm = this.toggleShowForm.bind(this);
     this.toggleShowProfile = this.toggleShowProfile.bind(this);
     this.updateProfile = this.updateProfile.bind(this);
+    this.getFormattedDate = this.getFormattedDate.bind(this);
   }
 
   coinsLeft() {
@@ -47,6 +48,11 @@ export default class Home extends React.Component {
     });
   }
 
+  getFormattedDate() {
+    let todayTime = new Date();
+    return todayTime.toLocaleString();
+  }
+
   render() {
     let pbUPA =
       this.props.stats.party.predictions_count["UPA"] / this.props.stats.total;
@@ -65,8 +71,10 @@ export default class Home extends React.Component {
     let pbOtherPM = 1 - pbModi - pbRG;
 
     let facebookShareUrl =
-      "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findia2019.vote&hashtag=%23Inida2019";
-    let shareUrl = "https://india2019.vote";
+      "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Findia2019.vote/" +
+      this.props.user.slug +
+      "&hashtag=%23India2019";
+    let shareUrl = "https://india2019.vote/" + this.props.user.slug;
     let shareMessage =
       "Do you know India's pulse? Make your predictions for the Indian elections 2019 & follow what others are predicting.";
     let partyImage = {
@@ -167,103 +175,114 @@ export default class Home extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <div className="max-w-md w-full px-3 md:px-6">
-                    <div className="w-full flex border border-t-0 rounded-b-lg shadow bg-white">
-                      <div className="w-1/2">
-                        <Screenshot elementID="profile" />
-                      </div>
 
-                      <div className="w-1/2 border-l">
-                        {this.props.isCurrentUser && (
+                  {this.props.isCurrentUser && (
+                    <div className="max-w-md w-full px-3 md:px-6">
+                      <div className="w-full flex border border-t-0 rounded-b-lg shadow bg-white">
+                        <div className="w-1/2">
+                          <Screenshot elementID="profile" />
+                        </div>
+
+                        <div className="w-1/2 border-l">
                           <button
                             onClick={this.toggleShowProfile}
                             className="text-primary text-xs text-center h-9 w-full cursor-pointer hover:bg-primary-lightest hover:text-primary-dark focus:outline-none"
                           >
                             Edit profile
                           </button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col max-w-md w-full mt-10">
-                    <h5 className="uppercase text-xs font-medium text-left pl-2">
-                      Your predictions
-                    </h5>
-                    {this.props.predictions.map((prediction, index) => (
-                      <div
-                        key={prediction.id}
-                        className="mt-2 flex flex-col max-w-md w-full"
-                      >
-                        <div className="predicted-list-card w-full text-white px-3 py-5 md:p-5 shadow rounded-xl">
-                          <div className="flex items-center justify-between">
-                            <div className="flex justify-center items-center text-center">
-                              <div className="pl-2 text-left text-sm">
-                                <h4 className="font-medium text-sm">
-                                  Prediction {index + 1}{" "}
-                                </h4>
-                                <p className="pt-4">
-                                  Winning party: {prediction.answer1}
-                                </p>
-                                <p className="pt-2">
-                                  Prime minister: {prediction.answer2}
-                                </p>
-                                <p className="pt-2">
-                                  Seat share: BJP -{" "}
-                                  <span className="font-semibold">
-                                    {prediction.answer3}
-                                  </span>
-                                  , Congress -{" "}
-                                  <span className="font-semibold">
-                                    {prediction.answer4}
-                                  </span>
-                                  , Others -{" "}
-                                  <span className="font-semibold">
-                                    {543 -
-                                      prediction.answer3 -
-                                      prediction.answer4}
-                                  </span>
-                                </p>
-                              </div>
-                            </div>
-                            {this.props.isCurrentUser && (
-                              <form
-                                className="button_to"
-                                method="post"
-                                action={"predictions/" + prediction.id}
-                              >
-                                <input
-                                  name="_method"
-                                  value="delete"
-                                  type="hidden"
-                                />
-                                <input
-                                  className="bg-white rounded text-xs px-3 py-2 hover:bg-grey-lighter cursor-pointer "
-                                  value="Delete"
-                                  type="submit"
-                                />
-                                <input
-                                  name="authenticity_token"
-                                  type="hidden"
-                                  value={this.props.authenticityToken}
-                                />
-                              </form>
-                            )}
-                          </div>
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  )}
+                  {this.props.predictions.length > 0 && (
+                    <div className="flex flex-col max-w-md w-full mt-10">
+                      <h5 className="uppercase text-xs font-medium text-left pl-2">
+                        {this.props.isCurrentUser
+                          ? "Your predictions"
+                          : this.props.user.name + "'s predictions"}
+                      </h5>
+                      {this.props.predictions.map((prediction, index) => (
+                        <div
+                          key={prediction.id}
+                          className="mt-2 flex flex-col max-w-md w-full"
+                        >
+                          <div className="predicted-list-card w-full text-white px-3 py-5 md:p-5 shadow rounded-xl">
+                            <div className="flex items-center justify-between">
+                              <div className="flex justify-center items-center text-center">
+                                <div className="pl-2 text-left text-sm">
+                                  <h4 className="font-medium text-sm">
+                                    Prediction {index + 1}{" "}
+                                  </h4>
+                                  <p className="pt-4">
+                                    Winning party: {prediction.answer1}
+                                  </p>
+                                  <p className="pt-2">
+                                    Prime minister: {prediction.answer2}
+                                  </p>
+                                  <p className="pt-2">
+                                    Seat share: BJP -{" "}
+                                    <span className="font-semibold">
+                                      {prediction.answer3}
+                                    </span>
+                                    , Congress -{" "}
+                                    <span className="font-semibold">
+                                      {prediction.answer4}
+                                    </span>
+                                    , Others -{" "}
+                                    <span className="font-semibold">
+                                      {543 -
+                                        prediction.answer3 -
+                                        prediction.answer4}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
+                              {this.props.isCurrentUser && (
+                                <form
+                                  className="button_to"
+                                  method="post"
+                                  action={"predictions/" + prediction.id}
+                                >
+                                  <input
+                                    name="_method"
+                                    value="delete"
+                                    type="hidden"
+                                  />
+                                  <input
+                                    className="bg-white rounded text-xs px-3 py-2 hover:bg-grey-lighter cursor-pointer "
+                                    value="Delete"
+                                    type="submit"
+                                  />
+                                  <input
+                                    name="authenticity_token"
+                                    type="hidden"
+                                    value={this.props.authenticityToken}
+                                  />
+                                </form>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   <div className="flex flex-col max-w-md w-full mt-10">
                     <div className="uppercase text-xs font-medium pl-2">
                       Current Standings
                     </div>
                     <div className="w-full flex flex-col justify-between mt-2">
-                      <div className="current-standings-card">
+                      <div
+                        id="next-govt"
+                        className="bg-white current-standings-card"
+                      >
                         <div className="pb-3">
                           <h3 className="font-medium text-primary-darker">
                             Who will form the government in 2019?
                           </h3>
+                          <div className="text-sm p-1">
+                            Prediction as of {this.getFormattedDate()}
+                          </div>
                         </div>
                         <div className="mt-4 flex flex-end">
                           <div className="w-full">
@@ -307,12 +326,35 @@ export default class Home extends React.Component {
                             {(pbOtherParty * 100).toFixed()}%
                           </h5>
                         </div>
+                        <div className="flex flex-row justify-between">
+                          <div className="text-sm md:text-lg pt-6">
+                            Lest vote for a Better India
+                          </div>
+                          <div className="text-sm md:text-lg pt-6">
+                            #IndiaVote2019
+                          </div>
+                        </div>
                       </div>
-                      <div className="current-standings-card mt-5">
+                      {this.props.isCurrentUser && (
+                        <div className="max-w-md w-full px-3 md:px-6">
+                          <div className="w-full flex border border-t-0 rounded-b-lg shadow bg-white">
+                            <div className="w-full">
+                              <Screenshot elementID="next-govt" />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      <div
+                        id="next-pm"
+                        className="bg-white current-standings-card mt-5"
+                      >
                         <div className="pb-3">
                           <h3 className="font-medium text-primary-darker">
                             Who will be the prime minister?
                           </h3>
+                          <div className="text-sm p-1">
+                            Prediction as of {this.getFormattedDate()}
+                          </div>
                         </div>
                         <div className="mt-4 flex flex-end">
                           <div className="w-full">
@@ -356,28 +398,53 @@ export default class Home extends React.Component {
                             {(pbOtherPM * 100).toFixed()}%
                           </h5>
                         </div>
+                        <div className="flex flex-row justify-between">
+                          <div className="text-sm md:text-lg pt-6">
+                            Lest vote for a Better India
+                          </div>
+                          <div className="text-sm md:text-lg pt-6">
+                            #IndiaVote2019
+                          </div>
+                        </div>
                       </div>
+                      {this.props.isCurrentUser && (
+                        <div className="max-w-md w-full px-3 md:px-6">
+                          <div className="w-full flex border border-t-0 rounded-b-lg shadow bg-white">
+                            <div className="w-full">
+                              <Screenshot elementID="next-pm" />
+                            </div>
+                          </div>
+                        </div>
+                      )}
                       <div className="flex flex-col max-w-md w-full mt-10">
                         <div className="uppercase text-xs font-medium pl-2">
                           Average seats predicted:
                         </div>
                         <div className="flex">
                           <div className="my-4 p-3">
-                            <p className="text-sm">BJP:</p>
+                            <p className="text-sm">BJP</p>
                             <h3 className="font-medium mt-2">
                               {this.props.stats.bjpAvgSeats}
                             </h3>
                           </div>
                           <div className="my-4 p-3">
-                            <p className="text-sm">Congress:</p>
+                            <p className="text-sm">Congress</p>
                             <h3 className="font-medium mt-2">
                               {this.props.stats.congAvgSeats}
+                            </h3>
+                          </div>
+                          <div className="my-4 p-3">
+                            <p className="text-sm">Others</p>
+                            <h3 className="font-medium mt-2">
+                              {543 -
+                                this.props.stats.bjpAvgSeats -
+                                this.props.stats.congAvgSeats}
                             </h3>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-wrap">
                       <a
                         className="m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white font-bold rounded"
                         href={facebookShareUrl}
@@ -387,7 +454,7 @@ export default class Home extends React.Component {
                           Share on Facebook
                         </span>
                       </a>
-                      <div className="visible sm:invisible">
+                      <div className="visible sm:invisible ">
                         <Whatsapp
                           solidcircle
                           big
@@ -404,8 +471,25 @@ export default class Home extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col max-w-md w-full mt-5 pb-6 md:pb-24">
-                  <Logout authenticityToken={this.props.authenticityToken} />
+                <div className="flex flex-col text-center w-full mt-5 pb-6 md:pb-24">
+                  Contact us <br />
+                  <div className="m-2">
+                    <a href="mailto:india2019.vote@gmail.com"> Mail</a> |
+                    <a
+                      target="_blank"
+                      href="https://twitter.com/india2019_vote"
+                    >
+                      {" "}
+                      Twitter
+                    </a>{" "}
+                    |
+                    <a
+                      href="https://www.facebook.com/india2019.vote"
+                      target="_blank"
+                    >
+                      Facebook
+                    </a>
+                  </div>
                 </div>
               </div>
             )}
@@ -416,7 +500,7 @@ export default class Home extends React.Component {
         )}
         {!this.state.showForm && (
           <div className="w-full md:w-2/3 bg-white fixed pin-b z-20">
-            {this.props.isCurrentUser && (
+            {this.props.isCurrentUser ? (
               <div className="p-2 w-full flex flex-row justify-center items-center border-t">
                 <div className="flex">
                   <Logout authenticityToken={this.props.authenticityToken} />
@@ -444,6 +528,15 @@ export default class Home extends React.Component {
                     You dont have enough coins to make a prediction
                   </div>
                 )}
+              </div>
+            ) : (
+              <div className="p-2 w-full flex flex-row justify-center items-center border-t">
+                <a
+                  href="./users/auth/facebook"
+                  className="p-2 rounded btn text-black"
+                >
+                  Login to Predict
+                </a>
               </div>
             )}
           </div>

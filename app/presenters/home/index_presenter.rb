@@ -44,6 +44,7 @@ module Home
         image: user.image,
         party: user.party,
         state: user.state,
+        slug: user.slug,
       }
     end
 
