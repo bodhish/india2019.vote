@@ -371,20 +371,6 @@ export default class Home extends React.Component {
                         </div>
                         <div className="mt-4 flex flex-end">
                           <div className="w-full">
-                            <h5 className="font-medium">Rahul Gandhi</h5>
-                            <div className="shadow-sm w-full bg-grey-lighter mt-1 flex flex-1 rounded-full">
-                              <div
-                                className="bg-inv-blue text-xs leading-none rounded-full py-1 text-center text-white"
-                                style={{ width: pbRG * 100 + "%" }}
-                              />
-                            </div>
-                          </div>
-                          <h5 className="font-medium pt-3 pl-3">
-                            {(pbRG * 100).toFixed()}%
-                          </h5>
-                        </div>
-                        <div className="mt-4 flex flex-end">
-                          <div className="w-full">
                             <h5 className="font-medium">Narendra Modi</h5>
                             <div className="shadow-sm w-full bg-grey-lighter mt-1 flex flex-1 rounded-full">
                               <div
@@ -395,6 +381,20 @@ export default class Home extends React.Component {
                           </div>
                           <h5 className="font-medium pt-3 pl-3">
                             {(pbModi * 100).toFixed()}%
+                          </h5>
+                        </div>
+                        <div className="mt-4 flex flex-end">
+                          <div className="w-full">
+                            <h5 className="font-medium">Rahul Gandhi</h5>
+                            <div className="shadow-sm w-full bg-grey-lighter mt-1 flex flex-1 rounded-full">
+                              <div
+                                className="bg-inv-blue text-xs leading-none rounded-full py-1 text-center text-white"
+                                style={{ width: pbRG * 100 + "%" }}
+                              />
+                            </div>
+                          </div>
+                          <h5 className="font-medium pt-3 pl-3">
+                            {(pbRG * 100).toFixed()}%
                           </h5>
                         </div>
                         <div className="mt-4 flex flex-end">
