@@ -272,24 +272,13 @@ export default class QuestionCard extends React.Component {
                       </div>
                       <div className="p-2">
                         <div
-                          onClick={() => this.updateAnswer2("Mamata Banerjee")}
-                          value="Mamata Banerjee"
+                          onClick={() => this.updateAnswer2("Other")}
+                          value="Other"
                           className={this.selectedAnswerClasses(
-                            this.state.answer2 == "Mamata Banerjee"
+                            this.state.answer2 == "Other"
                           )}
                         >
-                          Mamata Banerjee
-                        </div>
-                      </div>
-                      <div className="p-2">
-                        <div
-                          onClick={() => this.updateAnswer2("Arvind Kejriwal")}
-                          value="Arvind Kejriwal"
-                          className={this.selectedAnswerClasses(
-                            this.state.answer2 == "Arvind Kejriwal"
-                          )}
-                        >
-                          Arvind Kejriwal
+                          Other
                         </div>
                       </div>
                     </div>
