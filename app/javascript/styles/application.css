@@ -32,7 +32,7 @@ body {
 
 @screen md {
     .home-left-top-container {
-        background-size: 30rem;
+        background-size: 28rem;
         background-position: 90% 10px;
     }
 }
