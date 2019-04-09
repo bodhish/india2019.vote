@@ -23,8 +23,22 @@ body {
 }
 
 .home-left-top-container {
-    background-color: rgba(70, 1, 116, 1);
-    background-image: linear-gradient( 45deg, rgba(70, 1, 116, 1) 0%, rgba(247, 1, 157, 1) 100%);
+    background-color: #F7F6F0;
+    background-image: url("/assets/RaMo-cover.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 100% 100px;
+}
+
+@screen md {
+    .home-left-top-container {
+        background-size: 30rem;
+        background-position: 90% 10px;
+    }
+}
+
+.indiavote-logo-container {
+    width: 10rem;
 }
 
 .question-card__question {

@@ -2,19 +2,22 @@
 
 <div class="flex flex-wrap w-full overflow-x-hidden">
   <div class="w-full md:w-2/3 text-center">
-    <div class="home-left-top-container text-left text-white">
-      <div class="w-full md:w-2/3 mx-auto py-16 md:py-20 px-4">
-        <h1 class="mb-4 text-4xl md:text-5xl leading-tight">Make your <br/> predictions for the Indian elections 2019!
+    <div class="home-left-top-container text-left text-primary-dark">
+      <div class="w-full md:w-3/4 mx-auto pt-8 md:py-12 px-4">
+        <div class="indiavote-logo-container mx-auto md:mx-0">
+           <img class="w-full" src="assets/india2019-logo.svg" alt="India2019"/>
+        </div>
+        <h1 class="text-4xl md:text-5xl leading-tight pt-32 mt-16">Make your <br/> predictions for the Indian elections 2019!
         </h1>
-        <h3 class="font-normal leading-tight">Will India continue with the Chowkidhar, vote the young Gandhi to the helm
-          or bring in a completely new face to be the next PM?</h3>
+        <h4 class="font-normal w-4/5 leading-normal pt-2 pb-3">Will India continue with the Chowkidhar, vote the young Gandhi to the helm
+          or bring in a completely new face to be the next PM?</h4>
         <% unless current_user %>
           <div
-            class="flex mt-4">
+            class="flex">
             <%= link_to "Sign in & Predict", user_facebook_omniauth_authorize_path, class: "btn no-underline" %>
 
           </div>
-          <p class="text-sm mt-4"> We will email you the results on May 23rd.
+          <p class="text-xs mt-3 leading-tight w-4/5 text-grey-darker"> We will email you the results on May 23rd.
             We will not post anything to your Facebook profile nor share your email address with anyone.
           </p>
         <% else %>
@@ -24,7 +27,7 @@
         <% end %>
       </div>
     </div>
-    <div class="w-full md:w-2/3 mx-auto pt-4">
+    <div class="w-full md:w-3/4 mx-auto pt-4">
       <div class="my-8 mx-auto w-full px-4 text-left">
         <div class="flex items-center">
           <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
