@@ -148,7 +148,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="hidden md:block">
                           <h5 className="font-medium text-primary-dark">
-                            india2019.vote
+                            #indiaVote2019
                           </h5>
                         </div>
                       </div>
@@ -173,7 +173,7 @@ export default class Home extends React.Component {
                               </div>
                             )}
                             <div className="text-sm md:text-lg pt-6">
-                              #IndiaVote2019
+                              India2019.vote
                             </div>
                           </div>
                           {this.props.user.party && (
@@ -344,7 +344,7 @@ export default class Home extends React.Component {
                             Let's vote for a Better India
                           </div>
                           <div className="text-sm md:text-lg pt-6">
-                            #IndiaVote2019
+                            India2019.vote
                           </div>
                         </div>
                       </div>
@@ -416,7 +416,7 @@ export default class Home extends React.Component {
                             Let's vote for a Better India
                           </div>
                           <div className="text-sm md:text-lg pt-6">
-                            #IndiaVote2019
+                            India2019.vote
                           </div>
                         </div>
                       </div>
