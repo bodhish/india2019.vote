@@ -53,7 +53,7 @@ export default class PredictionsFeed extends React.Component {
                   />
                   <div className="flex flex-col ml-2">
                     <div className="text-sm">{prediction.user_name}</div>
-                    {prediction.user_party && (
+                    {prediction.user_party.length > 0 && (
                       <div className="text-xs text-grey">
                         from {prediction.user_state}
                       </div>
