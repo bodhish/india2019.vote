@@ -150,7 +150,7 @@ export default class QuestionCard extends React.Component {
   }
   render() {
     return (
-      <div className="mb-6">
+      <div className="h-screen mb-6">
         <div className="flex flex-col relative px-16 py-12 mb-4 flex items-center">
           <div className="absolute pin-r pin-t">
             <button
@@ -411,13 +411,15 @@ export default class QuestionCard extends React.Component {
           )}
 
           {this.nextDisabled() && (
-            <div className="flex justify-between pt-2">
-              <button
-                onClick={this.updateQuestionNumber}
-                className="btn bg-white hover:bg-grey text-blue focus:outline-none focus:shadow-outline"
-              >
-                Next
-              </button>
+            <div className="w-full md:w-2/3 bg-white fixed pin-b z-20">
+              <div className="p-2 w-full flex flex-row justify-center items-center border-t">
+                <button
+                  onClick={this.updateQuestionNumber}
+                  className="btn bg-white hover:bg-grey text-blue focus:outline-none focus:shadow-outline"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           )}
         </div>

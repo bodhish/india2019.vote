@@ -156,35 +156,34 @@ export default class Home extends React.Component {
                         <div className="flex flex-row justify-between items-center text-left px-4">
                           <div>
                             <div className="text-lg text-white">I support</div>
-                            {
-                              this.props.user.party != null ?
-                                  ( <div className="text-4xl md:text-5xl font-semibold text-white">
-                                    {this.props.user.party}
-                                  </div>)
-                                  :
-                                  (
-                                      <div className="text-xs text-white mt-2 cursor-pointer" onClick={this.toggleShowProfile}>
-                                        <span className="text-4xl md:text-5xl">_ _ _</span><br/>
-                                        <span>Add your party</span>
-                                      </div>
-                                  )
-                            }
+                            {this.props.user.party != null ? (
+                              <div className="text-4xl md:text-5xl font-semibold text-white">
+                                {this.props.user.party}
+                              </div>
+                            ) : (
+                              <div
+                                className="text-xs text-white mt-2 cursor-pointer"
+                                onClick={this.toggleShowProfile}
+                              >
+                                <span className="text-4xl md:text-5xl">
+                                  _ _ _
+                                </span>
+                                <br />
+                                <span>Add your party</span>
+                              </div>
+                            )}
                             <div className="text-sm md:text-lg pt-6">
                               #IndiaVote2019
                             </div>
                           </div>
-                          {
-                            this.props.user.party &&
-                            (
-                                <div>
-                                  <img
-                                      className="m-2 bg-white p-3 rounded-lg party-flag"
-                                      src={partyImage[this.props.user.party]}
-                                  />
-                                </div>
-                            )
-                          }
-
+                          {this.props.user.party && (
+                            <div>
+                              <img
+                                className="m-2 bg-white p-3 rounded-lg party-flag"
+                                src={partyImage[this.props.user.party]}
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -493,9 +492,8 @@ export default class Home extends React.Component {
                       target="_blank"
                       href="https://twitter.com/india2019_vote"
                     >
-                      {" "}
                       Twitter
-                    </a>{" "}
+                    </a>
                     |
                     <a
                       href="https://www.facebook.com/india2019.vote"
@@ -546,10 +544,10 @@ export default class Home extends React.Component {
             ) : (
               <div className="p-2 w-full flex flex-row justify-center items-center border-t">
                 <a
-                  href="./users/auth/facebook"
-                  className="p-2 rounded btn text-black"
+                  href="./"
+                  className="p-2 no-underline rounded btn text-black"
                 >
-                  Login to Predict
+                  Predict Now
                 </a>
               </div>
             )}
