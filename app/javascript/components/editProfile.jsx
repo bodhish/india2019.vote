@@ -120,7 +120,7 @@ export default class EditProfile extends React.Component {
                   value={this.state.party}
                   className="block appearance-none w-full bg-white border border-grey-light hover:border-grey h-12 rounded shadow focus:outline-none"
                 >
-                  <option value="">Select your party</option>
+                  <option value="">None</option>
                   {listOfParties.map(party => {
                     return <option key={party}>{party}</option>;
                   })}
