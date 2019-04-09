@@ -41,6 +41,7 @@ export default class PredictionsFeed extends React.Component {
   render () {
     return (
       <div className='w-full'>
+        <div className="uppercase text-sm">Latest Predictions</div>
         {this.state.latestPredictions.map((prediction, index) => {
           return (
             <div key={prediction.id} className={this.cardClasses(index == 0)}>

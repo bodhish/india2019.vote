@@ -156,21 +156,35 @@ export default class Home extends React.Component {
                         <div className="flex flex-row justify-between items-center text-left px-4">
                           <div>
                             <div className="text-lg text-white">I support</div>
-                            <div className="text-4xl md:text-5xl font-semibold text-white">
-                              {this.props.user.party == null
-                                ? "_ _ _ "
-                                : this.props.user.party}
-                            </div>
+                            {
+                              this.props.user.party != null ?
+                                  ( <div className="text-4xl md:text-5xl font-semibold text-white">
+                                    {this.props.user.party}
+                                  </div>)
+                                  :
+                                  (
+                                      <div className="text-xs text-white mt-2 cursor-pointer" onClick={this.toggleShowProfile}>
+                                        <span className="text-4xl md:text-5xl">_ _ _</span><br/>
+                                        <span>Add your party</span>
+                                      </div>
+                                  )
+                            }
                             <div className="text-sm md:text-lg pt-6">
                               #IndiaVote2019
                             </div>
                           </div>
-                          <div>
-                            <img
-                              className="m-2 bg-white p-3 rounded-lg party-flag"
-                              src={partyImage[this.props.user.party]}
-                            />
-                          </div>
+                          {
+                            this.props.user.party &&
+                            (
+                                <div>
+                                  <img
+                                      className="m-2 bg-white p-3 rounded-lg party-flag"
+                                      src={partyImage[this.props.user.party]}
+                                  />
+                                </div>
+                            )
+                          }
+
                         </div>
                       </div>
                     </div>
