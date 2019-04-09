@@ -328,7 +328,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="flex flex-row justify-between">
                           <div className="text-sm md:text-lg pt-6">
-                            Lest vote for a Better India
+                            Let's vote for a Better India
                           </div>
                           <div className="text-sm md:text-lg pt-6">
                             #IndiaVote2019
@@ -400,7 +400,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="flex flex-row justify-between">
                           <div className="text-sm md:text-lg pt-6">
-                            Lest vote for a Better India
+                            Let's vote for a Better India
                           </div>
                           <div className="text-sm md:text-lg pt-6">
                             #IndiaVote2019
