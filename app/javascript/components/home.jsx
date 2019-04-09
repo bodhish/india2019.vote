@@ -138,7 +138,7 @@ export default class Home extends React.Component {
                               <p className="text-sm">{this.props.user.name}</p>
                             </div>
                             <div className="flex mt-1">
-                              {this.props.user.state !== null && (
+                              {this.props.user.state.length > 0 && (
                                 <div className="text-xs text-grey-dark">
                                   {this.props.user.state}
                                 </div>
@@ -148,7 +148,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="hidden md:block">
                           <h5 className="font-medium text-primary-dark">
-                            india2019.vote
+                            #indiaVote2019
                           </h5>
                         </div>
                       </div>
@@ -156,7 +156,7 @@ export default class Home extends React.Component {
                         <div className="flex flex-row justify-between items-center text-left px-4">
                           <div>
                             <div className="text-lg text-white">I support</div>
-                            {this.props.user.party != null ? (
+                            {this.props.user.party.length > 0 ? (
                               <div className="text-4xl md:text-5xl font-semibold text-white">
                                 {this.props.user.party}
                               </div>
@@ -173,7 +173,7 @@ export default class Home extends React.Component {
                               </div>
                             )}
                             <div className="text-sm md:text-lg pt-6">
-                              #IndiaVote2019
+                              India2019.vote
                             </div>
                           </div>
                           {this.props.user.party && (
@@ -344,7 +344,7 @@ export default class Home extends React.Component {
                             Let's vote for a Better India
                           </div>
                           <div className="text-sm md:text-lg pt-6">
-                            #IndiaVote2019
+                            India2019.vote
                           </div>
                         </div>
                       </div>
@@ -416,7 +416,7 @@ export default class Home extends React.Component {
                             Let's vote for a Better India
                           </div>
                           <div className="text-sm md:text-lg pt-6">
-                            #IndiaVote2019
+                            India2019.vote
                           </div>
                         </div>
                       </div>

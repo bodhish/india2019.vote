@@ -120,25 +120,19 @@ export default class EditProfile extends React.Component {
                   value={this.state.party}
                   className="block appearance-none w-full bg-white border border-grey-light hover:border-grey h-12 rounded shadow focus:outline-none"
                 >
-                  <option value="">Select your party</option>
+                  <option value="">None</option>
                   {listOfParties.map(party => {
                     return <option key={party}>{party}</option>;
                   })}
                 </select>
               </div>
             </div>
-            {!this.saveDisabled() && (
-              <div className="flex items-center justify-center mt-4">
-                <button
-                  className="btn"
-                  type="submit"
-                  value="Submit"
-                  disabled={this.saveDisabled()}
-                >
-                  Update your profile
-                </button>
-              </div>
-            )}
+
+            <div className="flex items-center justify-center mt-4">
+              <button className="btn" type="submit" value="Submit">
+                Update your profile
+              </button>
+            </div>
           </form>
         </div>
       </div>

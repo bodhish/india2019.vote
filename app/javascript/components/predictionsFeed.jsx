@@ -52,15 +52,6 @@ export default class PredictionsFeed extends React.Component {
                     src={prediction.user_image}
                   />
                   <div className="flex flex-col ml-2">
-                    <div className="text-sm">{prediction.user_name}</div>
-                    {prediction.user_party && (
-                      <div className="text-xs text-grey">
-                        from {prediction.user_state}
-                      </div>
-                    )}
-                    <span className="text-xs text-black">
-                      {""} spent {prediction.coins_used} coins on:
-                    </span>
                     <div className="text-xs mt-2 text-left">
                       <div>
                         <span className="mr-3">
@@ -78,6 +69,11 @@ export default class PredictionsFeed extends React.Component {
                     </div>
                     <div className="text-xs text-grey mt-1">
                       {prediction.minutes_or_hours_ago}
+                      {prediction.user_party.length > 0 && (
+                        <span>
+                          {""} from {prediction.user_state}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
