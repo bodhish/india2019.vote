@@ -23,8 +23,8 @@ module Home
           id: p.id,
           user_name: p.user_name,
           user_image: p.user_image,
-          user_state: p.user_state,
-          user_party: p.user_party,
+          user_state: p.user_state || "",
+          user_party: p.user_party || "",
           answer_1: p.answer_1,
           answer_2: p.answer_2,
           answer_3: p.answer_3,
@@ -42,8 +42,8 @@ module Home
         id: user.id,
         name: user.name,
         image: user.image,
-        party: user.party,
-        state: user.state,
+        party: user.party || "",
+        state: user.state || "",
         slug: user.slug,
       }
     end
