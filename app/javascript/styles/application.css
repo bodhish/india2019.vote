@@ -28,7 +28,13 @@ body {
 }
 
 .question-card__question {
-    font-size: 32px;
+    font-size: 24px;
+}
+
+@screen md {
+    .question-card__question {
+        font-size: 32px;
+    }
 }
 
 .answer-option__card {
