@@ -2,14 +2,16 @@
 
 <div class="flex flex-wrap w-full overflow-x-hidden">
   <div class="w-full md:w-2/3 text-center">
-      <div class="home-left-top-container text-left text-white">
+    <div class="home-left-top-container text-left text-white">
       <div class="w-full md:w-2/3 mx-auto py-16 md:py-20 px-4">
-        <h1 class="mb-4 text-4xl md:text-5xl leading-tight">Make your <br/> predictions for the Indian elections 2019!</h1>
-        <h3 class="font-normal leading-tight">Will India continue with the Chowkidhar, vote the young Gandhi to the helm or bring in a completely new face to be the next PM?</h3>
+        <h1 class="mb-4 text-4xl md:text-5xl leading-tight">Make your <br/> predictions for the Indian elections 2019!
+        </h1>
+        <h3 class="font-normal leading-tight">Will India continue with the Chowkidhar, vote the young Gandhi to the helm
+          or bring in a completely new face to be the next PM?</h3>
         <% unless current_user %>
           <div
             class="flex mt-4">
-              <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn no-underline" %>
+            <%= link_to "Sign in & Predict", user_facebook_omniauth_authorize_path, class: "btn no-underline" %>
           </div>
         <% else %>
           <div class="mt-2 text-center w-full">
@@ -17,52 +19,91 @@
           </div>
         <% end %>
       </div>
-      </div>
-      <div class="w-full md:w-2/3 mx-auto pt-4">
-        <div class="my-8 mx-auto w-full px-4 text-left">
-          <div class="flex items-center">
-            <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step 1</div>
-            <div><p>Sign in and collect your 1000 prediction coins.</p></div>
-          </div>
-          <div class="flex items-center mt-5">
-            <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step 2</div>
-            <div>
-              <p>View summary of all predictions till date. Invite others to make their predictions.</p>
-              <p class="text-sm text-grey-dark mt-1">Bet more coins on the predictions you are most confident about.</p>
-            </div>
-          </div>
-          <div class="flex items-center mt-5">
-            <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step 3</div>
-            <div><p>View summary of all predictions till date. Invite others to make their predictions.</p></div>
-          </div>
-          <div class="flex items-center mt-5">
-            <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step 4</div>
-            <div><p>Follow us on twitter at @indiavote_2019 for daily updates.</p></div>
-          </div>
-          <div class="flex items-center mt-5">
-            <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step 5</div>
-            <div>
-              <p>Wait for election results on May 23rd to find out the winner!</p>
-              <p class="text-sm text-grey-dark mt-1">Bet more coins on the predictions you are most confident about.</p>
-            </div>
-          </div>
-          <div class="pt-6 pb-4">
-           <% unless current_user %>
-      <div
-        class="bg-white flex flex-col items-center md:items-start text-left pb-10">
-          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn no-underline" %>
-      </div>
-    <% else %>
-      <div class="mt-2 text-center w-full pb-10">
-        <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-      </div>
-    <% end %>
     </div>
+    <div class="w-full md:w-2/3 mx-auto pt-4">
+      <div class="my-8 mx-auto w-full px-4 text-left">
+        <div class="flex items-center">
+          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
+            1
+          </div>
+          <div><p>Sign in and collect your 1000 prediction coins.</p></div>
+        </div>
+        <div class="flex items-center mt-5">
+          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
+            2
+          </div>
+          <div>
+            <p>Make upto three predictions (party, prime minister, seats) using your coins.</p>
+            <p class="text-sm text-grey-dark mt-1">Bet more coins on the predictions you are most confident about.</p>
+          </div>
+        </div>
+        <div class="flex items-center mt-5">
+          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
+            3
+          </div>
+          <div><p>View summary of all predictions till date. Invite others to make their predictions.</p></div>
+        </div>
+        <div class="flex items-center mt-5">
+          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
+            4
+          </div>
+          <div><span>Follow us on twitter at
+
+          </span>
+            <a
+              target="_blank"
+              href="https://twitter.com/india2019_vote"
+            >
+              @indiavote_2019
+            </a>
+            <span> for daily updates.</span></div>
+        </div>
+        <div class="flex items-center mt-5">
+          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
+            5
+          </div>
+          <div>
+            <p>Wait for election results on May 23rd to find out the winner!</p>
+            <p class="text-sm text-grey-dark mt-1">The person who bet the most coins on the correct result will be the
+              winner. Ties will be resolved by a lucky draw</p>
+          </div>
+        </div>
+        <div class="pt-6 pb-4">
+          <% unless current_user %>
+            <div
+              class="bg-white flex flex-col items-center md:items-start text-left pb-10">
+              <%= link_to "Sign in & Predict", user_facebook_omniauth_authorize_path, class: "btn no-underline" %>
+            </div>
+          <% else %>
+            <div class="mt-2 text-center w-full pb-10">
+              <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+            </div>
+          <% end %>
+          <div className="flex flex-col text-center w-full mt-5 pb-6 md:pb-24">
+            Contact us <br/>
+            <div className="m-2">
+              <a href="mailto:india2019.vote@gmail.com"> Mail</a> |
+              <a
+                target="_blank"
+                href="https://twitter.com/india2019_vote"
+              >
+                Twitter
+              </a>
+              |
+              <a
+                href="https://www.facebook.com/india2019.vote"
+                target="_blank"
+              >
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div id="app-feed" class="w-full md:w-1/3 px-6 py-6 bg-grey-lightest shadow-inner md:border-l"
-       data-props="<%= {latestPredictions: presenter.feedStart}.to_json %>">
+       data-props="<%= { latestPredictions: presenter.feedStart }.to_json %>">
   </div>
 </div>
 
