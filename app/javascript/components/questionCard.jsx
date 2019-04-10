@@ -28,10 +28,13 @@ export default class QuestionCard extends React.Component {
       questionNumber: this.state.questionNumber + 1
     });
   }
+
   updateAnswer3(e) {
     let value = e.target.value;
-    let answer3 = value.length < 1 ? 0 : Math.abs(parseInt(value));
-    if (answer3 > 543) {
+    let answer3 = value.length === 0 ? 0 : Math.abs(parseInt(value));
+    if (value.length === 0) {
+      this.setState({ answer3: value });
+    } else if (answer3 > 543) {
       this.setState({
         answer3: 543,
         answer4: 0,
@@ -67,8 +70,10 @@ export default class QuestionCard extends React.Component {
 
   updateAnswer4(e) {
     let value = e.target.value;
-    let answer4 = value.length < 1 ? 0 : Math.abs(parseInt(value));
-    if (answer4 > 543) {
+    let answer4 = value.length === 0 ? 0 : Math.abs(parseInt(value));
+    if (value.length === 0) {
+      this.setState({ answer4: value });
+    } else if (answer4 > 543) {
       this.setState({
         answer3: 0,
         answer4: 543,
@@ -126,8 +131,10 @@ export default class QuestionCard extends React.Component {
   }
 
   saveDisabled() {
+    let answer3 = this.state.answer3 === "" ? 0 : this.state.answer3;
+    let answer4 = this.state.answer4 === "" ? 0 : this.state.answer4;
     let invalidSeatCount = !(
-      this.state.answer3 + this.state.answer4 + this.state.othersCount ===
+      answer3 + answer4 + this.state.othersCount ===
       543
     );
     let coinsGreaterThanMin = this.state.coins > 299;
@@ -187,12 +194,12 @@ export default class QuestionCard extends React.Component {
               <input
                 type="hidden"
                 name="prediction[answer_3]"
-                value={this.state.answer3}
+                value={this.state.answer3 === "" ? 0 : this.state.answer3}
               />
               <input
                 type="hidden"
                 name="prediction[answer_4]"
-                value={this.state.answer4}
+                value={this.state.answer4 === "" ? 0 : this.state.answer4}
               />
 
               {this.state.questionNumber == 1 && (
@@ -311,7 +318,7 @@ export default class QuestionCard extends React.Component {
                             className="text-center flex justify-center items-center bg-grey-lighter w-full h-20 text-xl border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                             id="bjp"
                             type="number"
-                            placeholder="182"
+                            placeholder="0"
                             value={this.state.answer3}
                             onChange={this.updateAnswer3}
                           />
@@ -328,7 +335,7 @@ export default class QuestionCard extends React.Component {
                             className="appearance-none flex justify-center items-center text-center w-full bg-grey-lighter h-20 text-xl  border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                             id="congress"
                             type="number"
-                            placeholder="182"
+                            placeholder="0"
                             value={this.state.answer4}
                             onChange={this.updateAnswer4}
                           />
