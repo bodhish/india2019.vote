@@ -376,8 +376,9 @@ export default class Home extends React.Component {
                             <h3 className="font-medium text-primary-darker">
                               Who will form the government in 2019?
                             </h3>
-                            <div className="text-sm p-1">
-                              Prediction as of {this.getFormattedDate()}
+                            <div className="text-sm pt-1">
+                              from {this.props.stats.total + 5000} predictions
+                              till now
                             </div>
                           </div>
                           <div className="mt-4 flex flex-end">
@@ -449,8 +450,9 @@ export default class Home extends React.Component {
                             <h3 className="font-medium text-primary-darker">
                               Who will be the prime minister?
                             </h3>
-                            <div className="text-sm p-1">
-                              Prediction as of {this.getFormattedDate()}
+                            <div className="text-sm pt-1">
+                              from {this.props.stats.total + 5000} predictions
+                              till now
                             </div>
                           </div>
                           <div className="mt-4 flex flex-end">
