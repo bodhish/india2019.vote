@@ -279,7 +279,7 @@ export default class Home extends React.Component {
                       ))}
                     </div>
                   )}
-
+                  {this.props.isCurrentUser && (
                   <div className="flex flex-col max-w-md w-full mt-10">
                     <div className="uppercase text-xs font-medium pl-2">
                       Current Standings
@@ -483,6 +483,7 @@ export default class Home extends React.Component {
                       />
                     </div>
                   </div>
+                  )}
                 </div>
                 <div className="flex flex-col text-center w-full mt-5 pb-6 md:pb-24">
                   Contact us <br />
