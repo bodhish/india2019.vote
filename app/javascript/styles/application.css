@@ -108,6 +108,10 @@ body {
     animation: animation 1200ms linear both;
 }
 
+.notification--loaded {
+    transition: transform .25s;
+}
+
 .notification-card {
     @apply relative overflow-hidden;
     transition: all .25s;
