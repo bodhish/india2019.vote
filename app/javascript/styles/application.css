@@ -109,7 +109,7 @@ body {
 }
 
 .notification--loaded {
-    transition: transform .25s;
+    transition: all .25s;
 }
 
 .notification-card {

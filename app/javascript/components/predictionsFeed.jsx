@@ -35,9 +35,7 @@ export default class PredictionsFeed extends React.Component {
   cardClasses (bool) {
     let classes =
       'notification-card bg-white border border-primary-lightest my-3 flex flex-col rounded-xl shadow'
-    return bool
-      ? classes + ' notification--loaded-animate'
-      : classes + ' notification--loaded'
+    return bool ? classes + ' notification--loaded-animate' : classes
   }
 
   render () {
