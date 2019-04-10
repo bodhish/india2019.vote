@@ -305,7 +305,7 @@ export default class QuestionCard extends React.Component {
                             className="block uppercase text-center text-white mb-2"
                             htmlFor="bjp"
                           >
-                            BJP
+                            NDA
                           </label>
                           <input
                             className="text-center flex justify-center items-center bg-grey-lighter w-full h-20 text-xl border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
@@ -322,7 +322,7 @@ export default class QuestionCard extends React.Component {
                             className="block uppercase text-center text-white mb-2"
                             htmlFor="congress"
                           >
-                            Congress
+                            UPA
                           </label>
                           <input
                             className="appearance-none flex justify-center items-center text-center w-full bg-grey-lighter h-20 text-xl  border border-grey-lighter rounded p-2 leading-tight focus:outline-none focus:bg-white focus:border-grey"
@@ -386,7 +386,7 @@ export default class QuestionCard extends React.Component {
                     <div>
                       <label id="prediction[private]" className="text-white">
                         <input type="checkbox" name="prediction[private]" />
-                        &nbsp;Private prediction
+                        &nbsp;Check this box to keep this prediction private
                       </label>
                     </div>
                     <div className="flex items-center justify-center mt-4">

@@ -519,19 +519,19 @@ export default class Home extends React.Component {
                           </div>
                           <div className="flex">
                             <div className="my-4 p-3">
-                              <p className="text-sm">BJP</p>
+                              <p className="text-sm">NDA</p>
                               <h3 className="font-medium mt-2">
                                 {this.props.stats.bjpAvgSeats}
                               </h3>
                             </div>
                             <div className="my-4 p-3">
-                              <p className="text-sm">Congress</p>
+                              <p className="text-sm">UPA</p>
                               <h3 className="font-medium mt-2">
                                 {this.props.stats.congAvgSeats}
                               </h3>
                             </div>
                             <div className="my-4 p-3">
-                              <p className="text-sm">Others</p>
+                              <p className="text-sm">OTHERS</p>
                               <h3 className="font-medium mt-2">
                                 {543 -
                                   this.props.stats.bjpAvgSeats -
