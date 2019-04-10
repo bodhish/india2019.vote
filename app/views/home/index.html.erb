@@ -5,27 +5,37 @@
     <div class="home-left-top-container text-left text-primary-dark">
       <div class="w-full md:w-3/4 mx-auto pt-8 md:py-12 px-4">
         <div class="indiavote-logo-container mx-auto md:mx-0">
-           <img class="w-full" src= "<%=image_path("india2019-logo.svg")%>" alt="India2019"/>
+          <img class="w-full" src="<%= image_path("india2019-logo.svg") %>" alt="India2019"/>
         </div>
-        <h1 class="text-4xl md:text-5xl leading-tight pt-32 mt-24 sm:mt-3">Who’s going<br/> to be the next PM?    
+        <h1 class="text-4xl md:text-5xl leading-tight pt-32 mt-24 sm:mt-3">Who’s going<br/> to be the next PM?
         </h1>
-        <h2 class="mt-2 text-2xl md:text-2xl leading-tight">Predict the results of the historic 2019  <br/> Indian General Elections!
+        <h2 class="mt-2 text-2xl md:text-2xl leading-tight">Predict the results of the historic 2019 <br/> Indian
+          General Elections!
         </h2>
-        <h4 class="font-normal w-4/5 leading-normal pt-2 pb-3">Will India continue with the Chowkidhar, vote the young Gandhi to the helm
+        <h4 class="font-normal w-4/5 leading-normal pt-2 pb-3">Will India continue with the Chowkidhar, vote the young
+          Gandhi to the helm
           or bring in a completely new face to be the next PM?</h4>
-          <h4 class="font-normal w-4/5 leading-normal pt-2 pb-3">Share with your friends and find out who among them is the true election pandit!</h4>
+        <h4 class="font-normal w-4/5 leading-normal pt-2 pb-3">Share with your friends and find out who among them is
+          the true election pandit!</h4>
         <% unless current_user %>
           <div
-            class="flex">
-            <%= link_to "Sign in & Predict", user_facebook_omniauth_authorize_path, class: "btn no-underline" %>
-
+            class="flex flex-col sm:flex-row items-start sm:items-center ">
+            <div
+              class="mt-2 flex p-0 sm:p-2 sm:pl-0">
+              <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "loginBtn loginBtn--google no-underline" %>
+            </div>
+            <div
+              class="mt-2 flex p-0 sm:p-2 ">
+              <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "loginBtn loginBtn--facebook no-underline" %>
+            </div>
           </div>
-          <p class="text-xs mt-3 leading-tight w-4/5 text-grey-darker"> Results to be announced on 24 May 2018. Gift vouchers for the most accurate predictions! <br/>
+          <p class="text-xs mt-3 leading-tight w-4/5 text-grey-darker"> Results to be announced on 24 May 2018. Gift
+            vouchers for the most accurate predictions! <br/>
             We will not post anything to your Facebook profile nor share your email address with anyone.
           </p>
           <div class="mt-4 pb-4 gtext-lg md:text-xl leading-tight">
-              India2019.vote
-              </div>
+            India2019.vote
+          </div>
         <% else %>
           <div class="mt-2 text-center w-full">
             <%= button_to "Logout", destroy_user_session_path, method: :delete %>
