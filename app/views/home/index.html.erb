@@ -7,17 +7,20 @@
         <div class="indiavote-logo-container mx-auto md:mx-0">
            <img class="w-full" src= "<%=image_path("india2019-logo.svg")%>" alt="India2019"/>
         </div>
-        <h1 class="text-4xl md:text-5xl leading-tight pt-32 mt-24 sm:mt-3">Make your <br/> predictions for the Indian elections 2019!
+        <h1 class="text-4xl md:text-5xl leading-tight pt-32 mt-24 sm:mt-3">Who’s going<br/> to be the next PM?    
         </h1>
+        <h2 class="mt-2 text-2xl md:text-2xl leading-tight">Predict the results of the historic 2019  <br/> Indian General Elections!
+        </h2>
         <h4 class="font-normal w-4/5 leading-normal pt-2 pb-3">Will India continue with the Chowkidhar, vote the young Gandhi to the helm
           or bring in a completely new face to be the next PM?</h4>
+          <h4 class="font-normal w-4/5 leading-normal pt-2 pb-3">Share with your friends and find out who among them is the true election pandit!</h4>
         <% unless current_user %>
           <div
             class="flex">
             <%= link_to "Sign in & Predict", user_facebook_omniauth_authorize_path, class: "btn no-underline" %>
 
           </div>
-          <p class="text-xs mt-3 leading-tight w-4/5 text-grey-darker"> We will email you the results on May 23rd.
+          <p class="text-xs mt-3 leading-tight w-4/5 text-grey-darker"> Results to be announced on 24 May 2018. Gift vouchers for the most accurate predictions! <br/>
             We will not post anything to your Facebook profile nor share your email address with anyone.
           </p>
           <div class="mt-4 pb-4 gtext-lg md:text-xl leading-tight">
@@ -33,65 +36,6 @@
     <div class="w-full md:w-3/4 mx-auto pt-4">
       <div class="my-8 mx-auto w-full px-4 text-left">
         <div class="flex items-center">
-          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
-            1
-          </div>
-          <div><p>Sign in and collect your 1000 prediction coins.</p></div>
-        </div>
-        <div class="flex items-center mt-5">
-          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
-            2
-          </div>
-          <div>
-            <p>Make upto three predictions (party, prime minister, seats) using your coins.</p>
-            <p class="text-sm text-grey-dark mt-1">Bet more coins on the predictions you are most confident about.</p>
-          </div>
-        </div>
-        <div class="flex items-center mt-5">
-          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
-            3
-          </div>
-          <div><p>View summary of all predictions till date. Invite others to make their predictions.</p></div>
-        </div>
-        <div class="flex items-center mt-5">
-          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
-            4
-          </div>
-          <div><span>Follow us on twitter at
-
-          </span>
-            <a
-              target="_blank"
-              href="https://twitter.com/india2019_vote"
-            >
-              @indiavote_2019
-            </a>
-            <span> for daily updates.</span></div>
-        </div>
-        <div class="flex items-center mt-5">
-          <div class="flex flex-no-shrink text-center justify-center items-center rounded-full border bg-grey-lightest mr-4 h-20 w-20">Step
-            5
-          </div>
-          <div>
-            <p>Wait for election results on May 23rd to find out the winner!</p>
-            <p class="text-sm text-grey-dark mt-1">The person who bet the most coins on the correct result will be the
-              winner. Ties will be resolved by a lucky draw</p>
-          </div>
-        </div>
-        <div class="pt-6 pb-4">
-          <% unless current_user %>
-            <div
-              class="bg-white flex flex-col items-center md:items-start text-left pb-10">
-              <%= link_to "Sign in & Predict", user_facebook_omniauth_authorize_path, class: "btn no-underline" %>
-              <p class="text-sm mt-4"> We will email you the results on May 23rd.
-                We will not post anything to your Facebook profile nor share your email address with anyone.
-              </p>
-            </div>
-          <% else %>
-            <div class="mt-2 text-center w-full pb-10">
-              <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-            </div>
-          <% end %>
           <div class="flex flex-col text-center w-full mt-5">
             Contact us <br/>
             <div class="m-2">
