@@ -26,7 +26,7 @@ export default class Screenshot extends React.Component {
     return (
       <div className='text-center'>
         <button
-          className='text-primary text-xs w-full h-9 cursor-pointer hover:bg-primary-lightest hover:text-primary-dark'
+          className='text-primary text-xs w-full h-9 cursor-pointer hover:bg-primary-lightest hover:text-primary-dark focus:outline-none'
           onClick={this.takeAScreenshot}
         >
           Download Screenshot{' '}

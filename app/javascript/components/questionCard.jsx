@@ -190,7 +190,7 @@ export default class QuestionCard extends React.Component {
               />
 
               {this.state.questionNumber == 1 && (
-                <div className='w-full question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center'>
+                <div className='w-full question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center mx-auto'>
                   <div className='w-full'>
                     <p className='text-primary-light text-sm'>QUESTION 1</p>
                     <label
@@ -238,7 +238,7 @@ export default class QuestionCard extends React.Component {
                 </div>
               )}
               {this.state.questionNumber == 2 && (
-                <div className='w-full question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center'>
+                <div className='w-full question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center mx-auto'>
                   <div className='w-full'>
                     <p className='text-primary-light text-sm'>QUESTION 2</p>
                     <label
@@ -286,7 +286,7 @@ export default class QuestionCard extends React.Component {
                 </div>
               )}
               {this.state.questionNumber == 3 && (
-                <div className='w-full flex flex-col  question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center'>
+                <div className='w-full flex flex-col  question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center mx-auto'>
                   <div className='w-full'>
                     <p className='text-primary-light text-sm'>QUESTION 3</p>
                     <div className='mb-2'>
@@ -349,7 +349,7 @@ export default class QuestionCard extends React.Component {
               )}
 
               {this.state.questionNumber == 4 && (
-                <div className='w-full flex flex-col question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center'>
+                <div className='w-full flex flex-col question-card rounded-lg shadow-lg px-4 md:px-16 py-12 mb-4 flex items-center mx-auto'>
                   <div className='w-full'>
                     <p className='text-primary-light text-sm'>QUESTION 4</p>
                     <div className='mb-2'>
@@ -378,10 +378,7 @@ export default class QuestionCard extends React.Component {
                       </div>
                     </div>
                     <div>
-                      <label
-                        id='prediction[private]'
-                        className='text-white'
-                      >
+                      <label id='prediction[private]' className='text-white'>
                         <input type='checkbox' name='prediction[private]' />
                         &nbsp;Private prediction
                       </label>
