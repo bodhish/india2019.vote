@@ -18,7 +18,7 @@ export default class PredictionsFeed extends React.Component {
 
   fetchPredictions = () => {
     let nextId = this.state.latestPredictions[0].id;
-    fetch("predictions/" + nextId)
+    fetch("https://india2019.vote/predictions/" + nextId)
       .then(response => response.json())
       .then(result => {
         if (result !== null) {

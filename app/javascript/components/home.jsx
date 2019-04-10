@@ -231,9 +231,15 @@ export default class Home extends React.Component {
                             <div className="flex items-center justify-between">
                               <div className="flex-1 justify-center items-center text-center">
                                 <div className="pl-2 text-left text-black text-sm">
-                                  <h4 className="font-medium text-sm">
-                                    Prediction {index + 1}{" "}
-                                  </h4>
+                                  <div className="flex flex-row justify-between">
+                                    <h4 className="font-medium text-sm">
+                                      Prediction {index + 1}{" "}
+                                    </h4>
+                                    <div className="font-medium ">
+                                      Coins used {""}
+                                      {prediction.coinsUsed}
+                                    </div>
+                                  </div>
                                   <p className="pt-4">
                                     Winning party: {prediction.answer1}
                                   </p>
