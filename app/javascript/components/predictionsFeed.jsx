@@ -18,7 +18,7 @@ export default class PredictionsFeed extends React.Component {
 
   fetchPredictions = () => {
     let nextId = this.state.latestPredictions[0].id
-    fetch('predictions/' + nextId)
+    fetch('https://india2019.vote/predictions/' + nextId)
       .then(response => response.json())
       .then(result => {
         if (result !== null) {
@@ -35,7 +35,9 @@ export default class PredictionsFeed extends React.Component {
   cardClasses (bool) {
     let classes =
       'notification-card bg-white border border-primary-lightest my-3 flex flex-col rounded-xl shadow'
-    return bool ? classes + ' notification--loaded-animate' : classes
+    return bool
+      ? classes + ' notification--loaded-animate'
+      : classes + ' notification--loaded'
   }
 
   render () {
@@ -60,8 +62,8 @@ export default class PredictionsFeed extends React.Component {
                         <span>P.M: {prediction.answer_2}</span>
                       </div>
                       <div className='mt-1'>
-                        <span className='mr-3'>BJP: {prediction.answer_3}</span>
-                        <span className='mr-3'>CNG: {prediction.answer_4}</span>
+                        <span className='mr-3'>NDA: {prediction.answer_3}</span>
+                        <span className='mr-3'>UPA: {prediction.answer_4}</span>
                         <span>
                           OTH: {543 - prediction.answer_3 - prediction.answer_4}
                         </span>
