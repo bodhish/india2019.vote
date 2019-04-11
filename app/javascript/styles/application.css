@@ -11,7 +11,12 @@ body {
   background-image: linear-gradient( to bottom, config("colors.primary") 0%, config("colors.primary-dark") 75%);
 }
 
-.predicted-list-card {
+.my-predicted-list-card-container {
+  @apply shadow border rounded-xl flex flex-1 flex-col justify-between;
+}
+
+.my-predicted-list-card {
+  @apply rounded-t-xl;
   background-color: rgba(70, 1, 116, 1);
   background-image: linear-gradient( 45deg, rgba(70, 1, 116, 1) 0%, rgba(247, 1, 157, 1) 100%);
 }
@@ -35,6 +40,30 @@ body {
     background-size: 28rem;
     background-position: 90% 10px;
   }
+}
+
+.coin-bg {
+  @apply w-22 h-22 rounded-full bg-yellow;
+  top: -1.875rem;
+  right: -1.875rem;
+  background-image: url("../../../public/coin.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.coin-currency {
+  color: #BD7302;
+  text-shadow: 0 1px 0 #FFEC44;
+  z-index: 3;
+}
+
+.my-prediction-seat-count {
+  top: -20px;
+}
+
+.my-prediction-seat-count-perc {
+  text-shadow: 0 1px 0 config(colors.yellow-darkest);
 }
 
 .indiavote-logo-container {
