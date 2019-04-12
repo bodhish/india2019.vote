@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# admin interface
+gem 'activeadmin'
+
 # User auth library.
 gem 'devise', '~> 4.6'
 
