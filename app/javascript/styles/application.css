@@ -8,7 +8,32 @@ body {
 }
 
 .isupport-card {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
   background-image: linear-gradient( to bottom, config("colors.primary") 0%, config("colors.primary-dark") 75%);
+}
+
+.isupport-card--bjp {
+  background-image: linear-gradient(135deg, rgba(249, 125, 9, 1) 0%, rgba(39, 141, 39, 1) 100%);
+}
+
+.isupport-card--cpi {
+  background-image: linear-gradient(135deg, rgba(224, 54, 54, 1) 0%, rgba(222, 0, 0, 1) 100%);
+}
+
+.isupport-card--cpim {
+  background-image: linear-gradient(135deg, rgba(224, 54, 54, 1) 0%, rgba(222, 0, 0, 1) 100%);
+}
+
+.isupport-card--bsp {
+  background-image: linear-gradient(135deg, rgba(52, 87, 178, 1) 0%, rgba(34, 64, 154, 1) 100%);
+}
+
+.isupport-card--aitc {
+  background-image: linear-gradient(135deg, rgba(40, 67, 175, 1) 0%, rgba(0, 19, 127, 1) 100%);
+}
+
+.isupport-card--ncp {
+  background-image: linear-gradient(135deg, rgba(3, 137, 0, 1) 0%, rgba(0, 0, 130, 1) 100%);
 }
 
 .my-predicted-list-card-container {
@@ -27,6 +52,28 @@ body {
   @apply max-w-md items-center;
 }
 
+.question-card__close {
+  right: 10px;
+}
+
+@screen sm {
+  .question-card__close {
+    right: 0;
+  }
+}
+
+.next-btn {
+  transition: 0.25s;
+}
+
+.next-btn-icon {
+  transition: 0.25s;
+}
+
+.next-btn:hover .next-btn-icon {
+  transform: translateX(0.25em);
+}
+
 .home-left-top-container {
   background-color: #f7f6f0;
   background-image: url("../../../public/RaMo-cover.jpg");
@@ -43,9 +90,7 @@ body {
 }
 
 .coin-bg {
-  @apply w-22 h-22 rounded-full bg-yellow;
-  top: -1.875rem;
-  right: -1.875rem;
+  @apply w-18 h-18 rounded-full bg-yellow;
   background-image: url("../../../public/coin.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -58,8 +103,32 @@ body {
   z-index: 3;
 }
 
+.avg-seats-predicted {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.avg-seats-predicted--nda {
+  background-image: url("../../../public/loksabha-seat-nda.svg");
+}
+
+.avg-seats-predicted--inc {
+  background-image: url("../../../public/loksabha-seat-inc.svg");
+}
+
+.avg-seats-predicted--others {
+  background-image: url("../../../public/loksabha-seat-others.svg");
+}
+
 .my-prediction-seat-count {
   top: -20px;
+}
+
+.my-predicted-list-card-title {
+  top: -1rem;
+  transform: translateX(-50%);
+  left: 50%;
 }
 
 .my-prediction-seat-count-perc {
@@ -82,12 +151,12 @@ body {
 
 .answer-option__card {
   border: 3px solid #ffffff;
-  @apply text-sm cursor-pointer;
+  @apply text-sm cursor-pointer relative;
   transition: 0.25s;
   box-shadow: 0 0.5em 0.5em -0.4em config(colors.primary-dark);
 }
 
-.answer-option__card:hover, .answer-option__card:focus {
+.answer-option__card:hover {
   box-shadow: 0 0.5em 0.5em -0.4em config(colors.primary-dark);
   transform: translateY(-0.25em);
 }
@@ -99,6 +168,36 @@ body {
 .answer-option__card--active {
   background-image: linear-gradient( to bottom, rgba(239, 230, 135, 1) 0%, rgba(219, 200, 79, 1) 100%);
   border: 3px solid #fff4a9;
+}
+
+.answer-option__card:before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  @apply rounded-full;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10px;
+  border: 2px solid white;
+  background: #fafafa;
+  background: radial-gradient(40% 35%, #f8f8f8, #fafafa 60%);
+  box-shadow: inset 0 2px 4px 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 1), inset 0 1px 0 white;
+}
+
+.answer-option__card--active:before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  @apply rounded-full;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -10px;
+  border: 2px solid white;
+  background: #25d025;
+  background: radial-gradient(40% 35%, #5aef5a, #25d025 60%);
+  box-shadow: inset 0 3px 5px 1px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.4), 0 0 10px 2px rgba(0, 210, 0, 0.5);
 }
 
 .btn {
@@ -186,6 +285,10 @@ body {
 
 .current-standings-card {
   @apply shadow border rounded-xl p-5 flex flex-1 flex-col justify-between;
+}
+
+.avg-seats-prediction-card {
+  @apply shadow border rounded-xl p-5;
 }
 
 .left-container {

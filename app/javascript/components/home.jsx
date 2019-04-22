@@ -84,7 +84,7 @@ export default class Home extends React.Component {
       "Do you know India's pulse? Make your predictions for the Indian elections 2019 & follow what others are predicting."
     let partyImage = {
       BJP:
-        'https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bharatiya_Janata_Party_logo.svg/360px-Bharatiya_Janata_Party_logo.svg.png',
+        'https://upload.wikimedia.org/wikipedia/en/thumb/1/1e/Bharatiya_Janata_Party_logo.svg/1200px-Bharatiya_Janata_Party_logo.svg.png',
       INC:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Flag_of_the_Indian_National_Congress.svg/500px-Flag_of_the_Indian_National_Congress.svg.png',
       CPI:
@@ -157,7 +157,7 @@ export default class Home extends React.Component {
                           </h5>
                         </div>
                       </div>
-                      <div className='isupport-card flex flex-col bg-primary shadow-lg p-3 md:p-8 text-white -mx-3 rounded-xl'>
+                      <div className='isupport-card isupport-card--bjp flex flex-col bg-primary shadow-lg p-3 md:p-8 text-white -mx-3 rounded-xl'>
                         <div className='flex flex-row justify-between items-center text-left px-4'>
                           <div>
                             <div className='text-lg text-white'>I support</div>
@@ -170,7 +170,7 @@ export default class Home extends React.Component {
                                 className='text-xs text-white cursor-pointer'
                                 onClick={this.toggleShowProfile}
                               >
-                                <div className='text-base border border-dashed hover:bg-primary-lighter hover:text-primary border-primary-lighter bg-transparent mt-2 rounded text-primary-light'>
+                                <div className='text-base border border-dashed hover:bg-primary-lightest text-primary-lightest hover:text-primary-dark border-primary-lighter bg-transparent mt-2 rounded'>
                                   <div className='px-2 py-2'>Add my party</div>
                                 </div>
                               </div>
@@ -180,9 +180,9 @@ export default class Home extends React.Component {
                             </div>
                           </div>
                           {this.props.user.party && (
-                            <div>
+                            <div className='flex items-center justify-center bg-white rounded-lg overflow-hidden'>
                               <img
-                                className='m-2 bg-white p-3 rounded-lg party-flag'
+                                className='p-2 rounded-lg party-flag h-32'
                                 src={partyImage[this.props.user.party]}
                               />
                             </div>
@@ -212,7 +212,7 @@ export default class Home extends React.Component {
                   )}
                   {this.props.predictions.length > 0 && (
                     <div className='flex flex-col max-w-md w-full mt-10'>
-                      <h5 className='uppercase text-xs font-medium text-left pl-2'>
+                      <h5 className='uppercase text-xs font-medium text-center md:pb-0 pb-4 md:text-left md:pl-2 '>
                         {this.props.isCurrentUser
                           ? 'My predictions'
                           : this.props.user.name + "'s predictions"}
@@ -220,7 +220,7 @@ export default class Home extends React.Component {
                       {this.props.predictions.map((prediction, index) => (
                         <div
                           key={prediction.id}
-                          className='mt-2 pb-12 flex flex-col max-w-md w-full'
+                          className='mt-2 pb-10 flex flex-col max-w-md w-full'
                         >
                           <div
                             id={'p' + prediction.id}
@@ -230,58 +230,123 @@ export default class Home extends React.Component {
                               <div className='flex-1 justify-center items-center text-center'>
                                 <div className='text-left text-black text-sm'>
                                   <div className='my-predicted-list-card text-white p-5 relative'>
-                                    <div className='flex flex-row justify-between'>
-                                      <h4 className='font-medium text-sm'>
-                                        Prediction {index + 1}{' '}
-                                      </h4>
-                                      <div className='font-medium '>
-                                        <div className='coin-bg absolute flex shadow-lg justify-center items-center'>
-                                          <span class='text-xl font-bold coin-currency text-center'>
-                                            {prediction.coinsUsed}
+                                    <h4 className='my-predicted-list-card-title inline-block absolute bg-white border border-primary rounded-lg font-medium text-primary text-center p-2 text-xs uppercase'>
+                                      Prediction {index + 1}{' '}
+                                    </h4>
+                                    <div className='flex flex-wrap md:flex-nowrap'>
+                                      <div className='w-1/2 md:w-1/3 flex items-center justify-center pt-4'>
+                                        <div className='flex flex-col'>
+                                          <div className='winning-part__logo px-2 rounded-lg flex justify-center items-center'>
+                                            <img
+                                              className='w-18 h-18 rounded-full border-2 border-white bg-white'
+                                              src={'assets/INC.svg'}
+                                            />
+                                          </div>
+                                          <div className='pl-2 pr-5 text-center'>
+                                            <div className='text-xs pt-2'>
+                                              Winning party
+                                            </div>
+                                            <p className='font-semibold pt-1'>
+                                              {prediction.answer1}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className='w-1/2 md:w-1/3 flex items-center justify-center pt-4 md:border-r border-primary-darker'>
+                                        <div className='flex flex-col'>
+                                          <div className='winning-part__logo px-2 rounded-lg flex justify-center items-center'>
+                                            <img
+                                              className='w-18 h-18 rounded-full border-2 border-white bg-white'
+                                              src={'assets/Rahul-gandhi.jpg'}
+                                            />
+                                          </div>
+                                          <div className='pl-2 pr-5 text-center'>
+                                            <p className='text-xs pt-2'>
+                                              Prime minister
+                                            </p>
+                                            <p className='font-semibold pt-1'>
+                                              {prediction.answer2}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className='w-full md:w-1/3 flex flex-col items-center justify-center font-medium pt-5 md:pt-0 md:border-l border-primary-light relative '>
+                                        <div>
+                                          <div className='coin-bg flex shadow-lg justify-center items-center mx-auto'>
+                                            <span class='text-xl font-bold coin-currency text-center'>
+                                              {prediction.coinsUsed}
+                                            </span>
+                                          </div>
+                                          <span className='block mt-2'>
+                                            Coins used
                                           </span>
                                         </div>
                                       </div>
                                     </div>
-                                    <p className='pt-4'>
-                                      Winning party: {prediction.answer1}
-                                    </p>
-                                    <p className='pt-2'>
-                                      Prime minister: {prediction.answer2}
-                                    </p>
                                   </div>
                                   <div className='p-5'>
-                                    <div className='pt-6 flex flex-end'>
+                                    <div className='flex flex-end'>
                                       <div className='w-full'>
-                                        <div className='shadow-sm w-full bg-grey-lighter mt-1 flex flex-1 rounded-full h-12'>
+                                        <h5 className='font-medium'>
+                                          NDA - {prediction.answer3} seats
+                                        </h5>
+                                        <div className='shadow-sm w-full bg-grey-lighter mt-1 flex flex-1 rounded-full'>
                                           <div
-                                            className='bg-inv-orange relative flex justify-center items-center leading-none rounded-full rounded-r-none py-1 text-center text-white'
+                                            className='bg-inv-orange text-xs leading-none rounded-full py-1 text-center text-white'
                                             style={{
                                               width:
                                                 (prediction.answer3 / 543) *
                                                   100 +
                                                 '%'
                                             }}
-                                          >
-                                            <h4 className='font-medium absolute my-prediction-seat-count text-xs text-grey-darker whitespace-no-wrap'>
-                                              <span className='font-semibold'>
-                                                NDA
-                                              </span>{' '}
-                                            </h4>
-                                            <h4 className='font-medium'>
-                                              <span className='text-lg'>
-                                                {(
-                                                  (prediction.answer3 / 543) *
-                                                  100
-                                                ).toFixed()}
-                                                %
-                                              </span>
-                                              <span className='block text-xs'>
-                                                {prediction.answer3} seats
-                                              </span>
-                                            </h4>
-                                          </div>
+                                          />
+                                        </div>
+                                      </div>
+                                      <h5 className='font-medium pt-3 pl-3'>
+                                        {(
+                                          (prediction.answer3 / 543) *
+                                          100
+                                        ).toFixed()}
+                                        %
+                                      </h5>
+                                    </div>
+                                    <div className='mt-4 flex flex-end'>
+                                      <div className='w-full'>
+                                        <h5 className='font-medium'>
+                                          UPA - {prediction.answer4} seats
+                                        </h5>
+                                        <div className='shadow-sm w-full bg-grey-lighter mt-1 flex flex-1 rounded-full'>
                                           <div
-                                            className='bg-inv-yellow relative flex justify-center items-center leading-none py-1 text-center text-white'
+                                            className='bg-inv-blue text-xs leading-none rounded-full py-1 text-center text-white'
+                                            style={{
+                                              width:
+                                                (prediction.answer4 / 543) *
+                                                  100 +
+                                                '%'
+                                            }}
+                                          />
+                                        </div>
+                                      </div>
+                                      <h5 className='font-medium pt-3 pl-3'>
+                                        {(
+                                          (prediction.answer4 / 543) *
+                                          100
+                                        ).toFixed()}
+                                        %
+                                      </h5>
+                                    </div>
+                                    <div className='mt-4 flex flex-end'>
+                                      <div className='w-full'>
+                                        <h5 className='font-medium'>
+                                          OTHERS -{' '}
+                                          {543 -
+                                            prediction.answer3 -
+                                            prediction.answer4}{' '}
+                                          seats
+                                        </h5>
+                                        <div className='shadow-sm w-full bg-grey-lighter mt-1 flex flex-1 rounded-full'>
+                                          <div
+                                            className='bg-inv-yellow text-xs leading-none rounded-full py-1 text-center text-white'
                                             style={{
                                               width:
                                                 this.mathForGraph(
@@ -290,58 +355,17 @@ export default class Home extends React.Component {
                                                     prediction.answer4
                                                 ) + '%'
                                             }}
-                                          >
-                                            <h4 className='font-medium absolute my-prediction-seat-count text-xs text-grey-darker whitespace-no-wrap'>
-                                              <span className='font-semibold'>
-                                                OTHERS
-                                              </span>{' '}
-                                            </h4>
-                                            <h4 className='font-medium text-yellow-darkest text-lg'>
-                                              <span className='text-lg'>
-                                                {this.mathForGraph(
-                                                  543 -
-                                                    prediction.answer3 -
-                                                    prediction.answer4
-                                                ).toFixed()}
-                                                %{' '}
-                                              </span>
-                                              <span className='block text-xs'>
-                                                {543 -
-                                                  prediction.answer3 -
-                                                  prediction.answer4}{' '}
-                                                seats
-                                              </span>
-                                            </h4>
-                                          </div>
-                                          <div
-                                            className='bg-inv-blue relative flex justify-center items-center flex justify-center items-center leading-none rounded-full rounded-l-none py-1 text-center text-white'
-                                            style={{
-                                              width:
-                                                (prediction.answer4 / 543) *
-                                                  100 +
-                                                '%'
-                                            }}
-                                          >
-                                            <h4 className='font-medium absolute my-prediction-seat-count text-xs text-grey-darker whitespace-no-wrap'>
-                                              <span className='font-semibold'>
-                                                UPA
-                                              </span>{' '}
-                                            </h4>
-                                            <h4 className='font-medium text-lg'>
-                                              <span className='text-lg'>
-                                                {(
-                                                  (prediction.answer4 / 543) *
-                                                  100
-                                                ).toFixed()}
-                                                %
-                                              </span>
-                                              <span className='block text-xs'>
-                                                {prediction.answer4} seats
-                                              </span>
-                                            </h4>
-                                          </div>
+                                          />
                                         </div>
                                       </div>
+                                      <h5 className='font-medium pt-3 pl-3'>
+                                        {this.mathForGraph(
+                                          543 -
+                                            prediction.answer3 -
+                                            prediction.answer4
+                                        ).toFixed()}
+                                        %
+                                      </h5>
                                     </div>
                                   </div>
                                 </div>
@@ -447,12 +471,12 @@ export default class Home extends React.Component {
                             </h5>
                           </div>
                           <div className='flex flex-row justify-between'>
-                            <div className='text-sm md:text-lg pt-6'>
+                            <p className='text-sm md:text-base pt-6'>
                               Let's vote for a Better India
-                            </div>
-                            <div className='text-sm md:text-lg pt-6'>
+                            </p>
+                            <p className='text-sm md:text-base pt-6'>
                               India2019.vote
-                            </div>
+                            </p>
                           </div>
                         </div>
                         {this.props.isCurrentUser && (
@@ -521,10 +545,10 @@ export default class Home extends React.Component {
                             </h5>
                           </div>
                           <div className='flex flex-row justify-between'>
-                            <div className='text-sm md:text-lg pt-6'>
+                            <div className='text-sm md:text-base pt-6'>
                               Let's vote for a Better India
                             </div>
-                            <div className='text-sm md:text-lg pt-6'>
+                            <div className='text-sm md:text-base pt-6'>
                               India2019.vote
                             </div>
                           </div>
@@ -542,41 +566,51 @@ export default class Home extends React.Component {
                           <div className='uppercase text-xs font-medium pl-2'>
                             Average seats predicted:
                           </div>
-                          <div className='flex'>
-                            <div className='my-4 p-3'>
-                              <p className='text-sm'>NDA</p>
-                              <h3 className='font-medium mt-2'>
-                                {this.props.stats.bjpAvgSeats}
-                              </h3>
+                          <div className='flex avg-seats-prediction-card mt-2'>
+                            <div className='w-1/3 my-4 p-3 flex flex-col justify-center items-center'>
+                              <div className='w-25 h-25 md:w-28 md:h-28 avg-seats-predicted avg-seats-predicted--nda flex justify-center items-start'>
+                                <h3 className='font-semibold mt-5 rounded-full bg-orange-darker text-white w-10 h-10 text-sm flex justify-center items-center'>
+                                  {this.props.stats.bjpAvgSeats}
+                                </h3>
+                              </div>
+                              <p className='text-sm text-center pt-4 font-semibold'>
+                                NDA
+                              </p>
                             </div>
-                            <div className='my-4 p-3'>
-                              <p className='text-sm'>UPA</p>
-                              <h3 className='font-medium mt-2'>
-                                {this.props.stats.congAvgSeats}
-                              </h3>
+                            <div className='w-1/3 my-4 p-3 flex flex-col justify-center items-center'>
+                              <div className='w-25 h-25 md:w-28 md:h-28 avg-seats-predicted avg-seats-predicted--inc flex justify-center items-start'>
+                                <h3 className='font-semibold mt-5 rounded-full bg-primary-dark text-white w-10 h-10 text-sm flex justify-center items-center'>
+                                  {this.props.stats.congAvgSeats}
+                                </h3>
+                              </div>
+                              <p className='text-sm text-center pt-4 font-semibold'>
+                                UPA
+                              </p>
                             </div>
-                            <div className='my-4 p-3'>
-                              <p className='text-sm'>OTHERS</p>
-                              <h3 className='font-medium mt-2'>
-                                {543 -
-                                  this.props.stats.bjpAvgSeats -
-                                  this.props.stats.congAvgSeats}
-                              </h3>
+                            <div className='w-1/3 my-4 p-3 flex flex-col justify-center items-center'>
+                              <div className='w-25 h-25 md:w-28 md:h-28 avg-seats-predicted avg-seats-predicted--others flex justify-center items-start'>
+                                <h3 className='font-semibold mt-5 rounded-full bg-yellow-darker text-white w-10 h-10 text-sm flex justify-center items-center'>
+                                  {543 -
+                                    this.props.stats.bjpAvgSeats -
+                                    this.props.stats.congAvgSeats}
+                                </h3>
+                              </div>
+                              <p className='text-sm text-center pt-4 font-semibold'>
+                                OTHERS
+                              </p>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className='flex flex-wrap'>
+                      <div className='flex flex-wrap mt-4 justify-center'>
                         <a
-                          className='m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white font-bold rounded'
+                          className='m-2 no-underline flex item-center text-center appearance-none bg-blue hover:bg-blue-dark text-white rounded'
                           href={facebookShareUrl}
                           target='_blank'
                         >
-                          <span className='font-regular py-2 px-2'>
-                            Share on Facebook
-                          </span>
+                          <span className='p-2'>Share on Facebook</span>
                         </a>
-                        <div className='visible sm:invisible '>
+                        <div className='hidden sm:block '>
                           <Whatsapp
                             solidcircle
                             big
@@ -594,23 +628,32 @@ export default class Home extends React.Component {
                     </div>
                   )}
                 </div>
-                <div className='flex flex-col text-center w-full mt-5 pb-6 md:pb-24'>
-                  Contact us <br />
-                  <div className='m-2'>
-                    <a href='mailto:india2019.vote@gmail.com'> Mail</a> |
-                    <a
-                      target='_blank'
-                      href='https://twitter.com/india2019_vote'
-                    >
-                      Twitter
-                    </a>
-                    |
-                    <a
-                      href='https://www.facebook.com/india2019.vote'
-                      target='_blank'
-                    >
-                      Facebook
-                    </a>
+                <div className='flex flex-col text-center mt-5 pb-6 md:pb-24'>
+                  <span className='uppercase text-xs'>Contact us</span>
+                  <div className='mt-4 px-2'>
+                    <div className='max-w-xs w-full flex hover:border-primary-light justify-center border rounded overflow-hidden mx-auto'>
+                      <a
+                        className='w-1/3 flex-1 text-primary text-sm p-2 hover:bg-primary-lightest no-underline border-r border-primary-lighter'
+                        href='mailto:india2019.vote@gmail.com'
+                      >
+                        {' '}
+                        Mail
+                      </a>{' '}
+                      <a
+                        className='w-1/3 flex-1 text-primary text-sm p-2 hover:bg-primary-lightest hover:border-primary-light no-underline border-r border-primary-lighter'
+                        target='_blank'
+                        href='https://twitter.com/india2019_vote'
+                      >
+                        Twitter
+                      </a>
+                      <a
+                        className='w-1/3 flex-1 text-primary text-sm p-2 hover:bg-primary-lightest no-underline'
+                        href='https://www.facebook.com/india2019.vote'
+                        target='_blank'
+                      >
+                        Facebook
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -628,24 +671,24 @@ export default class Home extends React.Component {
                   <Logout authenticityToken={this.props.authenticityToken} />
                 </div>
                 <div className='flex flex-1 justify-center items-center'>
-                  <div className='flex m-4 items-center border rounded-full bg-primary-lightest px-2 py-1 mr-3'>
+                  <div className='flex items-center border rounded-full bg-primary-lightest px-2 py-1 m-2'>
                     <p className='text-xs'>Coins left:&nbsp;</p>
-                    <p className=''>{this.coinsLeft()}</p>
+                    <p className='text-sm md:text-base'>{this.coinsLeft()}</p>
                   </div>
 
                   <div className=''>
                     {this.coinsLeft() > 299 && !this.state.showForm && (
                       <button
-                        className='p-2 rounded btn text-black'
+                        className='p-2 rounded btn text-sm'
                         onClick={this.toggleShowForm}
                       >
-                        Add New Prediction
+                        New Prediction
                       </button>
                     )}
                   </div>
                 </div>
                 {this.coinsLeft() < 300 && (
-                  <div className='mt-2'>
+                  <div className='text-xs bg-red-lightest rounded p-2 text-red'>
                     {' '}
                     You need minimum 300 coins to make a prediction
                   </div>
