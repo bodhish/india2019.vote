@@ -1,16 +1,20 @@
 class PredictionsController < ApplicationController
   def create
-    prediction = Prediction.new(permit_params.merge(user_id: current_user.id))
-    if prediction.save
-      redirect_to profile_path(current_user.slug)
-    else
-      raise
-    end
+    raise
+
+    # prediction = Prediction.new(permit_params.merge(user_id: current_user.id))
+    # if prediction.save
+    #   redirect_to profile_path(current_user.slug)
+    # else
+    #   raise
+    # end
   end
 
   def destroy
-    Prediction.find(params[:id]).destroy
-    redirect_to profile_path(current_user.slug)
+    raise
+
+    # Prediction.find(params[:id]).destroy
+    # redirect_to profile_path(current_user.slug)
   end
 
   def show
