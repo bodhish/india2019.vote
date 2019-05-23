@@ -46,17 +46,17 @@ export default class Home extends React.Component {
 
   handlePMImage(answer) {
     if (answer == "Rahul Gandhi") {
-      rgImg;
+      return rgImg;
     } else if (answer == "Narendra Modi") {
-      namoImg;
-    } else avatar;
+      return namoImg;
+    } else return avatar;
   }
   handlePartyImage(answer) {
     if (answer == "UPA") {
-      incImg;
+      return incImg;
     } else if (answer == "NDA") {
-      ndaImg;
-    } else avatar;
+      return ndaImg;
+    } else return avatar;
   }
 
   updateProfile() {
