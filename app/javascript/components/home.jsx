@@ -8,6 +8,11 @@ import { Twitter } from "react-social-sharing";
 import PredictionsFeed from "./predictionsFeed";
 import Screenshot from "./screenshot";
 import Logout from "./logout";
+import ndaImg from "../assets/NDA.svg";
+import incImg from "../assets/INC.svg";
+import rgImg from "../assets/Rahul-gandhi.jpg";
+import namoImg from "../assets/Narendra-modi.jpg";
+import avatar from "../assets/avatar.png";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -23,6 +28,8 @@ export default class Home extends React.Component {
     this.updateProfile = this.updateProfile.bind(this);
     this.getFormattedDate = this.getFormattedDate.bind(this);
     this.mathForGraph = this.mathForGraph.bind(this);
+    this.handlePMImage = this.handlePMImage.bind(this);
+    this.handlePartyImage = this.handlePartyImage.bind(this);
   }
 
   coinsLeft() {
@@ -35,6 +42,21 @@ export default class Home extends React.Component {
   toggleShowProfile(e) {
     e.preventDefault();
     this.updateProfile();
+  }
+
+  handlePMImage(answer) {
+    if (answer == "Rahul Gandhi") {
+      rgImg;
+    } else if (answer == "Narendra Modi") {
+      namoImg;
+    } else avatar;
+  }
+  handlePartyImage(answer) {
+    if (answer == "UPA") {
+      incImg;
+    } else if (answer == "NDA") {
+      ndaImg;
+    } else avatar;
   }
 
   updateProfile() {
@@ -239,7 +261,9 @@ export default class Home extends React.Component {
                                           <div className="winning-part__logo px-2 rounded-lg flex justify-center items-center">
                                             <img
                                               className="w-18 h-18 rounded-full border-2 border-white bg-white"
-                                              src={"assets/INC.svg"}
+                                              src={this.handlePartyImage(
+                                                prediction.answer1
+                                              )}
                                             />
                                           </div>
                                           <div className="pl-2 pr-5 text-center">
@@ -257,7 +281,9 @@ export default class Home extends React.Component {
                                           <div className="winning-part__logo px-2 rounded-lg flex justify-center items-center">
                                             <img
                                               className="w-18 h-18 rounded-full border-2 border-white bg-white"
-                                              src={"assets/Rahul-gandhi.jpg"}
+                                              src={this.handlePMImage(
+                                                prediction.answer2
+                                              )}
                                             />
                                           </div>
                                           <div className="pl-2 pr-5 text-center">
